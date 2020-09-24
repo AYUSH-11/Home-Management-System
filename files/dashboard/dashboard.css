@@ -44,3 +44,9 @@ body {
   transform: rotateY(180deg);
 }
 
+#btnAdd{
+  width: 32%;
+  height: 325px;
+  float: left;
+}
+
