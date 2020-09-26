@@ -44,7 +44,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">A&Y Group</a>
+                <a class="navbar-brand" href="#">A&Y Group</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -156,7 +156,7 @@
         <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
-        <div class="nav-left-sidebar sidebar-dark">
+                <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -172,10 +172,10 @@
                                 <a class="nav-link " href="../../index.html"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Bill Management</a>
+                                <a class="nav-link active"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Bill Management</a>
                                 <div id="submenu-2" class="collapse submenu" >
                                     <ul class="nav flex-column">
-                                       <li class="nav-item">
+                                        <li class="nav-item">
                                             <a class="nav-link" href="electricity.html">Electricity</a>
                                         </li>
                                         <li class="nav-item">
@@ -193,7 +193,6 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="water.html">Water</a>
                                         </li>
-                                        
                                     </ul>
                                 </div>
                             </li>
@@ -202,45 +201,46 @@
                                 <div id="submenu-3" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-c3.html">Individual</a>
+                                            <a class="nav-link" href="../dg-locker/individual.html">Individual</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-chartist.html">Home document</a>
+                                            <a class="nav-link" href="../dg-locker/homedocument.html">Home document</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/chart-charts.html">Shop document</a>
+                                            <a class="nav-link" href="../dg-locker/shopdocument.html">Shop document</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
+                                <a class="nav-link" href="../expenditure/expenditure.html" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>insurance</a>
                                 <div id="submenu-7" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/inbox.html">Life insurance</a>
+                                            <a class="nav-link" href="../insurance/lifeinsurance.html">Life insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/email-details.html">Term insurance</a>
+                                            <a class="nav-link" href="../insurance/terminsurance.html">Term insurance</a>
                                         </li>
                                        
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
+                                <a class="nav-link" href="../task-remainder/taskremainder.html" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fas fa-fw fa-columns"></i>Saving</a>
+                                <a class="nav-link" href="../saving/saving.html"><i class="fas fa-fw fa-columns"></i>Saving</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </div>
+
 
         <div class="dashboard-wrapper">
 
@@ -265,9 +265,27 @@
                                     </nav>
                                 </div>
                                 <div style="float: right;">
-                                <button style="font-size: 20px; width: 100px;"><i class="ti-plus"></i> ADD</button>
-                                
+                                    <div style="padding-right: 250px;">
+                                        <select name="selectyear" id="selectyear">
+                                            
+                                        </select>
+                                        <select name="chartselection" id="chartselection">
+                                            <option>Select</option>
+                                            <option value="zoomchart">Zoom chart</option>
+                                            <option value="areachrat">Area chart</option>
+                                            <option value="barchart">Bar chart</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                   
+                                    <div style="padding-left: 200px;">
+                                        <button style="font-size: 20px; width: 100px;"><i class="ti-plus"></i> ADD</button>
+                                    </div>
                                 </div>
+                                <br><br>
+
+
+
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" >
                                     <div class="card" >
 
@@ -410,7 +428,7 @@
     <!-- chart c3 js -->
     <script src="../../assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="graph.js"></script>
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 
 
