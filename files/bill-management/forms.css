@@ -1,0 +1,11 @@
+/*electricity form*/
+.paynment_mode{
+	position: absolute;
+	top: 85%;
+	left: 70%;
+}
+.btn_add_new_bill{
+	font-size: 20px; 
+	width: 200px;
+	background-color: lightgrey
+}

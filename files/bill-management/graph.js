@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -164,3 +165,171 @@ for(var i=0;i<yeararray.length;i++)
 
 
 
+=======
+
+
+
+(function(window, document, $, undefined) {
+    var chartselection="zoomchart";
+    $('#chartselection').on('change', function(event) {
+        var opt = this.options[ this.selectedIndex ];
+        chartselection= $(opt).text();
+        
+     var arr= [500,400,350,450,520,500,400,350,342,368,500,500];  
+    if(chartselection=="Zoom chart"){
+        $(function() { 
+            
+            if ($('#c3chart_zoom').length) {
+            
+            var chart = c3.generate({
+                bindto: "#c3chart_zoom",
+
+                data: {
+
+                    columns: [
+                        ['sample',0,arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8],arr[9],arr[10],arr[11]]
+                    ],
+                    colors: {
+                        sample: '#5969ff'
+                    }
+
+
+                },
+                zoom: {
+                    enabled: true
+                },
+                axis: {
+
+                    y: {
+                        show: true,
+                    },
+                    x: {
+
+                        show: true,
+                       
+                    }
+                },
+
+            });
+            }
+
+        });
+
+    }
+
+
+    if(chartselection=="Area chart"){
+
+        if ($('#c3chart_zoom').length) {
+            var chart = c3.generate({
+                bindto: "#c3chart_zoom",
+                data: {
+                    columns: [
+                        ['data1',0, arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8],arr[9],arr[10],arr[11]]
+                        
+                    ],
+                    types: {
+                        data1: 'area',
+                        data2: 'area-spline'
+                    },
+                    colors: {
+                        data1: '#5969ff',
+                        data2: '#ff407b',
+
+                    }
+
+                },
+                axis: {
+
+                    y: {
+                        show: true
+
+
+
+
+                    },
+                    x: {
+                        show: true
+                    }
+                }
+
+            });
+        }
+
+    }
+
+    if(chartselection=="Bar chart"){
+        if ($('#c3chart_zoom').length) {
+            var chart = c3.generate({
+                bindto: "#c3chart_zoom",
+
+                data: {
+                    columns: [
+                        ['data1',0, arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8],arr[9],arr[10],arr[11]]
+                    ],
+                    type: 'bar',
+                    groups: [
+                        ['data1']
+                    ],
+                    order: 'desc', // stack order by sum of values descendantly. this is default.
+                    //      order: 'asc'  // stack order by sum of values ascendantly.
+                    //      order: null   // stack order by data definition.
+
+                    colors: {
+                        data1: '#5969ff',
+                        data2: '#ff407b',
+                        data3: '#64ced3'
+
+                    }
+                },
+                axis: {
+                    y: {
+                        show: true,
+
+
+                    },
+                    x: {
+                        show: true,
+                    }
+                },
+                grid: {
+                    y: {
+                        lines: [{ value: 1 }]
+                    },
+
+                }
+            });
+            
+        }
+
+
+    }
+
+
+
+
+     });
+
+
+
+})(window, document, window.jQuery);
+
+
+window.onload = function takeyear(){
+
+
+var yeararray=[1999,2000,2001];
+for(var i=0;i<yeararray.length;i++)
+{
+                var x = document.getElementById("selectyear");
+                var option = document.createElement("option");
+                option.text = yeararray[i].toString();
+                x.add(option);
+}
+
+}
+
+
+
+
+>>>>>>> e085a7e... Combining Bill and DG-locker
