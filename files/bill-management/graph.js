@@ -1,14 +1,46 @@
-
-
-
 (function(window, document, $, undefined) {
-    var chartselection="zoomchart";
+    "use strict";
+    $(function() {
+        var arr= [500,400,350,450,520,500,400,350,342,368,500,500];  
+        if ($('#c3chart_zoom').length) {
+            var chart = c3.generate({
+                bindto: "#c3chart_zoom",
+                data: {
+                    columns: [
+                        ['sample',0,arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8],arr[9],arr[10],arr[11]]
+                    ],
+                    colors: {
+                        sample: '#5969ff'
+
+
+                    }
+                },
+                zoom: {
+                    enabled: true
+                },
+                axis: {
+                    y: {
+                        show: true,
+
+
+                    },
+                    x: {
+                        show: true,
+                    }
+                }
+
+            });
+        }
+
+
+        var chartselection="zoomchart";
+
     $('#chartselection').on('change', function(event) {
         var opt = this.options[ this.selectedIndex ];
         chartselection= $(opt).text();
         
-     var arr= [500,400,350,450,520,500,400,350,342,368,500,500];  
-    if(chartselection=="Zoom chart"){
+     
+     if(chartselection=="Zoom chart"){
         $(function() { 
             
             if ($('#c3chart_zoom').length) {
@@ -48,7 +80,6 @@
         });
 
     }
-
 
     if(chartselection=="Area chart"){
 
@@ -140,9 +171,15 @@
 
 
 
-     });
+
+    })
 
 
+
+        
+
+
+    });
 
 })(window, document, window.jQuery);
 
