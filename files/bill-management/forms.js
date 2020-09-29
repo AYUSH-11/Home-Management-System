@@ -1,3 +1,5 @@
+
+
 function check_notification(){
 	var isCheck = document.getElementById("switch16").checked;
 	if(isCheck){

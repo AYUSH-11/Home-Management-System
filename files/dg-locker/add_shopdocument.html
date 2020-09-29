@@ -28,8 +28,37 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
-    <script type="text/javascript" src="individualdocument.js"></script>
+    <script src="../../files/dashboard/dashboard.js"></script>
 
+    <script src="individual.js"></script>
+
+	<!-- =========================================== -->
+	<!-- CSS for Add new Document -->
+	<!-- =========================================== -->
+
+
+    <style type="text/css">
+    	.form_add_document{
+    		position: relative;
+    		left: 25%;
+    		top: 17%;
+    		width: 90%;
+    		line-height: 30px;
+    	}
+    	.form_btn{
+    		position: relative;
+    		left: 65%;
+    	}
+    	#Doctype{        /*dropdown*/
+    		width: 150px;
+    		background-color: #87CEFA;
+    		border:4px solid transparent;
+
+    	}
+    	
+    	
+    	
+    </style>
 
 
 </head>
@@ -44,7 +73,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="#">A&Y Group</a>
+                <a class="navbar-brand" href="index.html">A&Y Group</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -138,11 +167,10 @@
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="" id="head_image" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name" id="head_name"> </h5>
-                                    <span class="status"></span><span class="ml-2">Available</span>
+                                    <h5 class="mb-0 text-white nav-user-name" id="head_name"></h5>
+                                    <span class="status"></span><span class="ml-2" >Available</span>
                                 </div>
-                                <a class="dropdown-item" href="../profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
-
+                                 <a class="dropdown-item" href="../profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -158,9 +186,9 @@
         <!-- left sidebar -->
         <!-- ============================================================== -->
         <div class="nav-left-sidebar sidebar-dark">
-            <div class="menu-list">
+            <div class="menu-list" >
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="d-xl-none d-lg-none" href="">Dashboard</a>
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -249,147 +277,106 @@
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
-                    
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Individual</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Shop Documents</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Add New Document</li>
 
                                         </ol>
                                     </nav>
-                                </div> 
+                                </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
 
-
-
-
-
-                    <!-- ============================================================== -->
-                    <!-- end pageheader  -->
-                    <!-- ============================================================== -->
+                    
                     <div class="row">
-                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
-                            <div class="row">
-                                <div id="inddoc" style="width: 100%;">
-                                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12" style="float: left;">
-                                        <div class="product-thumbnail">
-                                            <div class="product-img-head">
-                                                <div class="product-img">
-                                                    <img src="../../img/add_document.jpg" alt="" class="img-fluid"></div>
-                                                
-                                           
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-content-head">
-                                                    <div style="text-align: center;">
-                                                        <h3 class="product-title">Add New Document</h3>  
-                                                    </div>
-                                                </div>
-                                                <div class="product-btn">
-                                                    <div style="text-align: center;">
-                                                        <a href="add_individual.html" class="btn btn-primary">Click here</a>
+                    	<form action="add_individual.php" class="form_add_document">
+                        <!-- ============================================================== -->
+                        <!-- Add new Document form -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header" style="text-align: center;">Add New Document</h5>
+                                <div class="card-body">
+                                    <form action="#" id="basicform" data-parsley-validate="">
+                                        <div class="form-group">
+                                            <label for="Docname" style="float: left;">Document Name&nbsp;&nbsp;&nbsp;</label>
+                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;">
+                                        </div><br>
 
-                                                    </div>
-                                                </div>
+                                         <div class="form-group">
+                                            <label for="Doctype">Document Type</label>&nbsp;&nbsp;&nbsp;                              
+                                            <select name="Doctype" id="Doctype">
+                                            	<option value="Identity">ID Proof</option>
+                                            	<option value="School">School</option>
+                                            	<option value="Collage">Collage</option>
+                                            	<option value="Sports">Sports</option>
+                                            	<option value="Health">Health</option>                                            	
+                                            	<option value="Office">Office</option>
+                                            	<option value="Other">Other</option>
+                                            </select>
+                                            
+                                        </div>
+                                        
+                                        
+
+                                        <div class="form-group row">
+                                            <label for="soft_copy" class="col-12 col-sm-3 col-form-label text-sm-right">Upload Document</label>&nbsp;&nbsp;&nbsp;
+                                            <label class="custom-control custom-radio custom-control-inline">
+                                            <input type="file" id="soft_copy" class="form-control" ></input>
+                                            </label>
+                                        </div>
+                                     <!-- 
+                                        <div class="form-group">
+                                            <label for="inputPassword">Password</label>
+                                            <input id="inputPassword" type="password" placeholder="Password" required="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputRepeatPassword">Repeat Password</label>
+                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password" required="" placeholder="Password" class="form-control">
+                                        </div> -->
+                                        <div class="form_btn">                                          
+                                            <div class="col-sm-6 pl-0">
+                                                    <button type="submit" class="btn btn-space btn-primary">Save</button>&nbsp;
+                                                    <button class="btn btn-space btn-secondary">Cancel</button>
+                                                
                                             </div>
                                         </div>
-                                    </div>  
-
-
-
-                                </div>
-
-
-
-                                <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link " href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>-->
-
-
-
-                                
-                             
-                            </div>
-
-
-
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                            <div class="product-sidebar">
-                                <div class="product-sidebar-widget">
-                                    <h4 class="mb-0">Filters</h4>
-                                </div>
-                                <div class="product-sidebar-widget">
-                                    <h4 class="product-sidebar-widget-title">Documents</h4>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-1">
-                                        <label class="custom-control-label" for="cat-1">Education</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-2">
-                                        <label class="custom-control-label" for="cat-2">Technical</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-3">
-                                        <label class="custom-control-label" for="cat-3">Sports</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-4">
-                                        <label class="custom-control-label" for="cat-4">Bank</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-5">
-                                        <label class="custom-control-label" for="cat-5">Others</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-sidebar-widget" >
-                                    <a href="#" class="btn btn-outline-light" id="resbtn">Reset Filter</a>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                        
-
-
-
-
-
-
-                        
-
+                    
                         
 
                 </div>
 
             </div>
 
-        </div>
-
         
-
-
-
-
-
+        
+        
+        </div>            
+           
     </div>
+
+
+
+
+
+    
     <!-- ============================================================== -->
     <!-- end main wrapper  -->
     <!-- ============================================================== -->
@@ -412,17 +399,10 @@
     <!-- chart c3 js -->
     <script src="../../assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    
-
-
-    <!--<script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>-->
-    
-    
-
-
+    <script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 
-
+    <script src="forms.js"></script>
 
    
  

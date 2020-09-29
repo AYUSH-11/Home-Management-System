@@ -1,4 +1,13 @@
 $(document).ready(function(){
+
+
+   /*user information in header*/
+  var head_name="Ayush Vachhani";
+  var head_image="../../crop.jpg";
+  document.getElementById('head_name').innerHTML=head_name;
+  document.getElementById('head_image').src=head_image;
+
+
   var  length=6;
   var name="HELLO";
   
@@ -31,6 +40,9 @@ $(document).ready(function(){
                               </div>\
                            </div>");
       }
+      $('#resbtn').click(function(){
+        $('input[type="checkbox"]:checked').prop('checked',false);
+      })
 
   });
 

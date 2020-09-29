@@ -28,7 +28,7 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
-    <script src="../../files/dashboard/dashboard.js"></script>
+    <script src="taskremainder.js"></script>
 
 
 
@@ -135,13 +135,13 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="" id="head_image" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+                                    <h5 class="mb-0 text-white nav-user-name" id="head_name"></h5>
                                     <span class="status"></span><span class="ml-2">Available</span>
                                 </div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="../profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -250,6 +250,8 @@
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
                     <div class="row">
+
+
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
@@ -264,12 +266,81 @@
                                         </ol>
                                     </nav>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                            <section class="cd-timeline js-cd-timeline">
+                        <div class="cd-timeline__container">
+                            <div id="task">
+
+                            <!--<div class="cd-timeline__block js-cd-block">
+                                <div class="cd-timeline__img cd-timeline__img--picture js-cd-img">
+                                    <img src="../../assets/vendor/timeline/img/cd-icon-picture.svg" alt="Picture">
+                                </div>
+                                <div class="cd-timeline__content js-cd-content">
+                                    <h3>Title of section 1</h3>
+                                    <h4 style="float: left;">From : Ayush</h4>
+                                    <h4 style="float: right;">To : Yash</h4><br><br>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                    <a href="#0" class="btn btn-primary btn-lg">Read More</a>
+                                    <span class="cd-timeline__date">12 July, 2016</span>
+                                </div>
+                            </div>-->
+
+                            </div>
+                        </div>
+                    </section>
+
+
+                            
+                        </div>
+                       
+
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12"  >
+                            <div class="product-sidebar-widget" >
+                                    <a href="taskassignform.html" class="btn btn-primary" id="assigntask" ><i class="ti-plus"></i> Assign Task</a>
+                                </div>
+                            <div class="product-sidebar" >
+                                <div class="product-sidebar-widget">
+                                    <h4 class="mb-0">Filter</h4>
+                                </div>
+                                <div class="product-sidebar-widget" id="filter">
+                                    <h4 class="product-sidebar-widget-title">Assign to</h4>
+                                        
+                                    <!--<div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-2">
+                                        <label class="custom-control-label" for="cat-2">Technical</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-3">
+                                        <label class="custom-control-label" for="cat-3">Sports</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-4">
+                                        <label class="custom-control-label" for="cat-4">Bank</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-5">
+                                        <label class="custom-control-label" for="cat-5">Others</label>
+                                    </div>-->
+                                </div>
+                                
+                                <div class="product-sidebar-widget" >
+                                    <a href="#" class="btn btn-primary" id="resbtn" >Reset Filter</a>
+                                </div>
+                            </div>
+                        </div>
 
                                 
                                 
-                            </div>
-                        </div>
+                            
+                        
+
                     </div>
+
+
+                    
                         
 
                 </div>

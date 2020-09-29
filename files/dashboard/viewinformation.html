@@ -28,7 +28,7 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
-    <script type="text/javascript" src="individualdocument.js"></script>
+    <script src="viewinformation.js"></script>
 
 
 
@@ -138,11 +138,10 @@
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="" id="head_image" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name" id="head_name"> </h5>
+                                    <h5 class="mb-0 text-white nav-user-name" id="head_name"></h5>
                                     <span class="status"></span><span class="ml-2">Available</span>
                                 </div>
                                 <a class="dropdown-item" href="../profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
-
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -160,7 +159,7 @@
         <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="d-xl-none d-lg-none" href="">Dashboard</a>
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -198,22 +197,22 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>DG Locker</a>
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>DG Locker</a>
                                 <div id="submenu-3" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="individual.html">Individual</a>
+                                            <a class="nav-link" href="../dg-locker/individual.html">Individual</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="homedocument.html">Home document</a>
+                                            <a class="nav-link" href="../dg-locker/homedocument.html">Home document</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="shopdocument.html">Shop document</a>
+                                            <a class="nav-link" href="../dg-locker/shopdocument.html">Shop document</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item ">
+                           <li class="nav-item ">
                                 <a class="nav-link" href="../expenditure/expenditure.html" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
                             </li>
                              <li class="nav-item">
@@ -230,7 +229,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                           <li class="nav-item">
                                 <a class="nav-link" href="../task-remainder/taskremainder.html" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
                             </li>
                             <li class="nav-item">
@@ -249,7 +248,6 @@
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
-                    
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
@@ -259,12 +257,15 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Individual</li>
+                            
+                                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
 
                                         </ol>
                                     </nav>
-                                </div> 
+                                </div>
+
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -273,115 +274,184 @@
 
 
 
-                    <!-- ============================================================== -->
-                    <!-- end pageheader  -->
-                    <!-- ============================================================== -->
+
+
                     <div class="row">
-                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
-                            <div class="row">
-                                <div id="inddoc" style="width: 100%;">
-                                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12" style="float: left;">
-                                        <div class="product-thumbnail">
-                                            <div class="product-img-head">
-                                                <div class="product-img">
-                                                    <img src="../../img/add_document.jpg" alt="" class="img-fluid"></div>
-                                                
-                                           
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-content-head">
-                                                    <div style="text-align: center;">
-                                                        <h3 class="product-title">Add New Document</h3>  
-                                                    </div>
-                                                </div>
-                                                <div class="product-btn">
-                                                    <div style="text-align: center;">
-                                                        <a href="add_individual.html" class="btn btn-primary">Click here</a>
+                        <!-- ============================================================== -->
+                        <!-- profile -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                            <!-- ============================================================== -->
+                            <!-- card profile -->
+                            <!-- ============================================================== -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="user-avatar text-center d-block" >
+                                        <img  id="user_img" src="" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                    </div>
+                                    <div class="text-center">
+                                        <h2 class="font-24 mb-0" id="name"></h2>
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-body border-top">
+                                    <h3 class="font-16">Contact Information</h3>
+                                    <div class="">
+                                        <ul class="list-unstyled mb-0">
+                                        <a class="mb-2" href="#" id="gmail"></a>
+                                        <a class="mb-0" href="#" id="mob"></a>
+                                    </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-body border-top">
+                                    <h3 class="font-16">Social Channels</h3>
+                                    <div class="" >
+                                        
+                                        <a href="#" id="facebook"></a>
+                                        <br>
+                                        <a href="#" id="twitter"></a>
+                                        <br>
+                                        <a href="#" id="instagram"></a>
+                                        <br>
+                                        <a href="#" id="youtube"></a>
 
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end card profile -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end profile -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- campaign data -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                            <!-- ============================================================== -->
+                            <!-- campaign tab one -->
+                            <!-- ============================================================== -->
+                            <div class="influence-profile-content pills-regular">
+                                
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
+                                        
+
+                                        
+                                        <div class="section-block">
+                                                <h3 class="section-title">Details</h3>
                                         </div>
-                                    </div>  
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body ">
+                                                                <div class="influencer-profile-data">
+                                                                    <h4 class="m-b-10" id="full_name">Full Name : </h4>
+                                                                    <h4 class="m-b-10" id="birth">Birth Date : </h4>
+                                                                    <h4 class="m-b-10" id="gender">Gender : </h4>
+                                                                    <h4 class="m-b-10" id="profesion">profesion : </h4>
+                                                                    <h4 class="m-b-10" id="blood_group">Blood Group : </h4>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
 
 
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body" id="work">
+                                                                 <h3 class="m-b-10">Work</h3>
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body" id="education">
+                                                                  <h3 class="m-b-10" >Educatation</h3>
+                                                                    
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
 
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body" id="language">
+                                                                  <h3 class="m-b-10" >Language</h3>
+                                                                    
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
                                 </div>
-
-
-
-                                <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link " href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>-->
-
-
-
-                                
-                             
                             </div>
-
-
-
+                            <!-- ============================================================== -->
+                            <!-- end campaign tab one -->
+                            <!-- ============================================================== -->
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-                            <div class="product-sidebar">
-                                <div class="product-sidebar-widget">
-                                    <h4 class="mb-0">Filters</h4>
-                                </div>
-                                <div class="product-sidebar-widget">
-                                    <h4 class="product-sidebar-widget-title">Documents</h4>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-1">
-                                        <label class="custom-control-label" for="cat-1">Education</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-2">
-                                        <label class="custom-control-label" for="cat-2">Technical</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-3">
-                                        <label class="custom-control-label" for="cat-3">Sports</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-4">
-                                        <label class="custom-control-label" for="cat-4">Bank</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-5">
-                                        <label class="custom-control-label" for="cat-5">Others</label>
-                                    </div>
-                                </div>
-                                
-                                <div class="product-sidebar-widget" >
-                                    <a href="#" class="btn btn-outline-light" id="resbtn">Reset Filter</a>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end campaign data -->
+                        <!-- ============================================================== -->
                     </div>
-                        
 
 
 
 
 
 
-                        
+
+
+
+
+
+
 
                         
 
                 </div>
 
             </div>
-
-        </div>
 
         
 
@@ -416,7 +486,7 @@
 
 
     <!--<script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>-->
-    
+    <script src="graph.js"></script>
     
 
 
