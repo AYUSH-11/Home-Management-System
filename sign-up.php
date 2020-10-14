@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>Home Management System</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/vendor/fonts/circular-std/style.css">
@@ -94,13 +94,13 @@
         	$_SESSION['password']=$_POST['password'];*/
 
         	include 'db_connect.php';
-			$conn=dbconnect::db('iwt_project');
+			//$conn=dbconnect::db('iwt_project');
 
 			$sql="select home_id from authentication";
-			$result=$conn->query($sql);
+			$result = mysqli_query($conn, $sql);
 			$temp=1;
-			if($result->num_rows>0){
-				while ($row=$result->fetch_assoc()) {
+			if(mysqli_num_rows($result) > 0){
+				while ($row=mysqli_fetch_assoc($result)) {
 					if($row['home_id']==$_POST['homeid']){
 						$temp=0;
 					}
@@ -132,6 +132,7 @@
 
 				$conn->close();
 			}
+            //mysqli_close($conn);
 
         
 

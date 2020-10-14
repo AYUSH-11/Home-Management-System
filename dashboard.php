@@ -20,7 +20,7 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="files/dashboard/dashboard.css">
-    <script src="files/dashboard/dashboard.js"></script>
+    <!--<script src="files/dashboard/dashboard.js"></script>-->
 
 
 
@@ -29,7 +29,8 @@
 <body>
 
 	<?php
-	include 'login_check.php';
+	   include 'login_check.php';           
+               
 	?>
     <!-- ============================================================== -->
     <!-- main wrapper -->
@@ -107,7 +108,7 @@
                                             <a href="#" class="connection-item"><img src="assets/images/github.png" alt="" > <span>Github</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="assets/images/dribbble.png" alt="" > <span>Facebook</span></a>
+                                            <a href="#" class="connection-item" ><img src="assets/images/dribbble.png" alt="" > <span>Facebook</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
                                             <a href="#" class="connection-item"><img src="assets/images/dropbox.png" alt="" > <span>Instagram</span></a>
@@ -135,7 +136,7 @@
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name" id="head_name"></h5>
-                                    <span class="status"></span><span class="ml-2">Available</span>
+                                    <span class="ml-2">Available</span>
                                 </div>
                                 <a class="dropdown-item" href="files/profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
@@ -310,6 +311,87 @@
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+
+    <?php
+
+                //$conn=dbconnect::db('iwt_project');
+                
+                $sql="select first_name,middle_name,last_name,image from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
+                $result = mysqli_query($conn, $sql);
+                 
+                if(mysqli_num_rows($result) > 0){
+                $row=mysqli_fetch_assoc($result);
+                    $name=$row['first_name']." ".$row['last_name'];
+                    $img=$row['image'];  
+                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                
+                    
+                        echo "<script type='text/javascript'>
+
+                                $(document).ready(function(){
+                                    document.getElementById('head_name').innerHTML='$name';
+                                    document.getElementById('head_image').src='$img1';
+                                });
+                              </script>";
+
+
+
+                }
+                else
+                {
+                    echo "<br>0 Row Selected";
+                }
+
+
+                $sql="select *from user_information where home_id='".$_SESSION['homeid']."'";
+                $result = mysqli_query($conn, $sql);
+                $i=0;
+                $length=$result->num_rows;
+                if($result->num_rows>0){
+                while($row=mysqli_fetch_assoc($result)){
+                    $name=$row['first_name'];
+                    $image="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+
+
+
+
+
+                    $name=$row['first_name'];  
+                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                    $str1="<script type='text/javascript'>
+                                 $(document).ready(function(){
+                            $('#record').append(\"<div class='flip-card' style=' float:left ;width:32%;                   padding:10px;height:325px'>\
+                            <div class='flip-card-inner'>\
+                            <div class='flip-card-front'>\
+                                <img src=$img1 alt='Avatar' style='width:300px;height:260px;'>\
+                            <div>\
+                            </div><h1>$name</h1></div>\
+                            <div class='flip-card-back'>\
+                            <br><br><br>\
+                            <a href='files/dashboard/viewinformation.html' class='btn btn-warning' style='font-size:20px;' >view</a>\
+                            <br><br>\
+                            <br><br>\
+                            <a href='#' class='btn btn-warning' style='font-size:20px;' >Remove</a>\
+                            </div>\
+                            </div>\
+                        </div>\");
+                        });  
+                        </script>";
+
+                    echo "".$str1;
+                    
+                    }
+
+
+                }
+                else
+                {
+                    echo "<br>0 Row Selected";
+                }
+
+
+    ?>
 </body>
+</html>
  
 

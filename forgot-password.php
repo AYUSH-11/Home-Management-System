@@ -60,13 +60,13 @@
     	{
 
     		include 'db_connect.php';
-			$conn=dbconnect::db('iwt_project');
+			
 
 			$sql="select email from authentication";
-			$result=$conn->query($sql);
+			$result==mysqli_query($sql,$conn);
 			$temp=1;
 			if($result->num_rows>0){
-				while ($row=$result->fetch_assoc()) {
+				while ($row=mysqli_fetch_assoc($result)) {
 					
 
 					if($row['email']==$_POST['email']){

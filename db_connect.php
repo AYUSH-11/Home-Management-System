@@ -1,5 +1,5 @@
 <?php
-class dbconnect{
+/*class dbconnect{
 
 	function db($table_name){
 		$servername = "localhost";
@@ -17,7 +17,14 @@ class dbconnect{
 		}
 	}
 
-}
+}*/
+
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$db="iwt_project";
+		$conn= mysqli_connect($servername,$username,$password,$db);
+
 
 
 

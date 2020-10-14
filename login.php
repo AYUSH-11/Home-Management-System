@@ -80,13 +80,13 @@
         $_SESSION['password']=$_POST['password'];
 
         include 'db_connect.php';
-        $conn=dbconnect::db('iwt_project');
+        //$conn=dbconnect::db('iwt_project');
 
         $sql="select home_id,user_id,password from authentication";
-        $result=$conn->query($sql);
+        $result = mysqli_query($conn, $sql);
         $temp=1;
-        if($result->num_rows>0){
-            while($row=$result->fetch_assoc()){
+        if(mysqli_num_rows($result)>0){
+            while($row=mysqli_fetch_assoc($result)){
             
                 if($_SESSION['homeid']==$row['home_id'] && $_SESSION['userid']==$row['user_id'] && $_SESSION['password']==$row['password'] )
                 {
@@ -112,7 +112,7 @@
         }
         else{
             header("location: dashboard.php");
-        exit;
+            exit;
         }
 
     }
