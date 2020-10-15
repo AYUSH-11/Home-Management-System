@@ -122,15 +122,14 @@
 			{
 				$sql="insert into authentication(home_id,user_id,password,email) values ('".$_POST['homeid']."','".$_POST['userid']."','".$_POST['pass1']."','".$_POST['email']."')";
 				
-				if ($conn->query($sql) === TRUE) {
+				if (mysqli_query($conn,$sql)) {
   						header("location: login.php");
     					exit;
 				} else {
-					  	echo "Error: " . $sql . "<br>" . $conn->error;
+					  	echo "Error: ";
 
 				}
 
-				$conn->close();
 			}
             //mysqli_close($conn);
 

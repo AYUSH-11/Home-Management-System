@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/circular-std/style.css" >
+    <link rel="stylesheet" href="../../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../../assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="../../assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+
+    <link rel="stylesheet" type="text/css" href="expenditure.css">
+
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/buttons.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/select.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
+     <link rel="stylesheet" href="../../assets/vendor/fonts/themify-icons/themify-icons.css">
+    
+    <title>Home Management System</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
+    <script src="../../files/dashboard/dashboard.js"></script>
+
+  	
+
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+        <!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                <a class="navbar-brand" href="#">A&Y Group</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                                <li class="connection-list">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="../../assets/images/github.png" alt="" > <span>Github</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="../../assets/images/dribbble.png" alt="" > <span>Dribbble</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="../../assets/images/dropbox.png" alt="" > <span>Dropbox</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="../../assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="../../assets/images/mail_chimp.png" alt="" ><span>Mail chimp</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="../../assets/images/slack.png" alt="" > <span>Slack</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="conntection-footer"><a href="#">More</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+                                    <span class="status"></span><span class="ml-2">Available</span>
+                                </div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="../../index.html"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link "  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Bill Management</a>
+                                <div id="submenu-2" class="collapse submenu" >
+                                    <ul class="nav flex-column">
+                                         <li class="nav-item">
+                                            <a class="nav-link" href="../bill-management/electricity.html">Electricity</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../bill-management/gas.html">Gas</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../bill-management/telephone.html">Telephone</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../bill-management/mobilerecharge.html">Mobile Recharge</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../bill-management/television.html">Television</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../bill-management/water.html">Water</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>DG Locker</a>
+                                <div id="submenu-3" class="collapse submenu" >
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../dg-locker/individual.html">Individual</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../dg-locker/homedocument.html">Home document</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../dg-locker/shopdocument.html">Shop document</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="#" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>insurance</a>
+                                <div id="submenu-7" class="collapse submenu" >
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../insurance/lifeinsurance.html">Life insurance</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="../insurance/terminsurance.html">Term insurance</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../task-remainder/taskremainder.html" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../saving/saving.html"><i class="fas fa-fw fa-columns"></i>Saving</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="dashboard-wrapper">
+
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">Dashboard</h2>
+                                
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item active"><a href="#" class="breadcrumb-link">Expenditure</a></li>
+                                            
+
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                    	<h2 style="color: #8A2BE2;padding-left: 30%;">Monthly Household Budget</h2>
+                    </div>
+                    
+			<!-- ========================
+			     Table
+			     ======================== -->
+                    <div class="main_div">
+                    		<!-- ==============Income========== -->
+                            <div class="main_div_1">
+                                <div class="card-body">
+                                    <table class="income_table" cellpadding="0px">
+                                        <thead class="income_t_head">
+                                            <tr class="income_table_h" align="center" >
+                                                <th scope="col">Income</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="income_table_r1">
+                                                <th>Salary</th>
+                                                <td><input type="text" id="inc_r1_d1"></td>
+                                                <td><input type="text" id="inc_r1_d2"></td>
+                                                <td><input type="text" id="inc_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="income_table_r2">
+                                                <th>Pension</th>
+                                                <td><input type="text" id="inc_r2_d1"></td>
+                                                <td><input type="text" id="inc_r2_d1"></td>
+                                                <td><input type="text" id="inc_r2_d1"></td>
+                                            </tr>
+                                            <tr class="income_table_r3">
+                                                <th>Investment & Saving</th>
+                                                <td><input type="text" id="inc_r3_d1"></td>
+                                                <td><input type="text" id="inc_r3_d1"></td>
+                                                <td><input type="text" id="inc_r3_d1"></td>
+                                            </tr>
+                                            <tr class="income_table_r4">
+                                                <th>Transfer From Saving</th>
+                                                <td><input type="text" id="inc_r4_d1"></td>
+                                                <td><input type="text" id="inc_r4_d2"></td>
+                                                <td><input type="text" id="inc_r4_d3"></td>
+                                            </tr>
+                                            <tr class="income_table_r5">
+                                                <th>Income Tax Rate</th>
+                                                <td><input type="text" id="inc_r5_d1"></td>
+                                                <td><input type="text" id="inc_r5_d2"></td>
+                                                <td><input type="text" id="inc_r5_d3"></td>
+                                            </tr>
+                                            <tr class="income_table_r6">
+                                                <th>Other</th>
+                                                <td><input type="text" id="inc_r6_d1"></td>
+                                                <td><input type="text" id="inc_r6_d2"></td>
+                                                <td><input type="text" id="inc_r6_d3"></td>
+                                            </tr>
+
+                                            <tr class="income_table_result">
+                                                <th class="income_t_lr" align="center">TOTAL INCOME</th>
+                                                <td><input type="text" id="inc_r7_d1"></td>
+                                                <td><input type="text" id="inc_r7_d2"></td>
+                                                <td><input type="text" id="inc_r7_d3"></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- =============Home Expanses============== -->
+                            <div class="main_div_2">
+                                <div class="card-body">
+                                    <table class="homeexp_table" cellpadding="0px">
+                                        <thead class="homeexp_t_head">
+                                            <tr class="homeexp_table_h" align="center">
+                                                <th scope="col">Home Expanses</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="homeexp_table_r1">
+                                                <th >Mortgage/Rent</th>
+                                                <td><input type="text" id="hom_r1_d1"></td>
+                                                <td><input type="text" id="hom_r1_d2"></td>
+                                                <td><input type="text" id="hom_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="homeexp_table_r2">
+                                                <th >Electricity</th>
+                                                <td><input type="text" id="hom_r2_d1"></td>
+                                                <td><input type="text" id="hom_r2_d2"></td>
+                                                <td><input type="text" id="hom_r2_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r3">
+                                                <th >Gas</th>
+                                                <td><input type="text" id="hom_r3_d1"></td>
+                                                <td><input type="text" id="hom_r3_d2"></td>
+                                                <td><input type="text" id="hom_r3_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r4">
+                                                <th >Water</th>
+                                                <td><input type="text" id="hom_r4_d1"></td>
+                                                <td><input type="text" id="hom_r4_d2"></td>
+                                                <td><input type="text" id="hom_r4_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r5">
+                                                <th >Internet</th>
+                                                <td><input type="text" id="hom_r5_d1"></td>
+                                                <td><input type="text" id="hom_r5_d2"></td>
+                                                <td><input type="text" id="hom_r5_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r6">
+                                                <th >Set top Box</th>
+                                                <td><input type="text" id="hom_r6_d1"></td>
+                                                <td><input type="text" id="hom_r6_d2"></td>
+                                                <td><input type="text" id="hom_r6_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r7">
+                                                <th >Other Appliances</th>
+                                                <td><input type="text" id="hom_r7_d1"></td>
+                                                <td><input type="text" id="hom_r7_d2"></td>
+                                                <td><input type="text" id="hom_r7_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r8">
+                                                <th >Lawn/Garden</th>
+                                                <td><input type="text" id="hom_r8_d1"></td>
+                                                <td><input type="text" id="hom_r8_d2"></td>
+                                                <td><input type="text" id="hom_r8_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r9">
+                                                <th >Maintenance</th>
+                                                <td><input type="text" id="hom_r9_d1"></td>
+                                                <td><input type="text" id="hom_r9_d2"></td>
+                                                <td><input type="text" id="hom_r9_d3"></td>
+                                            </tr>
+                                            <tr class="homeexp_table_r10">
+                                                <th >Other</th>
+                                                <td><input type="text" id="hom_r10_d1"></td>
+                                                <td><input type="text" id="hom_r10_d2"></td>
+                                                <td><input type="text" id="hom_r10_d3"></td>
+                                            </tr>
+
+                                            <tr class="homeexp_table_result">
+                                                <th class="homeexp_t_lr" align="center">TOTAL EXPANSE</th>
+                                                <td><input type="text" id="hom_r11_d1"></td>
+                                                <td><input type="text" id="hom_r11_d2"></td>
+                                                <td><input type="text" id="hom_r11_d3"></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- ============Daily Living=============== -->
+                            <div class="main_div_3">
+                                <div class="card-body">
+                                    <table class="dai_table" cellpadding="0px">
+                                        <thead class="dai_t_head">
+                                            <tr class="dai_table_h" align="center">
+                                                <th scope="col">Daily Living</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="dai_table_r1">
+                                                <th >Foodt</th>
+                                                <td><input type="text" id="dai_r1_d1"></td>
+                                                <td><input type="text" id="dai_r1_d2"></td>
+                                                <td><input type="text" id="dai_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="dai_table_r2">
+                                                <th >Cloth</th>
+                                                <td><input type="text" id="dai_r2_d1"></td>
+                                                <td><input type="text" id="dai_r2_d2"></td>
+                                                <td><input type="text" id="dai_r2_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r3">
+                                                <th >Milk</th>
+                                                <td><input type="text" id="dai_r3_d1"></td>
+                                                <td><input type="text" id="dai_r3_d2"></td>
+                                                <td><input type="text" id="dai_r3_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r4">
+                                                <th >Groceries</th>
+                                                <td><input type="text" id="dai_r4_d1"></td>
+                                                <td><input type="text" id="dai_r4_d2"></td>
+                                                <td><input type="text" id="dai_r4_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r5">
+                                                <th >Cleaning Service</th>
+                                                <td><input type="text" id="dai_r5_d1"></td>
+                                                <td><input type="text" id="dai_r5_d2"></td>
+                                                <td><input type="text" id="dai_r5_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r6">
+                                                <th >Dry cleaning</th>
+                                                <td><input type="text" id="hom_r6_d1"></td>
+                                                <td><input type="text" id="hom_r6_d2"></td>
+                                                <td><input type="text" id="hom_r6_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r7">
+                                                <th >Personal Supply</th>
+                                                <td><input type="text" id="hom_r7_d1"></td>
+                                                <td><input type="text" id="hom_r7_d2"></td>
+                                                <td><input type="text" id="hom_r7_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r8">
+                                                <th >Salon/Barber</th>
+                                                <td><input type="text" id="hom_r8_d1"></td>
+                                                <td><input type="text" id="hom_r8_d2"></td>
+                                                <td><input type="text" id="hom_r8_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r9">
+                                                <th >Other</th>
+                                                <td><input type="text" id="hom_r9_d1"></td>
+                                                <td><input type="text" id="hom_r9_d2"></td>
+                                                <td><input type="text" id="hom_r9_d3"></td>
+                                            </tr>
+                                            <tr class="dai_table_r10">
+                                                <th >Other</th>
+                                                <td><input type="text" id="hom_r10_d1"></td>
+                                                <td><input type="text" id="hom_r10_d2"></td>
+                                                <td><input type="text" id="hom_r10_d3"></td>
+                                            </tr>
+
+                                            <tr class="dai_table_result">
+                                                <th class="dai_t_lr" align="center">TOTAL DAILY LIVING</th>
+                                                <td><input type="text" id="hom_r11_d1"></td>
+                                                <td><input type="text" id="hom_r11_d2"></td>
+                                                <td><input type="text" id="hom_r11_d3"></td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- ================Transportation================ -->
+                             <div class="main_div_4">
+                                <div class="card-body">
+                                    <table class="tra_table" cellpadding="0px">
+                                        <thead class="tra_t_head">
+                                            <tr class="tra_table_h" align="center">
+                                                <th scope="col">Transportation</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="tra_table_r1">
+                                                <th>Vehicle Maintenance</th>
+                                                <td><input type="text" id="tra_r1_d1"></td>
+                                                <td><input type="text" id="tra_r1_d2"></td>
+                                                <td><input type="text" id="tra_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="tra_table_r2">
+                                                <th>Parking</th>
+                                                <td><input type="text" id="tra_r2_d1"></td>
+                                                <td><input type="text" id="tra_r2_d1"></td>
+                                                <td><input type="text" id="tra_r2_d1"></td>
+                                            </tr>
+                                            <tr class="tra_table_r3">
+                                                <th>Gasoline/Petrol</th>
+                                                <td><input type="text" id="tra_r3_d1"></td>
+                                                <td><input type="text" id="tra_r3_d1"></td>
+                                                <td><input type="text" id="tra_r3_d1"></td>
+                                            </tr>
+                                            <tr class="tra_table_r4">
+                                                <th>Other</th>
+                                                <td><input type="text" id="tra_r4_d1"></td>
+                                                <td><input type="text" id="tra_r4_d2"></td>
+                                                <td><input type="text" id="tra_r4_d3"></td>
+                                            </tr>
+                                            <tr class="tra_table_result">
+                                                <th class="tra_t_lr" align="center">TOTAL TRANSPORTATION</th>
+                                                <td><input type="text" id="tra_r5_d1"></td>
+                                                <td><input type="text" id="tra_r5_d2"></td>
+                                                <td><input type="text" id="tra_r5_d3"></td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- ===========HealthCare=============== -->
+                            <div class="main_div_5">
+                                <div class="card-body">
+                                    <table class="heal_table" cellpadding="0px">
+                                        <thead class="heal_t_head">
+                                            <tr class="heal_table_h" align="center">
+                                                <th scope="col">HealthCare</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="heal_table_r1">
+                                                <th>Medical Charge</th>
+                                                <td><input type="text" id="heal_r1_d1"></td>
+                                                <td><input type="text" id="heal_r1_d2"></td>
+                                                <td><input type="text" id="heal_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="heal_table_r2">
+                                                <th>Medical Insurance</th>
+                                                <td><input type="text" id="heal_r2_d1"></td>
+                                                <td><input type="text" id="heal_r2_d1"></td>
+                                                <td><input type="text" id="heal_r2_d1"></td>
+                                            </tr>
+                                            <tr class="heal_table_result">
+                                                <th class="heal_t_lr" align="center">TOTAL HEALTHCARE</th>
+                                                <td><input type="text" id="heal_r3_d1"></td>
+                                                <td><input type="text" id="heal_r3_d2"></td>
+                                                <td><input type="text" id="heal_r3_d3"></td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- ===============Children Education==================== -->
+                            <div class="main_div_6">
+                                <div class="card-body">
+                                    <table class="ch_table" cellpadding="0px">
+                                        <thead class="ch_t_head">
+                                            <tr class="ch_table_h" align="center">
+                                                <th scope="col">Children & Education</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="ch_table_r1">
+                                                <th>Tuition Fees</th>
+                                                <td><input type="text" id="ch_r1_d1"></td>
+                                                <td><input type="text" id="ch_r1_d2"></td>
+                                                <td><input type="text" id="ch_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="ch_table_r2">
+                                                <th>School Supplies</th>
+                                                <td><input type="text" id="ch_r2_d1"></td>
+                                                <td><input type="text" id="ch_r2_d1"></td>
+                                                <td><input type="text" id="ch_r2_d1"></td>
+                                            </tr>
+                                            <tr class="ch_table_r3">
+                                                <th>Student loan</th>
+                                                <td><input type="text" id="ch_r3_d1"></td>
+                                                <td><input type="text" id="ch_r3_d1"></td>
+                                                <td><input type="text" id="ch_r3_d1"></td>
+                                            </tr>
+                                            <tr class="ch_table_r4">
+                                                <th>Child & Personal Care</th>
+                                                <td><input type="text" id="ch_r4_d1"></td>
+                                                <td><input type="text" id="ch_r4_d2"></td>
+                                                <td><input type="text" id="ch_r4_d3"></td>
+                                            </tr>
+                                            <tr class="ch_table_r5">
+                                                <th>Child Support Paynments</th>
+                                                <td><input type="text" id="ch_r5_d1"></td>
+                                                <td><input type="text" id="ch_r5_d1"></td>
+                                                <td><input type="text" id="ch_r5_d1"></td>
+                                            </tr>
+                                            <tr class="ch_table_r6">
+                                                <th>Hostel</th>
+                                                <td><input type="text" id="ch_r6_d1"></td>
+                                                <td><input type="text" id="ch_r6_d2"></td>
+                                                <td><input type="text" id="ch_r6_d3"></td>
+                                            </tr>
+                                            <tr class="ch_table_r7">
+                                                <th>Other</th>
+                                                <td><input type="text" id="ch_r7_d1"></td>
+                                                <td><input type="text" id="ch_r7_d2"></td>
+                                                <td><input type="text" id="ch_r7_d3"></td>
+                                            </tr>
+                                            <tr class="ch_table_result">
+                                                <th class="ch_t_lr" align="center">TOTAL CHILD & EDU.</th>
+                                                <td><input type="text" id="ch_r8_d1"></td>
+                                                <td><input type="text" id="ch_r8_d2"></td>
+                                                <td><input type="text" id="ch_r8_d3"></td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- =============Entertainment================ -->
+                            <div class="main_div_7">
+                                <div class="card-body">
+                                    <table class="ent_table" cellpadding="0px">
+                                        <thead class="ent_t_head">
+                                            <tr class="ent_table_h" align="center">
+                                                <th scope="col">Entertainment</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="ent_table_r1">
+                                                <th>Activities</th>
+                                                <td><input type="text" id="ent_r1_d1"></td>
+                                                <td><input type="text" id="ent_r1_d2"></td>
+                                                <td><input type="text" id="ent_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="ent_table_r2">
+                                                <th>Books</th>
+                                                <td><input type="text" id="ent_r2_d1"></td>
+                                                <td><input type="text" id="ent_r2_d1"></td>
+                                                <td><input type="text" id="ent_r2_d1"></td>
+                                            </tr>
+                                            <tr class="ent_table_r3">
+                                                <th>Games</th>
+                                                <td><input type="text" id="ent_r3_d1"></td>
+                                                <td><input type="text" id="ent_r3_d1"></td>
+                                                <td><input type="text" id="ent_r3_d1"></td>
+                                            </tr>
+                                            <tr class="ent_table_r4">
+                                                <th>Fun Stuff</th>
+                                                <td><input type="text" id="ent_r4_d1"></td>
+                                                <td><input type="text" id="ent_r4_d2"></td>
+                                                <td><input type="text" id="ent_r4_d3"></td>
+                                            </tr>
+                                            <tr class="ent_table_r5">
+                                                <th>Hobbies</th>
+                                                <td><input type="text" id="ent_r5_d1"></td>
+                                                <td><input type="text" id="ent_r5_d1"></td>
+                                                <td><input type="text" id="ent_r5_d1"></td>
+                                            </tr>
+                                            <tr class="ent_table_r6">
+                                                <th>Trip</th>
+                                                <td><input type="text" id="ent_r6_d1"></td>
+                                                <td><input type="text" id="ent_r6_d2"></td>
+                                                <td><input type="text" id="ent_r6_d3"></td>
+                                            </tr>
+                                            <tr class="ent_table_r7">
+                                                <th>Other</th>
+                                                <td><input type="text" id="ent_r7_d1"></td>
+                                                <td><input type="text" id="ent_r7_d2"></td>
+                                                <td><input type="text" id="ent_r7_d3"></td>
+                                            </tr>
+                                            <tr class="ent_table_result">
+                                                <th class="ent_t_lr" align="center">TOTAL ENTERTAINMENT</th>
+                                                <td><input type="text" id="ent_r8_d1"></td>
+                                                <td><input type="text" id="ent_r8_d2"></td>
+                                                <td><input type="text" id="ent_r8_d3"></td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- =================Saving===================== -->
+                            <div class="main_div_8">
+                                <div class="card-body">
+                                    <table class="sav_table" cellpadding="0px">
+                                        <thead class="sav_t_head">
+                                            <tr class="sav_table_h" align="center">
+                                                <th scope="col">Saving</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="sav_table_r1">
+                                                <th>Emergency Fund</th>
+                                                <td><input type="text" id="sav_r1_d1"></td>
+                                                <td><input type="text" id="sav_r1_d2"></td>
+                                                <td><input type="text" id="sav_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="sav_table_r2">
+                                                <th>Car Replacement Fund</th>
+                                                <td><input type="text" id="sav_r2_d1"></td>
+                                                <td><input type="text" id="sav_r2_d1"></td>
+                                                <td><input type="text" id="sav_r2_d1"></td>
+                                            </tr>
+                                            <tr class="sav_table_r3">
+                                                <th>Retirement Fund</th>
+                                                <td><input type="text" id="sav_r3_d1"></td>
+                                                <td><input type="text" id="sav_r3_d1"></td>
+                                                <td><input type="text" id="sav_r3_d1"></td>
+                                            </tr>
+                                            <tr class="sav_table_r4">
+                                                <th>Investments</th>
+                                                <td><input type="text" id="sav_r4_d1"></td>
+                                                <td><input type="text" id="sav_r4_d2"></td>
+                                                <td><input type="text" id="sav_r4_d3"></td>
+                                            </tr>
+                                            <tr class="sav_table_r5">
+                                                <th>Education Fund</th>
+                                                <td><input type="text" id="sav_r5_d1"></td>
+                                                <td><input type="text" id="sav_r5_d1"></td>
+                                                <td><input type="text" id="sav_r5_d1"></td>
+                                            </tr>
+                                            <tr class="sav_table_r6">
+                                                <th>Other</th>
+                                                <td><input type="text" id="sav_r6_d1"></td>
+                                                <td><input type="text" id="sav_r6_d2"></td>
+                                                <td><input type="text" id="sav_r6_d3"></td>
+                                            </tr>
+                                            <tr class="sav_table_result">
+                                                <th class="sav_t_lr" align="center">TOTAL SAVINGS</th>
+                                                <td><input type="text" id="sav_r7_d1"></td>
+                                                <td><input type="text" id="sav_r7_d2"></td>
+                                                <td><input type="text" id="sav_r7_d3"></td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- =============Miscellaneous Expenses================ -->
+                            <div class="main_div_9">
+                                <div class="card-body">
+                                    <table class="mis_table" cellpadding="0px">
+                                        <thead class="mis_t_head">
+                                            <tr class="mis_table_h" align="center">
+                                                <th scope="col">Miscellaneous Expenses</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="mis_table_r1">
+                                                <th>Pet</th>
+                                                <td><input type="text" id="mis_r1_d1"></td>
+                                                <td><input type="text" id="mis_r1_d2"></td>
+                                                <td><input type="text" id="mis_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="mis_table_r2">
+                                                <th>Gift & Donations</th>
+                                                <td><input type="text" id="mis_r2_d1"></td>
+                                                <td><input type="text" id="mis_r2_d1"></td>
+                                                <td><input type="text" id="mis_r2_d1"></td>
+                                            </tr>
+                                            <tr class="mis_table_r3">
+                                                <th>Hobbies & Sports</th>
+                                                <td><input type="text" id="mis_r3_d1"></td>
+                                                <td><input type="text" id="mis_r3_d1"></td>
+                                                <td><input type="text" id="mis_r3_d1"></td>
+                                            </tr>
+                                            <tr class="mis_table_r4">
+                                                <th>Entertainment & Tickets</th>
+                                                <td><input type="text" id="mis_r4_d1"></td>
+                                                <td><input type="text" id="mis_r4_d2"></td>
+                                                <td><input type="text" id="mis_r4_d3"></td>
+                                            </tr>
+                                            <tr class="mis_table_r5">
+                                                <th>Travel & Vacation</th>
+                                                <td><input type="text" id="mis_r5_d1"></td>
+                                                <td><input type="text" id="mis_r5_d1"></td>
+                                                <td><input type="text" id="mis_r5_d1"></td>
+                                            </tr>
+                                            <tr class="mis_table_r6">
+                                                <th>Other</th>
+                                                <td><input type="text" id="mis_r6_d1"></td>
+                                                <td><input type="text" id="mis_r6_d2"></td>
+                                                <td><input type="text" id="mis_r6_d3"></td>
+                                            </tr>
+                                            <tr class="mis_table_result">
+                                                <th class="mis_t_lr" align="center">TOTAL MISCELLANEOUS</th>
+                                                <td><input type="text" id="mis_r7_d1"></td>
+                                                <td><input type="text" id="mis_r7_d2"></td>
+                                                <td><input type="text" id="mis_r7_d3"></td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- =============Budget Summary==================== -->
+                            <div class="main_div_10">
+                                <div class="card-body">
+                                    <table class="summary_table" cellpadding="0px">
+                                        <thead class="summary_t_head">
+                                            <tr class="summary_table_h" align="center">
+                                                <th scope="col">Budget Summary</th>
+                                                <th scope="col">Budget</th>
+                                                <th scope="col">Actual</th>
+                                                <th scope="col">Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="summary_table_r1">
+                                                <th>Total Income</th>
+                                                <td><input type="text" id="summary_r1_d1"></td>
+                                                <td><input type="text" id="summary_r1_d2"></td>
+                                                <td><input type="text" id="summary_r1_d3" align="center"></td>
+                                            </tr> 
+                                            <tr class="summary_table_r2">
+                                                <th>Total Expense</th>
+                                                <td><input type="text" id="summary_r2_d1"></td>
+                                                <td><input type="text" id="summary_r2_d1"></td>
+                                                <td><input type="text" id="summary_r2_d1"></td>
+                                            </tr>
+                                            <tr class="summary_table_result">
+                                                <th class="summary_t_lr" align="center">NET</th>
+                                                <td><input type="text" id="summary_r3_d1"></td>
+                                                <td><input type="text" id="summary_r3_d2"></td>
+                                                <td><input type="text" id="summary_r3_d3"></td>
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- ================== -->
+                        </div>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+        
+
+
+
+
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="../../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="../../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="../../assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="../../assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="../../assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="../../assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="../../assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="../../assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    
+
+
+    <!--<script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>-->
+    <script src="graph.js"></script>
+    
+
+
+    <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
+
+
+
+   
+ 
+    <script src="../../assets/vendor/multi-select/js/jquery.multi-select.js"></script>
+    <script src="../../assets/libs/js/main-js.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="../../assets/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="../../assets/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="../../assets/vendor/datatables/js/data-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+    
+
+
+</body>
+ 
+</html>

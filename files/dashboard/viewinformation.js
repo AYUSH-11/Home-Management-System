@@ -1,16 +1,16 @@
 $(document).ready(function(){
 
   /*user information in header*/
-  var head_name="Ayush Vachhani";
+  /*var head_name="Ayush Vachhani";
   var head_image="../../crop.jpg";
   document.getElementById('head_name').innerHTML=head_name;
-  document.getElementById('head_image').src=head_image;
+  document.getElementById('head_image').src=head_image;*/
 
 /*User Photo And name*/
-	var proname="Ayush Vachhani";
+	/*var proname="Ayush Vachhani";
 	var image="../../crop.jpg";
 	document.getElementById('name').innerHTML=proname;
-	document.getElementById('user_img').src=image;
+	document.getElementById('user_img').src=image;*/
 
 /*User Basic Details*/
 	var name="Ayush Ashokbhai Vachhani";
@@ -26,17 +26,17 @@ $(document).ready(function(){
 	var blood_group="Blood Group : "+blood;
 	
 	
-	document.getElementById('full_name').innerHTML=full_name;
+	//document.getElementById('full_name').innerHTML=full_name;
 	document.getElementById('birth').innerHTML=birth_date;
 	document.getElementById('gender').innerHTML=gender;
 	document.getElementById('profesion').innerHTML=profesion;
 	document.getElementById('blood_group').innerHTML=blood_group;
 
 	/*Contact Information*/
-	var gmail='<i class="fas fa-fw fa-envelope mr-2" ></i>ayushpatel@gmail.com';
+	/*var gmail='<i class="fas fa-fw fa-envelope mr-2" ></i>ayushpatel@gmail.com';
 	var mob='<i class="fas fa-fw fa-phone mr-2"></i>+911234567890';
 	document.getElementById('gmail').innerHTML=gmail;
-	document.getElementById('mob').innerHTML=mob;
+	document.getElementById('mob').innerHTML=mob;*/
 
 
 	/*Social Channel*/

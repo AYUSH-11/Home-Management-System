@@ -8,25 +8,25 @@ $(document).ready(function(){
   document.getElementById('head_image').src=head_image;
 
 
-  var  length=6;
+  var  length=3;
   var name="HELLO";
   
-  var image=["../../crop.jpg"];
-  var documentname=['Credit Card']
+  var image=["../../crop.jpg","../../img/adharcard.jpg"];
+  var documentname=['Credit Card','Debit Card','Adhar Card']
   var opendocument=["homedocument.html"];
   for(var i=0;i<length;i++)
     { 
-      $("#inddoc").append("<div class='col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12' style='float:left;'>\
+      $("#inddoc").append("<div class='col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12' style='float:left; '>\
                               <div class='product-thumbnail'>\
                                   <div class='product-img-head'>\
                                     <div class='product-img'>\
-                                                    <img src="+image[0]+"  class='img-fluid'>\
+                                                    <img src="+image[0]+"  class='img-fluid' >\
                                     </div>\
                                     <div class='ribbons'></div>\
                                     <div class='ribbons-text'>New</div>\
                                     <div class='product-content'>\
                                         <div class='product-content-head'>\
-                                            <h3 class='product-title'>"+documentname[0]+"</h3>\
+                                            <h3 class='product-title'>"+documentname[i%3]+"</h3>\
                                         </div>\
                                         <div class='product-btn'>\
                                                 <a href='#' class='btn btn-primary' style='width:45%;'>View</a>\

@@ -28,14 +28,18 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
-    <script src="taskremainder.js"></script>
-    <!--<script type="text/javascript" src="headerimage.js"></script>-->
-    
+    <script src="viewinformation.js"></script>
+
 
 
 </head>
 
 <body>
+
+	<?php
+	   include '../login_check1.php';           
+               
+	?>
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -45,7 +49,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">A&Y Group</a>
+                <a class="navbar-brand" href="#">A&Y Group</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -142,7 +146,7 @@
                                     <h5 class="mb-0 text-white nav-user-name" id="head_name"></h5>
                                     <span class="status"></span><span class="ml-2">Available</span>
                                 </div>
-                                <a class="dropdown-item" href="profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
+                                <a class="dropdown-item" href="../profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -158,7 +162,7 @@
         <!-- left sidebar -->
         <!-- ============================================================== -->
         <div class="nav-left-sidebar sidebar-dark">
-            <div class="menu-list" >
+            <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -170,12 +174,12 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="../../index.html"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
+                                <a class="nav-link " href="../../index.html"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link "  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Bill Management</a>
                                 <div id="submenu-2" class="collapse submenu" >
-                                     <ul class="nav flex-column">
+                                    <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <a class="nav-link" href="../bill-management/electricity.html">Electricity</a>
                                         </li>
@@ -213,7 +217,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item ">
+                           <li class="nav-item ">
                                 <a class="nav-link" href="../expenditure/expenditure.html" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
                             </li>
                              <li class="nav-item">
@@ -230,7 +234,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                           <li class="nav-item">
                                 <a class="nav-link" href="../task-remainder/taskremainder.html" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
                             </li>
                             <li class="nav-item">
@@ -253,80 +257,201 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Task Remainder</a></li>
-                                        
-                                            <li class="breadcrumb-item active" aria-current="page">Assign Task</li>
+                            
+                                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
 
                                         </ol>
                                     </nav>
                                 </div>
+
                                 
                                 
                             </div>
                         </div>
                     </div>
 
-                    <form action="form_electricity.php">
+
+
+
+
+
+
                     <div class="row">
                         <!-- ============================================================== -->
-                        <!-- valifation types -->
+                        <!-- profile -->
                         <!-- ============================================================== -->
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                            <!-- ============================================================== -->
+                            <!-- card profile -->
+                            <!-- ============================================================== -->
                             <div class="card">
-                                <h5 class="card-header">Task Assign form</h5>
                                 <div class="card-body">
-                                    <form id="validationform" data-parsley-validate="" novalidate="">
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">To</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required=""  placeholder="Enter Name of user" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Title of Task</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required=""  placeholder="Enter Title of Task" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Task</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                
-                                                <textarea name="Text1" required="" placeholder="Enter Task" rows="5" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="soft_copy" class="col-12 col-sm-3 col-form-label text-sm-right">Upload File </label>&nbsp;&nbsp;&nbsp;
-                                            <label class="custom-control custom-radio custom-control-inline">
-                                            <input type="file" id="soft_copy" class="form-control"></input>
-                                            </label>
-                                        </div>
+                                    <div class="user-avatar text-center d-block" >
+                                        <img  id="user_img" src="" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+                                    </div>
+                                    <div class="text-center">
+                                        <h2 class="font-24 mb-0" id="name"></h2>
                                         
-                                        <div class="form-group row text-right">
-                                            <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                                
-                                                <button type="submit" class="btn btn-space btn-primary" >Assign</button>
-                                                <button class="btn btn-space btn-secondary" >Cancel</button>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body border-top">
+                                    <h3 class="font-16">Contact Information</h3>
+                                    <div class="">
+                                        <ul class="list-unstyled mb-0">
+                                        <a class="mb-2" href="#" id="email"></a>
+                                        <a class="mb-0" href="#" id="mob"></a>
+                                    </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-body border-top">
+                                    <h3 class="font-16">Social Channels</h3>
+                                    <div class="" >
+                                        
+                                        <a href="#" id="facebook"></a>
+                                        <br>
+                                        <a href="#" id="twitter"></a>
+                                        <br>
+                                        <a href="#" id="instagram"></a>
+                                        <br>
+                                        <a href="#" id="youtube"></a>
+
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end card profile -->
+                            <!-- ============================================================== -->
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end profile -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- campaign data -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                            <!-- ============================================================== -->
+                            <!-- campaign tab one -->
+                            <!-- ============================================================== -->
+                            <div class="influence-profile-content pills-regular">
+                                
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
                                         
 
                                         
+                                        <div class="section-block">
+                                                <h3 class="section-title">Details</h3>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body ">
+                                                                <div class="influencer-profile-data">
+                                                                    <h4 class="m-b-10" id="full_name">Full Name : </h4>
+                                                                    <h4 class="m-b-10" id="birth">Birth Date : </h4>
+                                                                    <h4 class="m-b-10" id="gender">Gender : </h4>
+                                                                    <h4 class="m-b-10" id="profesion">profesion : </h4>
+                                                                    <h4 class="m-b-10" id="blood_group">Blood Group : </h4>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
 
-                                        
-                                        
-                                        
-                                    </form>
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body" id="work">
+                                                                 <h3 class="m-b-10">Work</h3>
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body" id="education">
+                                                                  <h3 class="m-b-10" >Educatation</h3>
+                                                                    
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="media influencer-profile-data d-flex align-items-center p-2">
+                                                            
+                                                            <div class="media-body" id="language">
+                                                                  <h3 class="m-b-10" >Language</h3>
+                                                                    
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
                                 </div>
                             </div>
+                            <!-- ============================================================== -->
+                            <!-- end campaign tab one -->
+                            <!-- ============================================================== -->
                         </div>
+                        <!-- ============================================================== -->
+                        <!-- end campaign data -->
+                        <!-- ============================================================== -->
                     </div>
-                    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
                         
 
                 </div>
@@ -334,17 +459,12 @@
             </div>
 
         
-        
-        
-        </div>            
-           
+
+
+
+
+
     </div>
-
-
-
-
-
-    
     <!-- ============================================================== -->
     <!-- end main wrapper  -->
     <!-- ============================================================== -->
@@ -367,10 +487,17 @@
     <!-- chart c3 js -->
     <script src="../../assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    
+
+
+    <!--<script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>-->
+    <script src="graph.js"></script>
+    
+
+
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 
-    
+
 
    
  
@@ -391,8 +518,87 @@
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
+	<?php
+			
+			$sql="select * from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
 
+
+                	$row=mysqli_fetch_assoc($result);
+                    $name=$row['first_name']." ".$row['last_name'];
+                    $img=$row['image'];  
+                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                	echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('head_name').innerHTML='$name';
+                            document.getElementById('head_image').src='$img1';
+                            });
+                            </script>";
+
+
+                }
+
+
+			$sql="select * from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
+                $result = mysqli_query($conn, $sql);
+                 
+                if(mysqli_num_rows($result) > 0){
+                	$row=mysqli_fetch_assoc($result);
+                    $name=$row['first_name']." ".$row['last_name'];
+                    $img=$row['image'];  
+                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                	
+                	echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('name').innerHTML='$name';
+                            document.getElementById('user_img').src='$img1';
+                            });
+                            </script>";
+                    
+                      
+
+                    //Personal details
+                    $name="Full Name : ".$row['first_name']." ".$row['middle_name']." ".$row['last_name'];
+                    $email='<i class="fas fa-fw fa-envelope mr-2" ></i>'.$row['email']."<br>";
+                    $mob='<i class="fas fa-fw fa-phone mr-2"></i>'.$row['mobileno'];
+
+
+    				echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('full_name').innerHTML='$name';
+                            document.getElementById('email').innerHTML='$email';
+                            document.getElementById('mob').innerHTML='$mob';
+                            });
+                            
+
+
+                            </script>";                
+                   
+					
+    				//Personal details
+
+
+                   	
+
+
+
+                }
+                else
+                {
+                	$name=$_SESSION['userid'];
+                	echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('head_name').innerHTML='$name';
+                            document.getElementById('head_image').src='';
+                            });
+                            </script>";
+                }
+
+	?>
 
 </body>
  
 </html>
+
+

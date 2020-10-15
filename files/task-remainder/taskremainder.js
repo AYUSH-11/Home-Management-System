@@ -34,7 +34,7 @@ $(document).ready(function(){
                                     <h3>Title of Assigned Task</h3>\
                                     <h4 style="float: left;">From :' + from[i] + '</h4>\
                                     <h4 style="float: right;">To :' + to[i] + '</h4><br><br>\
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.  laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>\
+                                    <p>Complete the task</p>\
                                     <a href="#0" class="btn btn-primary btn-lg">Read More</a>\
                                     <span class="cd-timeline__date">'+ assign_date[i]+'</span>\
                                 </div>\

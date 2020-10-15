@@ -32,14 +32,8 @@
 	   include 'login_check.php';           
                
 	?>
-    <!-- ============================================================== -->
-    <!-- main wrapper -->
-    <!-- ============================================================== -->
-    <div class="dashboard-main-wrapper">
-        <!-- ============================================================== -->
-        <!-- navbar -->
-        <!-- ============================================================== -->
-        <div class="dashboard-header">
+
+    <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                 <a class="navbar-brand" href="index.html">A&Y Group</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -147,12 +141,14 @@
                 </div>
             </nav>
         </div>
-        <!-- ============================================================== -->
-        <!-- end navbar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- left sidebar -->
-        <!-- ============================================================== -->
+
+
+
+
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
         <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -314,7 +310,6 @@
 
     <?php
 
-                //$conn=dbconnect::db('iwt_project');
                 
                 $sql="select first_name,middle_name,last_name,image from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
                 $result = mysqli_query($conn, $sql);
@@ -326,21 +321,27 @@
                     $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
                 
                     
-                        echo "<script type='text/javascript'>
-
-                                $(document).ready(function(){
-                                    document.getElementById('head_name').innerHTML='$name';
-                                    document.getElementById('head_image').src='$img1';
-                                });
-                              </script>";
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('head_name').innerHTML='$name';
+                            document.getElementById('head_image').src='$img1';
+                            });
+                            </script>";
 
 
 
                 }
                 else
                 {
-                    echo "<br>0 Row Selected";
+                    $name=$_SESSION['userid'];
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('head_name').innerHTML='$name';
+                            document.getElementById('head_image').src='';
+                            });
+                            </script>";
                 }
+
 
 
                 $sql="select *from user_information where home_id='".$_SESSION['homeid']."'";
@@ -349,15 +350,12 @@
                 $length=$result->num_rows;
                 if($result->num_rows>0){
                 while($row=mysqli_fetch_assoc($result)){
+
                     $name=$row['first_name'];
                     $image="data:image/jpeg;base64,".base64_encode($row['image'] )."";
-
-
-
-
-
                     $name=$row['first_name'];  
                     $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                    $id=$row['user_id'];
                     $str1="<script type='text/javascript'>
                                  $(document).ready(function(){
                             $('#record').append(\"<div class='flip-card' style=' float:left ;width:32%;                   padding:10px;height:325px'>\
@@ -368,7 +366,7 @@
                             </div><h1>$name</h1></div>\
                             <div class='flip-card-back'>\
                             <br><br><br>\
-                            <a href='files/dashboard/viewinformation.html' class='btn btn-warning' style='font-size:20px;' >view</a>\
+                            <a href='files/dashboard/viewinformation.php' id='$id' onClick='createsession(this.id)' class='btn btn-warning' style='font-size:20px;' >view</a>\
                             <br><br>\
                             <br><br>\
                             <a href='#' class='btn btn-warning' style='font-size:20px;' >Remove</a>\
@@ -379,16 +377,38 @@
                         </script>";
 
                     echo "".$str1;
+
                     
+                    
+                    } 
+
+
+
+
+                }
+                $id=0;
+                $user="user";
+                echo "<script>";
+                echo "function createsession(clicked) { 
+                    createCookie('$user', clicked, '10'); 
+                    } 
+
+                    function createCookie(cname, cvalue, exdays) {
+                        var d = new Date();
+                        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                        var expires = 'expires='+ d.toUTCString();
+                        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
                     }
+                    </script>";
+                
 
 
-                }
-                else
-                {
-                    echo "<br>0 Row Selected";
-                }
 
+                
+
+
+
+               
 
     ?>
 </body>
