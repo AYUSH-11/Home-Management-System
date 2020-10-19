@@ -34,7 +34,7 @@
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card">
-            <div class="card-header text-center"><img class="logo-img" src="assets/images/logo.png" alt="logo"><span class="splash-description">Please enter your information.</span></div>
+            <div class="card-header text-center"><span class="splash-description">Please enter your information.</span></div>
             <div class="card-body">
                 <form method="POST">
                     <p>Don't worry, we'll send you an email to reset your password.</p>
@@ -62,19 +62,21 @@
     		include 'db_connect.php';
 			
 
-			$sql="select email from authentication";
-			$result==mysqli_query($sql,$conn);
+			$sql="select email from user_information";
+			$result = mysqli_query($conn, $sql);
 			$temp=1;
-			if($result->num_rows>0){
+
+			if(mysqli_num_rows($result)>0){
 				while ($row=mysqli_fetch_assoc($result)) {
 					
-
+                    
 					if($row['email']==$_POST['email']){
 						
 						$temp=0;
 						header("location: login.php");
     					exit;
 					}
+
 				}
 				
 				if($temp==1)
@@ -84,6 +86,13 @@
 					</script>";
 				}
 			}
+            else
+            {
+                echo "<script type='text/javascript'>
+                    document.getElementById('emailspan').innerHTML='Please Enter Proper id ok';
+                    </script>";
+            }
+
     	}
 		?>
     <!-- ============================================================== -->

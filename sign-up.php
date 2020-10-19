@@ -87,11 +87,7 @@
     <?php
     	if(isset($_POST['submitbtn']))
     	{
-        	/*$_SESSION['homeid']=$_POST['homeid'];
-
-        	$_SESSION['userid']=$_POST['userid'];
-
-        	$_SESSION['password']=$_POST['password'];*/
+        	
 
         	include 'db_connect.php';
 			//$conn=dbconnect::db('iwt_project');
@@ -120,7 +116,10 @@
 			}
 			else if($temp==1)
 			{
-				$sql="insert into authentication(home_id,user_id,password,email) values ('".$_POST['homeid']."','".$_POST['userid']."','".$_POST['pass1']."','".$_POST['email']."')";
+                $sql="insert into user_information(home_id,user_id,email) values ('".$_POST['homeid']."','".$_POST['userid']."','".$_POST['email']."')";
+                mysqli_query($conn,$sql);
+
+				$sql="insert into authentication(home_id,user_id,password) values ('".$_POST['homeid']."','".$_POST['userid']."','".$_POST['pass1']."')";
 				
 				if (mysqli_query($conn,$sql)) {
   						header("location: login.php");

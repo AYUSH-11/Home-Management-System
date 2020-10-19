@@ -96,10 +96,7 @@
             }
         
         }
-        else
-        {
-            echo "0 results";
-        }
+       
 
         if($temp==1)
         {

@@ -99,24 +99,24 @@
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="assets/images/github.png" alt="" > <span>Github</span></a>
+                                            <a href="#" class="connection-item" id="githubheader" name="githubheader" target="_blank"><img src="assets/images/github.png" alt="" > <span>Github</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" ><img src="assets/images/dribbble.png" alt="" > <span>Facebook</span></a>
+                                            <a href="#" class="connection-item" id="facebookheader" name="facebookheader" target="_blank"><img src="assets/images/dribbble.png" alt="" > <span>Facebook</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="assets/images/dropbox.png" alt="" > <span>Instagram</span></a>
+                                            <a href="#" class="connection-item" id="instagramheader" name="instagramheader" target="_blank"><img src="assets/images/dropbox.png" alt="" > <span>Instagram</span></a>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="assets/images/bitbucket.png" alt=""> <span>LinkedIn</span></a>
+                                            <a href="#" class="connection-item" id="linkedinheader" name="linkedinheader" target="_blank"><img src="assets/images/bitbucket.png" alt=""> <span>LinkedIn</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="assets/images/mail_chimp.png" alt="" ><span>Twitter</span></a>
+                                            <a href="#" class="connection-item" id="twitterheader" name="twitterheader" target="_blank"><img src="assets/images/mail_chimp.png" alt="" ><span>Twitter</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="assets/images/slack.png" alt="" > <span>Slack</span></a>
+                                            <a href="#" class="connection-item" id="slackheader" name="slackheader" target="_blank"><img src="assets/images/slack.png" alt="" > <span>Slack</span></a>
                                         </div>
                                     </div>
                                 </li>
@@ -132,7 +132,7 @@
                                     <h5 class="mb-0 text-white nav-user-name" id="head_name"></h5>
                                     <span class="ml-2">Available</span>
                                 </div>
-                                <a class="dropdown-item" href="files/profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
+                                <a class="dropdown-item" href="files/profile/profile.php"><i class="fas fa-user mr-2"></i>Profile</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
                                 <a class="dropdown-item" href="logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
@@ -169,7 +169,7 @@
                                 <div id="submenu-2" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/bill-management/electricity.html">Electricity</a>
+                                            <a class="nav-link" href="files/bill-management/electricity.php">Electricity</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="files/bill-management/gas.html">Gas</a>
@@ -269,7 +269,7 @@
                     
                     <div id="record">
                       
-                        <form action="files/dashboard/add_userform.html">
+                        <form action="files/dashboard/add_userform.php">
                             <input type='image' src="img/add_user.png" alt='Submit' id="btnAdd"  style='float:left;padding:10px;' ></input>
                         </form>
                     </div> 
@@ -308,23 +308,65 @@
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
 
+
+
+
+
     <?php
+
+                $sql="select * from social_sites where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
+
+                $result = mysqli_query($conn, $sql);
+                
+                    $row=mysqli_fetch_assoc($result);   
+                    $facebook=$row['facebook'];
+                    $twitter=$row['twitter'];
+                    $instagram=$row['instagram'];
+                    $github=$row['github'];
+                    $linkedin=$row['linkedin'];
+                    $slack=$row['slack'];
+                    if($facebook=="")
+                        {   $facebook="#";}
+                    if($twitter=="")
+                        {   $twitter="#";}
+                    if($instagram=="")
+                        {   $instagram="#";}
+                    if($github=="")
+                        {   $github="#";}
+                    if($linkedin=="")
+                        {   $linkedin="#";}
+                    if($slack=="")
+                        {   $slack="#";}
+                    
+                    
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('facebookheader').href='$facebook';
+
+                            document.getElementById('twitterheader').href='$twitter';
+                            
+                            document.getElementById('instagramheader').href='$instagram';
+                            document.getElementById('githubheader').href='$github';
+                            document.getElementById('linkedinheader').href='$linkedin';
+                            document.getElementById('slackheader').href='$slack';
+                            });
+                            </script>";
+
+                
+
 
                 
                 $sql="select first_name,middle_name,last_name,image from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
                 $result = mysqli_query($conn, $sql);
-                 
                 if(mysqli_num_rows($result) > 0){
                 $row=mysqli_fetch_assoc($result);
                     $name=$row['first_name']." ".$row['last_name'];
-                    $img=$row['image'];  
-                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
-                
+                    $img1=$row['image'];  
                     
                     echo "<script type='text/javascript'>
                             $(document).ready(function(){
                             document.getElementById('head_name').innerHTML='$name';
-                            document.getElementById('head_image').src='$img1';
+                        document.getElementById('head_image').src='$img1';
                             });
                             </script>";
 
@@ -347,21 +389,23 @@
                 $sql="select *from user_information where home_id='".$_SESSION['homeid']."'";
                 $result = mysqli_query($conn, $sql);
                 $i=0;
-                $length=$result->num_rows;
-                if($result->num_rows>0){
+                $length=mysqli_num_rows($result);
+                if(mysqli_num_rows($result)>0){
                 while($row=mysqli_fetch_assoc($result)){
 
-                    $name=$row['first_name'];
-                    $image="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                    
                     $name=$row['first_name'];  
-                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                    
+
+                    $img1=$row['image'];
+                    
                     $id=$row['user_id'];
                     $str1="<script type='text/javascript'>
                                  $(document).ready(function(){
                             $('#record').append(\"<div class='flip-card' style=' float:left ;width:32%;                   padding:10px;height:325px'>\
                             <div class='flip-card-inner'>\
                             <div class='flip-card-front'>\
-                                <img src=$img1 alt='Avatar' style='width:300px;height:260px;'>\
+                                <img src='$img1' alt='Avatar' style='width:300px;height:260px;'>\
                             <div>\
                             </div><h1>$name</h1></div>\
                             <div class='flip-card-back'>\
@@ -386,7 +430,11 @@
 
 
                 }
-                $id=0;
+
+
+
+
+                
                 $user="user";
                 echo "<script>";
                 echo "function createsession(clicked) { 
