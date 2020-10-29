@@ -13,7 +13,7 @@ $(document).ready(function(){
 	document.getElementById('user_img').src=image;*/
 
 /*User Basic Details*/
-	var name="Ayush Ashokbhai Vachhani";
+	/*var name="Ayush Ashokbhai Vachhani";
 	var birth ="11 Nov 2000";
 	var gen="Male";
 	var prof="Student";
@@ -30,7 +30,7 @@ $(document).ready(function(){
 	document.getElementById('birth').innerHTML=birth_date;
 	document.getElementById('gender').innerHTML=gender;
 	document.getElementById('profesion').innerHTML=profesion;
-	document.getElementById('blood_group').innerHTML=blood_group;
+	document.getElementById('blood_group').innerHTML=blood_group;*/
 
 	/*Contact Information*/
 	/*var gmail='<i class="fas fa-fw fa-envelope mr-2" ></i>ayushpatel@gmail.com';
@@ -53,32 +53,32 @@ $(document).ready(function(){
 
 
 	/*User Work*/
-	var work=['Senior Software engineerat AK Group','Software engineer at S k Globex'];
+	/*var work=['Senior Software engineerat AK Group','Software engineer at S k Globex'];
 	var len=2;
 	for(var i=0;i<len;i++)
 	{
 	$("#work").append("<p><i class='fas fa-arrow-circle-right' style='font-size:20px;color:blue'></i>\
 						"+work[i]+"</p>\
 		");
-	}
+	}*/
 	/*Education*/
-	var education=['J N V Jamnagar ','Marwadiuniversity'];
+	/*var education=['J N V Jamnagar ','Marwadiuniversity'];
 	var len1=2;
 	for(var i=0;i<len1;i++)
 	{
 	$("#education").append("<p><i class='fas fa-arrow-circle-right' style='font-size:20px;color:blue'></i>\
 						"+education[i]+"</p>\
 		");
-	}
+	}*/
 	/*User Language*/
-	var language=['English','Hindi','Gujrati'];
+	/*var language=['English','Hindi','Gujrati'];
 	var len2=3;
 	for(var i=0;i<len2;i++)
 	{
 	$("#language").append("<p><i class='fas fa-arrow-circle-right' style='font-size:20px;color:blue'></i>\
 						"+language[i]+"</p>\
 		");
-	}
+	}*/
 
 
 /*Revies*/

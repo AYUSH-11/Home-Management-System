@@ -2,10 +2,10 @@ $(document).ready(function(){
 
 
    /*user information in header*/
-  var head_name="Ayush Vachhani";
+  /*var head_name="Ayush Vachhani";
   var head_image="../../crop.jpg";
   document.getElementById('head_name').innerHTML=head_name;
-  document.getElementById('head_image').src=head_image;
+  document.getElementById('head_image').src=head_image;*/
 
 
   var  length=3;
@@ -17,10 +17,10 @@ $(document).ready(function(){
   for(var i=0;i<length;i++)
     { 
       $("#inddoc").append("<div class='col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12' style='float:left; '>\
-                              <div class='product-thumbnail'>\
-                                  <div class='product-img-head'>\
+                              <div class='product-thumbnail' style=''>\
+                                  <div class='product-img-head' >\
                                     <div class='product-img'>\
-                                                    <img src="+image[0]+"  class='img-fluid' >\
+                                                    <img src="+image[i]+" style='height:200px;'  class='img-fluid' >\
                                     </div>\
                                     <div class='ribbons'></div>\
                                     <div class='ribbons-text'>New</div>\
@@ -42,7 +42,7 @@ $(document).ready(function(){
       }
       $('#resbtn').click(function(){
         $('input[type="checkbox"]:checked').prop('checked',false);
-      })
+      });
 
   });
 

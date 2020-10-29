@@ -47,114 +47,7 @@
         <!-- ============================================================== -->
         <!-- navbar -->
         <!-- ============================================================== -->
-        <div class="dashboard-header">
-            <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="#">A&Y Group</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto navbar-right-top">
-                        <li class="nav-item">
-                            <div id="custom-search" class="top-search-bar">
-                                <input class="form-control" type="text" placeholder="Search..">
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown notification">
-                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
-                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
-                                <li>
-                                    <div class="notification-title"> Notification</div>
-                                    <div class="notification-list">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
-                                                        <div class="notification-date">2 days ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="../../assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown connection">
-                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
-                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
-                                <li class="connection-list">
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../../assets/images/github.png" alt="" > <span>Github</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../../assets/images/dribbble.png" alt="" > <span>Dribbble</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../../assets/images/dropbox.png" alt="" > <span>Dropbox</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../../assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../../assets/images/mail_chimp.png" alt="" ><span>Mail chimp</span></a>
-                                        </div>
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item"><img src="../../assets/images/slack.png" alt="" > <span>Slack</span></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="conntection-footer"><a href="#">More</a></div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="" id="head_image" alt="" class="user-avatar-md rounded-circle"></a>
-                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
-                                <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name" id="head_name"></h5>
-                                    <span class="status"></span><span class="ml-2">Available</span>
-                                </div>
-                                <a class="dropdown-item" href="../profile/profile.html"><i class="fas fa-user mr-2"></i>Profile</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        
         <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
@@ -174,7 +67,7 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link " href="../../index.html"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
+                                <a class="nav-link " href="../../dashboard.php"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link "  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Bill Management</a>
@@ -313,13 +206,13 @@
                                     <h3 class="font-16">Social Channels</h3>
                                     <div class="" >
                                         
-                                        <a href="#" id="facebook"></a>
+                                        <a href="#" id="facebook" target="_blank"><i class="fab fa-fw fa-facebook-square mr-1 facebook-color"></i>facebook.com</a>
                                         <br>
-                                        <a href="#" id="twitter"></a>
+                                        <a href="#" id="twitter" target="_blank"><i class="fab fa-fw fa-twitter-square mr-1 twitter-color" ></i>twitter.com</a>
                                         <br>
-                                        <a href="#" id="instagram"></a>
+                                        <a href="#" id="instagram" target="_blank"><i class="fab fa-fw fa-instagram mr-1 instagram-color" ></i>instagram.com</a>
                                         <br>
-                                        <a href="#" id="youtube"></a>
+                                        <a href="#" id="youtube" target="_blank"><i class="fab fa-fw fa-youtube mr-1 youtube-color" ></i>youtube.com</a>
 
                                     </div>
                                 </div>
@@ -361,7 +254,7 @@
                                                                     <h4 class="m-b-10" id="full_name">Full Name : </h4>
                                                                     <h4 class="m-b-10" id="birth">Birth Date : </h4>
                                                                     <h4 class="m-b-10" id="gender">Gender : </h4>
-                                                                    <h4 class="m-b-10" id="profesion">profesion : </h4>
+                                                                    <h4 class="m-b-10" id="profession">profession : </h4>
                                                                     <h4 class="m-b-10" id="blood_group">Blood Group : </h4>
                                                                     
                                                                 </div>
@@ -519,35 +412,65 @@
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
 	<?php
-			
-			$sql="select * from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
+		  include '../header.php';	
+			     $sql="select * from social_sites where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
+
                 $result = mysqli_query($conn, $sql);
                 if(mysqli_num_rows($result) > 0){
+                    $row=mysqli_fetch_assoc($result);   
+                    $facebook=$row['facebook'];
+                    $twitter=$row['twitter'];
+                    $instagram=$row['instagram'];
+                    $youtube=$row['youtube'];
+                    if($facebook=="")
+                        {   $facebook="#";}
+                    if($twitter=="")
+                        {   $twitter="#";}
+                    if($instagram=="")
+                        {   $instagram="#";}
+                    if($youtube=="")
+                        {   $youtube="#";}
 
-
-                	$row=mysqli_fetch_assoc($result);
-                    $name=$row['first_name']." ".$row['last_name'];
-                    $img=$row['image'];  
-                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
-                	echo "<script type='text/javascript'>
+                    echo "<script type='text/javascript'>
                             $(document).ready(function(){
-                            document.getElementById('head_name').innerHTML='$name';
-                            document.getElementById('head_image').src='$img1';
+                            document.getElementById('facebook').href='$facebook';
+                            document.getElementById('twitter').href='$twitter';
+                            document.getElementById('instagram').href='$instagram';
+                            document.getElementById('youtube').href='$youtube';
                             });
                             </script>";
 
-
                 }
 
+                //For social sites
+                $sql="select * from social_sites where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
 
-			$sql="select * from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                $row=mysqli_fetch_assoc($result);	
+                $facebook="".$row['facebook'];
+                $twitter="".$row['twitter'];
+                $instagram="".$row['instagram'];
+                $youtube="".$row['youtube'];
+                
+
+                	echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('facebook').href='$facebook';
+                            });
+                            </script>";
+
+            	}
+
+
+
+				$sql="select * from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
                 $result = mysqli_query($conn, $sql);
                  
                 if(mysqli_num_rows($result) > 0){
                 	$row=mysqli_fetch_assoc($result);
                     $name=$row['first_name']." ".$row['last_name'];
-                    $img=$row['image'];  
-                    $img1="data:image/jpeg;base64,".base64_encode($row['image'] )."";
+                    $img1="../../".$row['image'];  
                 	
                 	echo "<script type='text/javascript'>
                             $(document).ready(function(){
@@ -556,19 +479,30 @@
                             });
                             </script>";
                     
-                      
+
+
 
                     //Personal details
-                    $name="Full Name : ".$row['first_name']." ".$row['middle_name']." ".$row['last_name'];
+                    
                     $email='<i class="fas fa-fw fa-envelope mr-2" ></i>'.$row['email']."<br>";
                     $mob='<i class="fas fa-fw fa-phone mr-2"></i>'.$row['mobileno'];
-
+                    $name="Full Name : ".$row['first_name']." ".$row['middle_name']." ".$row['last_name'];
+                    $birth_date=$row['birth_date'];
+                    $birth_date=explode("-",$birth_date);
+                    $birth_date="Birth Date : ".$birth_date[2]."-".$birth_date[1]."-".$birth_date[0];
+                    $profession="Profession :".$row['profession'];
+                    $gender="Gender: ".$row['gender'];
+                    $blood_group="Blood Group :".$row['blood_group'];
 
     				echo "<script type='text/javascript'>
                             $(document).ready(function(){
                             document.getElementById('full_name').innerHTML='$name';
                             document.getElementById('email').innerHTML='$email';
                             document.getElementById('mob').innerHTML='$mob';
+                            document.getElementById('birth').innerHTML='$birth_date';
+                            document.getElementById('profession').innerHTML='$profession';
+                            document.getElementById('gender').innerHTML='$gender';
+                            document.getElementById('blood_group').innerHTML='$blood_group';
                             });
                             
 
@@ -577,12 +511,6 @@
                    
 					
     				//Personal details
-
-
-                   	
-
-
-
                 }
                 else
                 {
@@ -594,6 +522,64 @@
                             });
                             </script>";
                 }
+
+
+
+
+
+                //For work education language
+                $sql="select work from user_information1 where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                	while ($row=mysqli_fetch_assoc($result)) {
+                		$work=$row['work'];
+                        if($work){
+                		$str="<p><i class='fas fa-arrow-circle-right' style='font-size:20px;color:blue'></i> $work</p>";
+
+                		echo "<script type='text/javascript'>";
+                		echo "$(\"#work\").append(\"$str\");";
+                		echo "</script>";
+                	   }
+                	}
+
+                }
+
+                //For education
+
+                $sql="select education from user_information1 where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                	while ($row=mysqli_fetch_assoc($result)) {
+                		$education=$row['education'];
+                        if($education){
+                		  $str="<p><i class='fas fa-arrow-circle-right' style='font-size:20px;color:blue'></i> $education</p>";
+
+                		  echo "<script type='text/javascript'>";
+                		  echo "$(\"#education\").append(\"$str\");";
+                		  echo "</script>";
+                	   }
+                	}
+
+                }
+                //For language
+
+                $sql="select language from user_information1 where home_id='".$_SESSION['homeid']."' and user_id='".$_COOKIE['user']."'";
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                	while ($row=mysqli_fetch_assoc($result)) {
+                		$language=$row['language'];
+                        if($language){
+                		  $str="<p><i class='fas fa-arrow-circle-right' style='font-size:20px;color:blue'></i> $language</p>";
+
+                		  echo "<script type='text/javascript'>";
+                		  echo "$(\"#language\").append(\"$str\");";
+                		  echo "</script>";
+                	   }
+                	}
+
+                }
+                
+
 
 	?>
 
