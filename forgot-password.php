@@ -11,6 +11,7 @@
     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/libs/css/style.css">
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="icon" type="image/icon" href="img/home_icon4.png" sizes="50x50">
     <style>
     html,
     body {
@@ -58,40 +59,40 @@
     <?php
     	if(isset($_POST['submitbtn']))
     	{
-
     		include 'db_connect.php';
 			
-
-			$sql="select email from user_information";
+            $email=$_POST['email'];
+			$sql="select * from user_information where email='$email'";
 			$result = mysqli_query($conn, $sql);
 			$temp=1;
 
 			if(mysqli_num_rows($result)>0){
-				while ($row=mysqli_fetch_assoc($result)) {
-					
-                    
-					if($row['email']==$_POST['email']){
-						
-						$temp=0;
+                    $row=mysqli_fetch_array($result);
+					$user_home_id=$row['home_id'];
+                    $user_user_id=$row['user_id'];
+                        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+                        $pass = array(); //remember to declare $pass as an array
+                        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+                        for ($i = 0; $i < 8; $i++) {
+                            $n = rand(0, $alphaLength);
+                            $pass[] = $alphabet[$n];
+                        }
+                        $new_password=implode($pass);
+                        $msg='New Password= '.$new_password;
+                        //mail($row['email'],'New Password',$msg);
+                        $sql="update authentication set password='$new_password' where home_id='$user_home_id' and user_id='$user_user_id';";
+                        $result = mysqli_query($conn, $sql);
 						header("location: login.php");
     					exit;
-					}
-
 				}
 				
-				if($temp==1)
+			else
 				{
 					echo "<script type='text/javascript'>
 					document.getElementById('emailspan').innerHTML='Please Enter Proper id';
 					</script>";
 				}
-			}
-            else
-            {
-                echo "<script type='text/javascript'>
-                    document.getElementById('emailspan').innerHTML='Please Enter Proper id ok';
-                    </script>";
-            }
+            
 
     	}
 		?>

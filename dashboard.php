@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+  
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,7 +20,8 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="files/dashboard/dashboard.css">
-    <!--<script src="files/dashboard/dashboard.js"></script>-->
+    <link rel="icon" type="image/icon" href="img/home_icon4.png" sizes="50x50">
+   
 
 
 
@@ -35,7 +36,7 @@
 
     <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">A&Y Group</a>
+                <a class="navbar-brand" href="dashboard.php">A&Y Group</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -99,30 +100,28 @@
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="githubheader" name="githubheader" target="_blank"><img src="assets/images/github.png" alt="" > <span>Github</span></a>
+                                            <a href="#" class="connection-item" id="githubheader" name="githubheader" target="_blank"><img src="img/github.png" alt="" > <span>Github</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="facebookheader" name="facebookheader" target="_blank"><img src="assets/images/dribbble.png" alt="" > <span>Facebook</span></a>
+                                            <a href="#" class="connection-item" id="facebookheader" name="facebookheader" target="_blank"><img src="img/facebook.jpg" alt="" > <span>Facebook</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="instagramheader" name="instagramheader" target="_blank"><img src="assets/images/dropbox.png" alt="" > <span>Instagram</span></a>
+                                            <a href="#" class="connection-item" id="instagramheader" name="instagramheader" target="_blank"><img src="img/instagram.jpg" alt="" > <span>Instagram</span></a>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="linkedinheader" name="linkedinheader" target="_blank"><img src="assets/images/bitbucket.png" alt=""> <span>LinkedIn</span></a>
+                                            <a href="#" class="connection-item" id="linkedinheader" name="linkedinheader" target="_blank"><img src="img/linkedin.png" alt=""> <span>LinkedIn</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="twitterheader" name="twitterheader" target="_blank"><img src="assets/images/mail_chimp.png" alt="" ><span>Twitter</span></a>
+                                            <a href="#" class="connection-item" id="twitterheader" name="twitterheader" target="_blank"><img src="img/twitter.jpg" alt="" ><span>Twitter</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="slackheader" name="slackheader" target="_blank"><img src="assets/images/slack.png" alt="" > <span>Slack</span></a>
+                                            <a href="#" class="connection-item" id="slackheader" name="slackheader" target="_blank"><img src="img/slack.png" alt="" > <span>Slack</span></a>
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="conntection-footer"><a href="#">More</a></div>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li class="nav-item dropdown nav-user">
@@ -162,7 +161,7 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="index.html"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
+                                <a class="nav-link active" href="dashboard.php"><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Bill Management</a>
@@ -195,39 +194,39 @@
                                 <div id="submenu-3" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/dg-locker/individual.html">Individual</a>
+                                            <a class="nav-link" href="files/dg-locker/individual.php">Individual</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/dg-locker/homedocument.html">Home document</a>
+                                            <a class="nav-link" href="files/dg-locker/homedocument.php">Home document</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/dg-locker/shopdocument.html">Shop document</a>
+                                            <a class="nav-link" href="files/dg-locker/shopdocument.php">Shop document</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="files/expenditure/expenditure.html" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
+                                <a class="nav-link" href="files/expenditure/expenditure.php" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>insurance</a>
                                 <div id="submenu-7" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/insurance/lifeinsurance.html">Life insurance</a>
+                                            <a class="nav-link" href="files/insurance/lifeinsurance.php">Life insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/insurance/terminsurance.html">Term insurance</a>
+                                            <a class="nav-link" href="files/insurance/terminsurance.php">Term insurance</a>
                                         </li>
                                        
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="files/task-remainder/taskremainder.html" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
+                                <a class="nav-link" href="files/task-remainder/taskremainder.php" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="files/saving/saving.html"><i class="fas fa-fw fa-columns"></i>Saving</a>
+                                <a class="nav-link" href="files/saving/saving.php"><i class="fas fa-fw fa-columns"></i>Saving</a>
                             </li>
                         </ul>
                     </div>
@@ -296,17 +295,17 @@
     <!-- main js -->
     <script src="assets/libs/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script> -->
     <!-- sparkline js -->
     <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
     <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
     <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
+    <!-- <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="assets/libs/js/dashboard-ecommerce.js"></script> -->
 
 
 
@@ -405,7 +404,7 @@
                             $('#record').append(\"<div class='flip-card' style=' float:left ;width:32%;                   padding:10px;height:325px'>\
                             <div class='flip-card-inner'>\
                             <div class='flip-card-front'>\
-                                <img src='$img1' alt='Avatar' style='width:300px;height:260px;'>\
+                                <img src='$img1' alt='Avatar' style='width:100%;height:260px;'>\
                             <div>\
                             </div><h1>$name</h1></div>\
                             <div class='flip-card-back'>\
@@ -422,8 +421,6 @@
 
                     echo "".$str1;
 
-                    
-                    
                     } 
 
 

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/vendor/fonts/circular-std/style.css">
     <link rel="stylesheet" href="assets/libs/css/style.css">
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="icon" type="image/icon" href="img/home_icon4.png" sizes="50x50">
     <style>
     html,
     body {
@@ -50,7 +51,7 @@
                     <input class="form-control form-control-lg" type="text" name="homeid" required="" placeholder="homeid" autocomplete="off"><span id="homeidspan" style="color: red"></span>
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="text" name="userid" required="" placeholder="Username" autocomplete="off">
+                    <input class="form-control form-control-lg" type="text" name="userid" required="" placeholder="User Id" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail" autocomplete="off">
