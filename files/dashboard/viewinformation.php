@@ -23,12 +23,12 @@
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/select.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
      <link rel="stylesheet" href="../../assets/vendor/fonts/themify-icons/themify-icons.css">
+     <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
     
     <title>Home Management System</title>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
-    <script src="viewinformation.js"></script>
+    
 
 
 
@@ -74,22 +74,22 @@
                                 <div id="submenu-2" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/electricity.html">Electricity</a>
+                                            <a class="nav-link" href="../bill-management/electricity.php">Electricity</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/gas.html">Gas</a>
+                                            <a class="nav-link" href="../bill-management/gas.php">Gas</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/telephone.html">Telephone</a>
+                                            <a class="nav-link" href="../bill-management/telephone.php">Telephone</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/mobilerecharge.html">Mobile Recharge</a>
+                                            <a class="nav-link" href="../bill-management/mobilerecharge.php">Mobile Recharge</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/television.html">Television</a>
+                                            <a class="nav-link" href="../bill-management/television.php">Television</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/water.html">Water</a>
+                                            <a class="nav-link" href="../bill-management/water.php">Water</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -99,39 +99,39 @@
                                 <div id="submenu-3" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../dg-locker/individual.html">Individual</a>
+                                            <a class="nav-link" href="../dg-locker/individual.php">Individual</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../dg-locker/homedocument.html">Home document</a>
+                                            <a class="nav-link" href="../dg-locker/homedocument.php">Home document</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../dg-locker/shopdocument.html">Shop document</a>
+                                            <a class="nav-link" href="../dg-locker/shopdocument.php">Shop document</a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                            <li class="nav-item ">
-                                <a class="nav-link" href="../expenditure/expenditure.html" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
+                                <a class="nav-link" href="../expenditure/expenditure.php" ><i class="fab fa-fw fa-wpforms"></i>Expenditure</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>insurance</a>
                                 <div id="submenu-7" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../insurance/lifeinsurance.html">Life insurance</a>
+                                            <a class="nav-link" href="../insurance/lifeinsurance.php">Life insurance</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../insurance/terminsurance.html">Term insurance</a>
+                                            <a class="nav-link" href="../insurance/terminsurance.php">Term insurance</a>
                                         </li>
                                        
                                     </ul>
                                 </div>
                             </li>
                            <li class="nav-item">
-                                <a class="nav-link" href="../task-remainder/taskremainder.html" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
+                                <a class="nav-link" href="../task-remainder/taskremainder.php" ><i class="fas fa-fw fa-table"></i>Task Remainder</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../saving/saving.html"><i class="fas fa-fw fa-columns"></i>Saving</a>
+                                <a class="nav-link" href="../saving/saving.php"><i class="fas fa-fw fa-columns"></i>Saving</a>
                             </li>
                         </ul>
                     </div>

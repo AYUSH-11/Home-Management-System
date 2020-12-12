@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+ 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,34 +23,33 @@
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/select.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
      <link rel="stylesheet" href="../../assets/vendor/fonts/themify-icons/themify-icons.css">
-     <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
     
     <title>Home Management System</title>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
+    <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
+    <script src="../../files/dashboard/dashboard.js"></script>
+    <script type="text/javascript" src="shopdocument.js"></script>
 
 
 </head>
 
 <body>
-    <?php
-       include '../login_check1.php';
-                 
-               
-    ?>
+	<?php
+    ob_start();
+	include '../login_check1.php';
+	?>
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
         
-        <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
-        <?php
+      	<?php
         include 'navbar.php';
         ?>
-        
 
         <div class="dashboard-wrapper">
 
@@ -69,25 +68,97 @@
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Individual</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Shop document</li>
 
                                         </ol>
                                     </nav>
                                 </div>
-                                <div id="indrec">
-                                    
-                                </div>
-                               
-
-
-
-
 
                                 
                                 
                             </div>
                         </div>
                     </div>
+
+
+
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                            <div class="row">
+                                <div id="inddoc" style="width: 100%;">
+                                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12" style="float: left;">
+                                        <div class="product-thumbnail">
+                                            <div class="product-img-head">
+                                                <div class="product-img">
+                                                    <img src="../../img/add_document.jpg" alt="" class="img-fluid"></div>
+                                                
+                                           
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-content-head">
+                                                    <div style="text-align: center;">
+                                                        <h3 class="product-title">Add New Document</h3>  
+                                                    </div>
+                                                </div>
+                                                <div class="product-btn">
+                                                    <div style="text-align: center;">
+                                                        <a href="add_shopdocument.php" class="btn btn-primary">Click here</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+
+
+
+                                </div>
+                             
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
+                            <div class="product-sidebar">
+                                <div class="product-sidebar-widget">
+                                    <h4 class="mb-0">Filters</h4>
+                                </div>
+                                <div class="product-sidebar-widget">
+                                    <h4 class="product-sidebar-widget-title">Documents</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-1">
+                                        <label class="custom-control-label" for="cat-1">Education</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-2">
+                                        <label class="custom-control-label" for="cat-2">Technical</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-3">
+                                        <label class="custom-control-label" for="cat-3">Sports</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-4">
+                                        <label class="custom-control-label" for="cat-4">Bank</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-5">
+                                        <label class="custom-control-label" for="cat-5">Others</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-sidebar-widget" >
+                                    <a href="#" class="btn btn-outline-light" id="resbtn">Reset Filter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
                         
 
                 </div>
@@ -153,56 +224,14 @@
     <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-    
     <?php
-                include '../header.php';
-                
-                ob_start();
-                echo "<script>
-                function createsession(clicked) { 
-                    createCookie('userid', clicked, '10'); 
-                    } 
+    	include '../header.php';  
+            ob_start();
+	?>
 
-                    function createCookie(cname, cvalue, exdays) {
-                        var d = new Date();
-                        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-                        var expires = 'expires='+ d.toUTCString();
-                        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-                    }
-                    </script>";
-                $homeid=$_SESSION['homeid'];
-                $userid=$_SESSION['userid'];
-                $sql="select *from user_information where home_id='$homeid'";
-                $result=mysqli_query($conn,$sql);
-                if(mysqli_num_rows($result)>0)
-                {
-                    while ($row=mysqli_fetch_array($result)) {
-                        $img="../../".$row['image'];
-                        $id=$row['user_id'];
-                        $name=$row['first_name'];
-                        
-                         $str1="<script type=\"text/javascript\">
-        
-                            $(document).ready(function(){
-                            $(\"#indrec\").append(\"\
-                            <a href='individualdocument.php' id='$id' onClick='createsession(this.id)'  title='$name'><img src='$img'  style='width: 25%;height: 250px;'  /></a>\");
-
-                            });
-                        </script>
-                        ";
-
-                    echo "".$str1;
-                        
-                        
-
-                    }
-                }
-
-
-
-    ?>
 
 </body>
  
 </html>
+
 

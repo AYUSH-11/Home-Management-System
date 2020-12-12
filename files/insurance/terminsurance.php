@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+ 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,35 +23,32 @@
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/select.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
      <link rel="stylesheet" href="../../assets/vendor/fonts/themify-icons/themify-icons.css">
-     <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
-    
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
     <title>Home Management System</title>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
+    
 
 
 </head>
 
 <body>
-    <?php
-       include '../login_check1.php';
-                 
-               
-    ?>
+	<?php
+    ob_start();
+	include '../login_check1.php';
+	?>
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
-        
         <!-- ============================================================== -->
-        <!-- left sidebar -->
+        <!-- navbar -->
         <!-- ============================================================== -->
         <?php
         include 'navbar.php';
         ?>
         
-
+        
         <div class="dashboard-wrapper">
 
             <div class="dashboard-ecommerce">
@@ -68,20 +65,12 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Individual</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Insurance</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Term Insurance</li>
 
                                         </ol>
                                     </nav>
                                 </div>
-                                <div id="indrec">
-                                    
-                                </div>
-                               
-
-
-
-
 
                                 
                                 
@@ -155,52 +144,10 @@
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
     <?php
-                include '../header.php';
+    include '../header.php';
                 
-                ob_start();
-                echo "<script>
-                function createsession(clicked) { 
-                    createCookie('userid', clicked, '10'); 
-                    } 
-
-                    function createCookie(cname, cvalue, exdays) {
-                        var d = new Date();
-                        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-                        var expires = 'expires='+ d.toUTCString();
-                        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-                    }
-                    </script>";
-                $homeid=$_SESSION['homeid'];
-                $userid=$_SESSION['userid'];
-                $sql="select *from user_information where home_id='$homeid'";
-                $result=mysqli_query($conn,$sql);
-                if(mysqli_num_rows($result)>0)
-                {
-                    while ($row=mysqli_fetch_array($result)) {
-                        $img="../../".$row['image'];
-                        $id=$row['user_id'];
-                        $name=$row['first_name'];
-                        
-                         $str1="<script type=\"text/javascript\">
-        
-                            $(document).ready(function(){
-                            $(\"#indrec\").append(\"\
-                            <a href='individualdocument.php' id='$id' onClick='createsession(this.id)'  title='$name'><img src='$img'  style='width: 25%;height: 250px;'  /></a>\");
-
-                            });
-                        </script>
-                        ";
-
-                    echo "".$str1;
-                        
-                        
-
-                    }
-                }
-
-
-
-    ?>
+            ob_start();
+	?>
 
 </body>
  

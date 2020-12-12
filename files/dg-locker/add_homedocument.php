@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+   
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -31,7 +31,7 @@
     <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
     <script src="../../files/dashboard/dashboard.js"></script>
 
-    <!--<script src="individual.js"></script>-->
+    <script src="individual.js"></script>
 
 	<!-- =========================================== -->
 	<!-- CSS for Add new Document -->
@@ -66,9 +66,9 @@
 
 <body>
 	<?php
-		ob_start();
-       include '../login_check1.php';         
-    ?>
+    ob_start();
+	include '../login_check1.php';
+	?>
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -91,13 +91,13 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Individuals</a></li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home Documents</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Add New Document</li>
 
                                         </ol>
@@ -129,21 +129,21 @@
                                          <div class="form-group">
                                             <label for="Doctype">Document Type</label>&nbsp;&nbsp;&nbsp;                              
                                             <select name="Doctype" id="Doctype">
-                                            	<option value="Identity">ID Proof</option>
-                                            	<option value="School">School</option>
-                                            	<option value="Collage">Collage</option>
-                                            	<option value="Sports">Sports</option>
-                                            	<option value="Health">Health</option>                                            	
-                                            	<option value="Office">Office</option>
-                                            	<option value="Other">Other</option>
+                                            	<option value="Document">Document</option>
+                                            	<option value="Taxes">Taxes</option>
+                                            	<option value="Vehicle">Vehicle</option>
+                                            	
+                                            	<option value="Health">Health</option>                       	
+                                            	<option value="Others">Others</option>
+
                                             </select>
                                             
                                         </div>
-                                        <div class="form-group">
+                                        <!--<div class="form-group">
                                         		<label for="switch16">Keep Password Protected</label>&nbsp;&nbsp;&nbsp;              
                                         		<div class="switch-button switch-button-success">
                                                         <input type="checkbox" name="switch16" id="switch16" ><span>
-                                                    <label for="switch16"></label></span>                                            
+                                                    <label for="switch16"></label></span>                      
                                             	</div>
                                         </div>
                                         
@@ -159,7 +159,7 @@
                                         		<label for="re_password" style="float: left;">ReType Password&nbsp;&nbsp;&nbsp;</label>
                                             	<input id="re_password" type="password" placeholder="Retype Password"  class="form-control" style="width: 350px;">
                                         	</div>	                                           
-                                        </div>
+                                        </div>-->
 
                                         <div class="form-group row">
                                             <label for="soft_copy" class="col-12 col-sm-3 col-form-label text-sm-right">Upload Document</label>&nbsp;&nbsp;&nbsp;
@@ -172,7 +172,7 @@
                                         <div class="form_btn">                                          
                                             <div class="col-sm-6 pl-0">
                                                     <button type="submit" class="btn btn-space btn-primary" name="submitbtn">Save</button>&nbsp;
-                                                    <a href="individualdocument.php" class="btn btn-space btn-secondary">Cancel</a>
+                                                    <a href="homedocument.php" class="btn btn-space btn-secondary">Cancel</a>
                                                 
                                             </div>
                                         </div>
@@ -247,47 +247,24 @@
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
     <?php
-    			ob_start();
-                include '../header.php';
+    	include '../header.php';
                 
-                
-                echo "<script>
-						$(document).ready(function(){
-    					$('#switch16').prop('checked', false);
-    					$('#switch16').click(function(){
+            ob_start();
 
-      						if ($(this).is(':checked')) {
-       							$('#div_password1').show();
-       							$('#div_password2').show();
-       
-      						}
-      						else{
-        						$('#div_password1').hide();
-        						$('#div_password2').hide();
-      						}
-    					});
-						});
-					</script>";
 
-				if(isset($_POST['submitbtn']))
+            if(isset($_POST['submitbtn']))
 				{
 					
 					$documentname=$_POST['Docname'];
 					$documenttype=$_POST['Doctype'];
 					
 					$homeid=$_SESSION['homeid'];
-					$userid=$_SESSION['userid'];
-					$password="";
-					if(isset($_POST['switch16']))
-					{	
-						$password=$_POST['password'];
-					}
-
-
+					//$userid=$_SESSION['userid'];
+					
 
 					$name = $_FILES['filetoupload']['name'];
-                    $target_dir="../../image/documents/$homeid$userid";
-                    $target="image/documents/$homeid$userid".$name;
+                    $target_dir="../../image/documents/$homeid";
+                    $target="image/documents/$homeid".$name;
 
                     //echo "<br>".$target_dir;
                     //echo "<br>".$target;
@@ -297,7 +274,7 @@
 
                     $extension_arr=array('jpg','jpeg','png','gif','pdf');
                     $homeid=$_SESSION['homeid'];
-                    $userid=$_SESSION['userid'];
+                    $userid="";
                     if(in_array($imagefileType,$extension_arr))
                         {	
                         	$sql="select * from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname'";
@@ -309,7 +286,7 @@
                         	}
                         	if($temp==1)
                         	{
-                        		$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
+                        		$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type) values('$homeid','$userid','$documentname','$target','$documenttype')";
                         		mysqli_query($conn,$sql);
                         		move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
                         	}
@@ -319,7 +296,7 @@
                         	}
 
 
-                        	header("location: individualdocument.php");
+                        	header("location: homedocument.php");
                     		exit;
 
                             
@@ -327,9 +304,11 @@
 
 
 				}
-  	?>
 
+	?>
 
 </body>
  
 </html>
+
+

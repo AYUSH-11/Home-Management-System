@@ -8,7 +8,7 @@
 
 	<div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">A&Y Group</a>
+                <a class="navbar-brand" href="../../dashboard.php">A&Y Group</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -72,24 +72,24 @@
                                 <li class="connection-list">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="githubheader" name="githubheader" target="_blank"><img src="assets/images/github.png" alt="" > <span>Github</span></a>
+                                            <a href="#" class="connection-item" id="githubheader" name="githubheader" target="_blank"><img src="../../img/github.png" alt="" > <span>Github</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="facebookheader" name="facebookheader" target="_blank"><img src="assets/images/dribbble.png" alt="" > <span>Facebook</span></a>
+                                            <a href="#" class="connection-item" id="facebookheader" name="facebookheader" target="_blank"><img src="../../img/facebook.jpg" alt="" > <span>Facebook</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="instagramheader" name="instagramheader" target="_blank"><img src="assets/images/dropbox.png" alt="" > <span>Instagram</span></a>
+                                            <a href="#" class="connection-item" id="instagramheader" name="instagramheader" target="_blank"><img src="../../img/instagram.jpg" alt="" > <span>Instagram</span></a>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="linkedinheader" name="linkedinheader" target="_blank"><img src="assets/images/bitbucket.png" alt=""> <span>LinkedIn</span></a>
+                                            <a href="#" class="connection-item" id="linkedinheader" name="linkedinheader" target="_blank"><img src="../../img/linkedin.png" alt=""> <span>LinkedIn</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="twitterheader" name="twitterheader" target="_blank"><img src="assets/images/mail_chimp.png" alt="" ><span>Twitter</span></a>
+                                            <a href="#" class="connection-item" id="twitterheader" name="twitterheader" target="_blank"><img src="../../img/twitter.jpg" alt="" ><span>Twitter</span></a>
                                         </div>
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
-                                            <a href="#" class="connection-item" id="slackheader" name="slackheader" target="_blank"><img src="assets/images/slack.png" alt="" > <span>Slack</span></a>
+                                            <a href="#" class="connection-item" id="slackheader" name="slackheader" target="_blank"><img src="../../img/slack.png" alt="" > <span>Slack</span></a>
                                         </div>
                                     </div>
                                 </li>

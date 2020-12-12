@@ -3,7 +3,6 @@
  
 <head>
     <!-- Required meta tags -->
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
@@ -31,24 +30,24 @@
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
     <script src="../../files/dashboard/dashboard.js"></script>
 
-    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
+
 
 </head>
 
 <body>
-	<?php
-	   include '../login_check1.php';           
+    <?php
+       include '../login_check1.php';           
                
-	?>
+    ?>
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
+       
         <!-- ============================================================== -->
-        <!-- navbar -->
+        <!-- left sidebar -->
         <!-- ============================================================== -->
-        
-        <div class="nav-left-sidebar sidebar-dark">
+                <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -133,6 +132,7 @@
             </div>
         </div>
 
+        
         <div class="dashboard-wrapper">
 
             <div class="dashboard-ecommerce">
@@ -150,12 +150,11 @@
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="../../dashboard.php" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bill Management</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Electricity</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Water</li>
 
                                         </ol>
                                     </nav>
                                 </div>
-
                                 <div style="float: right;">
                                     <div style="padding-right: 250px;">
                                         <select name="selectyear" id="selectyear">
@@ -170,27 +169,23 @@
                                     </div>
                                     <br>
                                    
-
                                     <!-- <div style="padding-left: 200px;">
-                                        <button style="font-size: 20px; width: 180px;background-color: wheat"><i class="ti-plus" ></i><a href="form_electricity.php"> Add New Bill </a></button>
+                                        <button style="font-size: 20px; width: 180px;background-color: wheat"><i class="ti-plus"></i><a href="form_water.php"> ADD New Bill</a></button>
                                     </div> -->
-
-                                <div class="product-sidebar-widget" style="padding-left: 200px;">
-                                    <a href="form_electricity.php" class="btn btn-primary"><i class="ti-plus"></i> Add New Bill</a>
+                                    <div class="product-sidebar-widget" style="padding-left: 200px;">
+                                    <a href="form_water.php" class="btn btn-primary"><i class="ti-plus"></i> Add New Bill</a>
                                 </div>
-
                                 </div>
                                 <br><br>
-            
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" >
                                     <div class="card" >
 
                                         <div style="width: 800px; height: 400px; background-color: white">
 
-                                        <h5 class="card-header" >Chart</h5>
+                                        <h5 class="card-header" >Zoom Chart</h5>
                                         <div class="card-body" >
                                             
-                                            <div id="c3chart_zoom" class="chart_coder"></div>
+                                            <div id="c3chart_zoom"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +205,6 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-
                                     <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                         <thead>
                                             <tr>
@@ -225,101 +219,67 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
-                                                <?php 
-                                                 $sql="select issue_date,due_date,amount,paynment_status,soft_copy from bill_management where home_id='".$_SESSION['homeid']."' and category='electricity'";
-
-                                                $result = mysqli_query($conn, $sql);
-
-                                                if(mysqli_num_rows($result) > 0)
-                                                {
-
-                                                    while($row=mysqli_fetch_assoc($result))
-                                                    {
-                                                        $issue_date = $row['issue_date'];
-                                                        $due_date = $row['due_date'];
-                                                        $amount = $row['amount'];
-                                                        $paynment_status = $row['paynment_status'];
-                                                        
-
-                                                        if($row['soft_copy'] != 'null')
-                                                        {
-
-                                                            
-                                                            $soft_copy1 = $row['soft_copy'];
-                                                            //$url = 'electricity?'.$issue_date;
-                                                            echo "<tr>
-                                                            <td>$issue_date</td>
-                                                            <td>$due_date</td>
-                                                            <td>$amount</td>
-                                                            <td>$paynment_status</td>
-                                                            <td><a href='../../$soft_copy1' target='_blank'>View</a></td>
-                                                            <td><a href='form_electricity.php?edit='edit''>Edit</a></td>
-                                                    
-                                                            <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteForm.php?delete=$issue_date'>Delete</a></td>
-
-                                                            <td><a href='../../$soft_copy1' download>Download</a></td>
-                                                            </tr> ";
-
-
-                                                            echo "<script type='text/javascript'>
-                                                                function conformationDelete(anchor)
-                                                                { 
-                                                                    var conf= confirm('Are You sure want to Delete this Bill??');
-                                                                    if(conf)
-                                                                    {
-                                                                        window.location=anchor.attr('href');
-                                                                    }
-
-                                                                }
-                                                                 </script>";
-
-                                                            
-                                                        }
-                                                        else{
-                                                            echo "<tr>
-                                                            <td>$issue_date</td>
-                                                            <td>$due_date</td>
-                                                            <td>$amount</td>
-                                                            <td>$paynment_status</td>
-                                                            <td><a href='' onclick='onView2()'>View</a></td>
-                                                            <td><a href='form_electricity.php'>Edit</a></td>
-
-                                                           <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteForm.php?delete=$issue_date'>Delete</a></td>
-
-                                                            <td><a href='' onclick='onView2()'>Download</a></td>
-                                                            </tr> ";
-
-                                                           echo "<script type='text/javascript'>
-                                                                function onView2()
-                                                                { 
-                                                                    alert('Soft Copy not Uploaded!!');
-                                                                }
-                                                                 </script>"; 
-                                                            
-                                                            echo "<script type='text/javascript'>
-                                                                function conformationDelete(anchor)
-                                                                { 
-                                                                    var conf= confirm('Are You sure want to Delete this Bill??');
-                                                                    if(conf)
-                                                                    {
-                                                                        window.location=anchor.attr('href');
-                                                                    }
-
-                                                                }
-                                                                 </script>";
-
-                                                        }
-                                                    } 
-
-                                                   
-
-                                                }
-                                                   
-
-                                                 ?>
+                                            <tr>
+                                                <td>2020/08/21</td>
+                                                <td>2020/08/25</td>
+                                                <td>300</td>
+                                                <td>Paid</td>
+                                                <td><a href="">View</a></td>
+                                                <td><a href="">Edit</a></td>
+                                                <td><a href="">Delete</a></td>
+                                                <td><a href="">Download</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2020/07/21</td>
+                                                <td>2020/07/25</td>
+                                                <td>600</td>
+                                                <td>Paid</td>
+                                                <td><a href="">View</a></td>
+                                                <td><a href="">Edit</a></td>
+                                                <td><a href="">Delete</a></td>
+                                                <td><a href="">Download</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2020/06/21</td>
+                                                <td>2020/06/25</td>
+                                                <td>800</td>
+                                                <td>Paid</td>
+                                                <td><a href="">View</a></td>
+                                                <td><a href="">Edit</a></td>
+                                                <td><a href="">Delete</a></td>
+                                                <td><a href="">Download</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2020/05/21</td>
+                                                <td>2020/05/25</td>
+                                                <td>500</td>
+                                                <td>Paid</td>
+                                                <td><a href="">View</a></td>
+                                                <td><a href="">Edit</a></td>
+                                                <td><a href="">Delete</a></td>
+                                                <td><a href="">Download</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2020/04/21</td>
+                                                <td>2020/04/25</td>
+                                                <td>400</td>
+                                                <td>Paid</td>
+                                                <td><a href="">View</a></td>
+                                                <td><a href="">Edit</a></td>
+                                                <td><a href="">Delete</a></td>
+                                                <td><a href="">Download</a></td>
+                                            </tr>
                                         </tbody>
-                                        
+                                        <tfoot>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -359,15 +319,7 @@
     <!-- chart c3 js -->
     <script src="../../assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    
-
-
-    <!--<script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>-->
-    <!-- <script src="graph.js"></script> -->
-    <!-- <script src="graph.php"></script> -->
-    
-
-
+    <script src="graph.js"></script>
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 
 
@@ -391,243 +343,11 @@
     <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
+
     <?php
 
     include '../header.php';
-    $sql="select amount from bill_management where home_id='".$_SESSION['homeid']."' and category='electricity'";
-
-                $result = mysqli_query($conn, $sql);
-                if(mysqli_num_rows($result) > 0){
-                    $amount_arr = array();
-                    while($row=mysqli_fetch_assoc($result))
-                    {
-                        array_push($amount_arr, $row['amount']);
-
-                    }
-                }
-
-        //echo "<script type='text/javascript'>var arrayFromPhp = '.$amount_arr.';</script>";
-                //echo "<script type='text/javascript'>alert('.$amount_arr.');</script>";
-
-                
-                
     ?>
-    
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-
-(function(window, document, $, undefined) {
-    "use strict";
-    $(function() {
-        var arr= array(arrayFromPhp);
-        // for(var i=0;i<arrayFromPhp.length;i++)
-        // {
-        //     alert(arrayFromPhp[i]);
-        // }
-        //var arr= [500,400,350,450,520,500,400,350,342,368,500,500];  
-        if ($('#c3chart_zoom').length) {
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-                data: {
-                    columns: [
-                        ['sample',0,arr[0],arr[1],arr[2]]
-                    ],
-                    colors: {
-                        sample: '#5969ff'
-
-
-                    }
-                },
-                zoom: {
-                    enabled: true
-                },
-                axis: {
-                    y: {
-                        show: true,
-
-
-                    },
-                    x: {
-                        show: true,
-                    }
-                }
-
-            });
-        }
-
-
-        var chartselection="zoomchart";
-
-    $('#chartselection').on('change', function(event) {
-        var opt = this.options[ this.selectedIndex ];
-        chartselection= $(opt).text();
-        
-     
-     if(chartselection=="Zoom chart"){
-        $(function() { 
-            
-            if ($('#c3chart_zoom').length) {
-            
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-
-                data: {
-
-                    columns: [
-                        ['sample',0,arr[0],arr[1],arr[2]]
-                    ],
-                    colors: {
-                        sample: '#5969ff'
-                    }
-
-
-                },
-                zoom: {
-                    enabled: true
-                },
-                axis: {
-
-                    y: {
-                        show: true,
-                    },
-                    x: {
-
-                        show: true,
-                       
-                    }
-                },
-
-            });
-            }
-
-        });
-
-    }
-
-    if(chartselection=="Area chart"){
-
-        if ($('#c3chart_zoom').length) {
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-                data: {
-                    columns: [
-                        ['data1',0, arr[0],arr[1],arr[2]]
-                        
-                    ],
-                    types: {
-                        data1: 'area',
-                        data2: 'area-spline'
-                    },
-                    colors: {
-                        data1: '#5969ff',
-                        data2: '#ff407b',
-
-                    }
-
-                },
-                axis: {
-
-                    y: {
-                        show: true
-
-
-
-
-                    },
-                    x: {
-                        show: true
-                    }
-                }
-
-            });
-        }
-
-    }
-
-    if(chartselection=="Bar chart"){
-        if ($('#c3chart_zoom').length) {
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-
-                data: {
-                    columns: [
-                        ['data1',0, arr[0],arr[1],arr[2]]
-                    ],
-                    type: 'bar',
-                    groups: [
-                        ['data1']
-                    ],
-                    order: 'desc', // stack order by sum of values descendantly. this is default.
-                    //      order: 'asc'  // stack order by sum of values ascendantly.
-                    //      order: null   // stack order by data definition.
-
-                    colors: {
-                        data1: '#5969ff',
-                        data2: '#ff407b',
-                        data3: '#64ced3'
-
-                    }
-                },
-                axis: {
-                    y: {
-                        show: true,
-
-
-                    },
-                    x: {
-                        show: true,
-                    }
-                },
-                grid: {
-                    y: {
-                        lines: [{ value: 1 }]
-                    },
-
-                }
-            });
-            
-        }
-
-
-    }
-
-})
-
-});
-
-})(window, document, window.jQuery);
-
-
-window.onload = function takeyear(){
-
-
-var yeararray=[1999,2000,2001];
-for(var i=0;i<yeararray.length;i++)
-{
-                var x = document.getElementById("selectyear");
-                var option = document.createElement("option");
-                option.text = yeararray[i].toString();
-                x.add(option);
-}
-
-
-
-
-}
-$(document).ready(function(){
-
-    /*user information in header*/
-  var head_name="Ayush Vachhani";
-  var head_image="../../crop.jpg";
-  document.getElementById('head_name').innerHTML=head_name;
-  document.getElementById('head_image').src=head_image;
-});
-
-
-
-
-
-
-</script>
 
 </body>
  

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/vendor/fonts/circular-std/style.css" >
-    <link rel="stylesheet" href="../../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../../assets/libs/css/style.css"> 
     <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="../../assets/vendor/charts/chartist-bundle/chartist.css">
     <link rel="stylesheet" href="../../assets/vendor/charts/morris-bundle/morris.css">
@@ -29,6 +29,9 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
+
+
+
 </head>
 
 <body>
@@ -40,13 +43,13 @@
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
+        
         <!-- left sidebar -->
         <!-- ============================================================== -->
         <?php
         include 'navbar.php';
         ?>
         
-
         <div class="dashboard-wrapper">
 
             <div class="dashboard-ecommerce">
@@ -54,7 +57,6 @@
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
-                    
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
@@ -65,18 +67,17 @@
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Individual</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Home document</li>
 
                                         </ol>
                                     </nav>
-                                </div> 
+                                </div>
+
+                                
+                                
                             </div>
                         </div>
                     </div>
-
-
-
-
 
                     <!-- ============================================================== -->
                     <!-- end pageheader  -->
@@ -89,8 +90,9 @@
                                         <div class="product-thumbnail">
                                             <div class="product-img-head">
                                                 <div class="product-img">
-                                                    <img src="../../img/add_document.jpg" style="height: 196px;" alt="" class="img-fluid"></div>
-                                                
+                                                    <img src="../../img/add_document.jpg"style="height: 196px;" alt="" class="img-fluid">
+                                                </div>
+                                               
                                            
                                             </div>
                                             <div class="product-content">
@@ -101,16 +103,12 @@
                                                 </div>
                                                 <div class="product-btn">
                                                     <div style="text-align: center;">
-                                                        <a href="add_individualdocument.php"s class="btn btn-primary">Click here</a>
-
+                                                        <a href="add_homedocument.php" class="btn btn-primary">Click here</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>  
-
-
-
                                 </div>
 
 
@@ -129,35 +127,30 @@
 
 
 
-                                
-                             
                             </div>
-
-
-
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                             <div class="product-sidebar">
                                 <div class="product-sidebar-widget">
-                                    <h4 class="mb-0">Filters</h4>
+                                    <h4 class="mb-0">E-Commerce Filter</h4>
                                 </div>
                                 <div class="product-sidebar-widget">
                                     <h4 class="product-sidebar-widget-title">Documents</h4>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-1" >
-                                        <label class="custom-control-label" for="cat-1">Education</label>
+                                        <input type="checkbox" class="custom-control-input" id="cat-1">
+                                        <label class="custom-control-label" for="cat-1">document(deed)</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="cat-2">
-                                        <label class="custom-control-label" for="cat-2">Technical</label>
+                                        <label class="custom-control-label" for="cat-2">Taxes</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="cat-3">
-                                        <label class="custom-control-label" for="cat-3">Sports</label>
+                                        <label class="custom-control-label" for="cat-3">Vehicles</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="cat-4">
-                                        <label class="custom-control-label" for="cat-4">Bank</label>
+                                        <label class="custom-control-label" for="cat-4">Health</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="cat-5">
@@ -170,19 +163,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>        
+                    </div>
+
+
+
+
+                        
 
                 </div>
 
             </div>
 
-        </div>
 
-
-
-
-        <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -195,7 +188,6 @@
         </div>
         <div class="modal-footer">
             <form  method="post">
-                Password: <input type="password" name="pass">
                 <input type="submit" name="revdocument" value="Remove" class="btn btn-primary" >
             </form>
 
@@ -220,7 +212,7 @@
         <div class="modal-footer">
             <form  method="post">
                 Password: <input type="password" name="pass">
-                <input type="submit"  name="viewdocument" value="View" class="btn btn-primary" >
+                <input type="submit" name="viewdocument" value="View" class="btn btn-primary" >
             </form>
 
           <a href="#" type="button" class="btn btn-primary" data-dismiss="modal">cancel</a>
@@ -229,18 +221,6 @@
       
     </div>
   </div>
- 
-
-
-
-
-
-
-        
-
-
-
-
 
     </div>
     <!-- ============================================================== -->
@@ -269,11 +249,16 @@
 
 
     <!--<script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>-->
-    
+    <script src="graph.js"></script>
     
 
 
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
+
+
+
+   
+ 
     <script src="../../assets/vendor/multi-select/js/jquery.multi-select.js"></script>
     <script src="../../assets/libs/js/main-js.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -292,17 +277,17 @@
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
     <?php
-            
-    		include '../header.php';
-            //$('#inddoc').html('');   
+    	include '../header.php';
+                
             ob_start();
+
             echo "<script>
                     $(document).ready(function(){
-                        $('#resbtn').click(function(){
-                            $('input[type=\"checkbox\"]:checked').prop('checked',false);
-                        });
+                    $('#resbtn').click(function(){
+                    $('input[type=\"checkbox\"]:checked').prop('checked',false);
                     });
-                    
+                    });
+
                     function createsession(clicked) { 
                     createCookie('useridfordoc', clicked, '10'); 
                     } 
@@ -316,55 +301,35 @@
                     
                     </script>";
 
-
-
-            
-
-
-
             $homeid=$_SESSION['homeid'];
-            $userid=$_COOKIE['userid'];
+            $userid="";
 
-                    if($userid!=$_SESSION['userid'])
-                    {
-                        $str="<script>
-                            $(document).ready(function(){
-                                $('#addfiledoc').hide();
-                                });
-                                </script>
-                                ";
-                            
-                            echo "".$str;
-                            
-                    }
-
-
-                    
             if(isset($_POST['revdocument']))
             {
                 $documentname=$_COOKIE['useridfordoc'];
                 $sql="select password from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname'";
                 $result=mysqli_query($conn,$sql);
                 $row=mysqli_fetch_array($result);
-                if($userid==$_SESSION['userid'] && $row['password']==NULL)
+                if($row['password']==NULL)
                     {
-                        header("location: deletedocument.php");
+                        header("location: deletehomedocument.php");
                         exit;
                     }
                     else{
                         $pass=$_POST['pass'];
                         if($pass==$row['password'])
                         {
-                           header("location: deletedocument.php");
+                           header("location: deletehomedocument.php");
                         exit; 
                         }
                         else
                         {
-                            header("location: individualdocument.php");
+                            header("location: homedocument.php");
                             exit;   
                         }
                     }
             }
+
 
             if(isset($_POST['viewdocument']))
             {
@@ -377,20 +342,16 @@
                 $pass=$_POST['pass'];
                 if($pass==$row['password'])
                     {
-                        //echo 'window.open("displaydocument.php")';
-                        header("location: displaydocument.php");
+                        header("location: displayhomedocument.php");
                         exit; 
                     }
                     else
                     {
-                        header("location: individualdocument.php");
+                        header("location: homedocument.php");
                         exit;   
                     }
                     
             }
-
-            
-
 
 
             $sql="select * from dg_locker where home_id='$homeid' and user_id='$userid'";
@@ -401,23 +362,14 @@
                 while ($row=mysqli_fetch_array($result)) {
                     $img="../../".$row['document'];
                     $pdf=$img;
-                    $download='download';
                     $ext = pathinfo($img, PATHINFO_EXTENSION);
                     $password=$row['password'];
-                    $remove='deletedocument.php';
+                    $remove='deletehomedocument.php';
                     
                     $viewprotected="";
-                    if($userid!=$_SESSION['userid'])
-                    {
-                        $remove='';
-                        $download='';
-                        $pdf='#';
-
-                    }
                     $documentname=$row['document_name'];
-                    
                     $documentpath=$row['document'];
-                    $documentview='displaydocument.php';
+                    $documentview='displayhomedocument.php';
 
                     if($ext=='pdf' || $ext=='PDF' || $password!=NULL)
                     {
@@ -427,15 +379,14 @@
                     if($password!=NULL )
                     {
                         $viewprotected="data-toggle='modal' data-target='#myModal1'";
-                        $download='';
-                        $pdf='#';
+
                         if($userid!=$_SESSION['userid'])
                         {
                         $documentview='';
                         }
 
                     }
-                   
+                    
                     
                     $str="<script>
                             $(document).ready(function(){
@@ -452,10 +403,10 @@
                                             <h3 class='product-title'>$documentname</h3>\
                                         </div>\
                                         <div class='product-btn'>\
-                                                <a href='$documentview' target='_blank' $viewprotected  id='$documentname' onClick='createsession(this.id)' class='btn btn-primary' style='width:45%;' disabled>View</a>\
+                                                <a href='$documentview' $viewprotected  id='$documentname' onClick='createsession(this.id)' class='btn btn-primary' style='width:45%;' disabled target='_blank'>View</a>\
                                                 <a data-toggle='modal' data-target='#myModal' href='#' id='$documentname' onClick='createsession(this.id)' class='btn btn-primary' style='width:45%; float:right;'>Delete</a><br>\
                                             <div style='text-align:center; padding-top: 5px;' >\
-                                                <a href='$pdf' class='btn btn-primary' $download >Download</a>\
+                                                <a href='$pdf' class='btn btn-primary' download >Download</a>\
                                             </div>\
                                         </div>\
                                     </div>\
@@ -468,7 +419,10 @@
                     echo "<br>".$str;   
                 }     
             }
+
+
 	?>
+
 
 </body>
  

@@ -31,7 +31,7 @@
     <script src="../../files/dashboard/dashboard.js"></script>
     <script type="text/javascript" src="headerimage.js"></script>
     
-     
+
 
 </head>
 
@@ -43,6 +43,7 @@
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
+       
         <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
@@ -129,12 +130,15 @@
                     </div>
                 </nav>
             </div>
-        </div> 
+        </div>
 
         <div class="dashboard-wrapper">
 
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
@@ -145,7 +149,7 @@
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bill Management</a></li>
-                                            <li class="breadcrumb-item"><a href="electricity.php" class="breadcrumb-link">Electricity</a></li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Telephone</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Add New Bill</li>
 
                                         </ol>
@@ -155,73 +159,74 @@
                                 
                             </div>
                         </div>
-                    </div> 
-                    <form  name="electricity" method="POST" id="electricity" style="width: 1000px;margin-left: 150px;" enctype="multipart/form-data">
+                    </div>
+                    
+                    <form enctype="multipart/form-data" method="post" name="telephone" id="telephone" style="width: 1000px;margin-left: 150px;" >
                     <div class="row">
                         <!-- ============================================================== -->
                         <!-- valifation types -->
                         <!-- ============================================================== -->
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Electricity Bill Information</h5>
+                                <h5 class="card-header">Telephone Bill Information</h5>
                                 <div class="card-body">
-                                    <!-- <form id="validationform" data-parsley-validate="" novalidate=""> -->
+                                    <form id="validationform" data-parsley-validate="" novalidate="">
                                         <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Issue Date</label>
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Recharge Date</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="Date" required=""  class="form-control" id="issue_date" name="issue_date" >
+                                                <input type="Date" required=""  class="form-control" id="recharge_date" name="recharge_date">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Due Date</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="Date" required=""  class="form-control"  id="due_date"  name="due_date"><span id="due_date_span" style="color: red;"></span>
+                                                <input type="Date" required="" class="form-control" id="due_date" name="due_date"><span id="due_date_span" style="color: red;"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Amount</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input data-parsley-type="digits" type="text" required="" placeholder="Enter only digits" class="form-control" id="amount" maxlength="20" name="amount"><span id="amountspan" style="color: red;"></span>
+                                                <input data-parsley-type="digits" type="text" required="" placeholder="Enter only digits" class="form-control" id="amount" name="amount"><span id="amountspan" style="color: red;"></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Unit Burn</label>
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Company Name</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input data-parsley-type="digits" type="text" required="" placeholder="Enter only digits" class="form-control" id="unit_burn" maxlength="20" name="unit_burn"><span id="unit_burn_span" style="color: red;"></span>
+                                                <select id="telephone_company" required="" name="company_name">
+                                                    <option value="0">BSNL</option>
+                                                    <option value="1">Reliance</option>
+                                                    <option value="2">Vodafone</option>
+                                                    <option value="3">Airtel</option>
+                                                    <option value="4">Other</option>
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Duration (in Month)</label>
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Duration(in month)</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input data-parsley-type="digits" type="number" required="" placeholder="Enter only digits" class="form-control" id="duration_month" maxlength="20" name="duration_month"><span id="duration_month_span" style="color: red;"></span>
+                                                <input data-parsley-type="digits" type="number" required="" placeholder="Enter only digits" class="form-control" id="duration_month" name="duration_month"><span id="duration_month_span" style="color: red;"></span>
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Reference Number</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input data-parsley-type="digits" type="text" placeholder="type reference number" class="form-control" id="reference_no" maxlength="20"  name="reference_no"><span id="reference_no_span" style="color: red;"></span>
-                                            </div>
-                                        </div>
 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Mode</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1" class="custom-control-input" value="online" checked><span class="custom-control-label" >Online</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="online" checked><span class="custom-control-label">Online</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1" class="custom-control-input" value="offline"><span class="custom-control-label">Offline</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="offline"><span class="custom-control-label">Offline</span>
                                             </label>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Status</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2"  class="custom-control-input" id="paynment_status" value="payed"><span class="custom-control-label" >Payed</span>
+                                                <input type="radio" name="radio-inline1"  class="custom-control-input" value="payed"><span class="custom-control-label" checked>Payed</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="not payed" checked><span class="custom-control-label" id="paynment_status1" >Not Payed</span>
+                                                <input type="radio" name="radio-inline1" class="custom-control-input" value="not payed" checked><span class="custom-control-label">Not Payed</span>
                                             </label>
                                         </div>
 
@@ -229,7 +234,7 @@
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Notification Required</label>
                                                 <div class="col-12 col-sm-8 col-lg-6 pt-1">
                                                     <div class="switch-button switch-button-success">
-                                                        <input type="checkbox" checked="" name="switch16" id="switch16" ><span>
+                                                        <input type="checkbox" checked="" name="switch16" id="switch16"><span>
                                                     <label for="switch16"></label></span>
                                                     </div>
                                                 </div>
@@ -240,26 +245,26 @@
                                             <input type="file" class="form-control" name="filetoupload" id="filetoupload" style="width: 300px;">              
                                         </div>
 
-
+                                        
                                         <div class="form-group row text-right">
                                             <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                                 <input type="submit" class="btn btn-space btn-primary" id="btnsubmit" name="btnsubmit" value="submit" style="width: 100px;">
-                                                <input type="button" class="btn btn-space btn-secondary" name="btncancel" value="Cancel" style="width: 100px;" onClick="document.location.href='electricity.php'">
+                                                <input class="btn btn-space btn-secondary" name="btncancel" value="Cancel" style="width: 100px;">
                                             </div>
                                         </div>
-                                    <!-- </form> -->
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </form>
-                        
+                    </form>    
+
+
 
                 </div>
 
             </div>
 
-        
         
         
         </div>            
@@ -296,7 +301,7 @@
     <script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 
-    <script src="forms.js"></script>
+
 
    
  
@@ -320,24 +325,25 @@
     <?php
     include '../header.php';
 
-    
-
-       
-        if(isset($_POST['btnsubmit']))
+    if(isset($_POST['btnsubmit']))
         {
-            
+           
             // home_id user_id category    issue_date  due_date    amount  duration_month  paynment_status paynment_mode   notification_required   soft_copy   company_name    reference_no    unit_burn   source/recharge_type
          if(form_validation() !== false){
             
             $homeid = $_SESSION['homeid'];
             $userid = $_SESSION['userid'];
-            $category="electricity";
-            $issue_date=$_POST['issue_date'];
+            $category="telephone";
+            $issue_date=$_POST['recharge_date'];
             $due_date=$_POST['due_date'];
             $amount=$_POST['amount'];
             $duration_month=$_POST['duration_month'];
-            $paynment_mode=$_POST['radio-inline1'];
-            $paynment_status=$_POST['radio-inline2'];   
+
+            $paynment_status=$_POST['radio-inline1'];
+            $paynment_mode=$_POST['radio-inline2'];
+            $name_arr = array('BSNL','Reliance','Vodafone','Airtel','Other');
+            $company_name = $name_arr[$_POST['company_name']];
+
             $temp=0;
             if(!empty($_POST['switch16'])){
                 $notification_required="yes";
@@ -345,15 +351,13 @@
             else{
                 $notification_required="no";
             }        
-            $unit_burn=$_POST['unit_burn'];       
-            $reference_no=$_POST['reference_no'];
             
             $name = $_FILES["filetoupload"]["name"];
             //$homeid = $_SESSION['homeid'];
             //$userid = $_SESSION['userid'];
 
-                    $target_dir="../../image/bill management/electricity/$homeid$userid";
-                    $target="image/bill management/electricity/$homeid$userid".$name;
+                    $target_dir="../../image/bill management/telephone/$homeid$userid";
+                    $target="image/bill management/telephone/$homeid$userid".$name;
 
                     $target_file = $target_dir.basename($_FILES["filetoupload"]["name"]);
                     $imagefileType=strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -364,7 +368,7 @@
                     if(in_array($imagefileType,$extension_arr))
                     {   
                            $temp=1;
-                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','','$reference_no','$unit_burn','')";
+                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','$company_name','','','')";
                             
                             /*$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
                             mysqli_query($conn,$sql);*/
@@ -375,7 +379,7 @@
             //$extension_arr=array('jpg','jpeg','png','pdf','docx','doc');
             if($temp==0)
             {
-                $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','null','','$reference_no','$unit_burn','')";
+                $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','','$company_name','','','')";
             }    
             
             
@@ -387,11 +391,7 @@
             else{
                 echo "<script type='text/javascript'>
                     alert('Save Successfully!!');
-                    document.location.href='electricity.php';
                     </script>";
-
-                // header("location: electricity.php");
-                //     exit;
 
             }
             
@@ -406,33 +406,31 @@
                         });
                     });
                 </script>";
-            
            
-          
         }
     }
 
     function form_validation(){
-            $input_amount = $_POST['amount'];
-            $input_unit_burn = $_POST['unit_burn'];
-            $input_reference_no = $_POST['reference_no'];
-            $input_duration_month =  $_POST['duration_month'];
-            $input_issue_date = $_POST['issue_date'];
+            $input_issue_date = $_POST['recharge_date'];
             $input_due_date = $_POST['due_date'];
+            $input_amount = $_POST['amount'];
+            $input_duration_month =  $_POST['duration_month'];
+
+            //$input_unit_burn = $_POST['unit_burn'];
+            //$input_reference_no = $_POST['reference_no'];
+            
             
             
             //$format_amount= "[/^-?\d*(\.\d+)?$/]";
             //$format_unit_burn = "[/^-?\d*(\.\d+)?$/]";
-            $format_reference_no = '/^[a-zA-Z0-9]+$/';
+            //$format_reference_no = '/^[a-zA-Z0-9]+$/';
             
             if($input_issue_date > $input_due_date)
             {
                 echo "<script type='text/javascript'>
                 document.getElementById('due_date_span').innerHTML='Please select correct Due Date'; 
-                document.getElementById('unit_burn_span').innerHTML='';
                 document.getElementById('amountspan').innerHTML='';
                 document.getElementById('duration_month_span').innerHTML='';
-                document.getElementById('reference_no_span').innerHTML='';
                 input_due_date.focus();
                 </script>";
                 return false;               
@@ -441,23 +439,9 @@
             {
                 echo "<script type='text/javascript'>
                 document.getElementById('amountspan').innerHTML='only Digits are Allowed';
-                document.getElementById('unit_burn_span').innerHTML='';
                 document.getElementById('due_date_span').innerHTML='';
                 document.getElementById('duration_month_span').innerHTML='';
-                document.getElementById('reference_no_span').innerHTML='';
                 input_amount.focus();
-                </script>";
-                return false;
-            }
-            else if(!(is_numeric( $input_unit_burn)))
-            {
-                echo "<script type='text/javascript'>
-                document.getElementById('unit_burn_span').innerHTML='only Numerical value are Allowed';
-                document.getElementById('amountspan').innerHTML='';
-                document.getElementById('due_date_span').innerHTML='';
-                document.getElementById('duration_month_span').innerHTML='';
-                document.getElementById('reference_no_span').innerHTML='';
-                input_unit_burn.focus();
                 </script>";
                 return false;
             }
@@ -466,28 +450,14 @@
                 echo "<script type='text/javascript'>
                 document.getElementById('duration_month_span').innerHTML='Please select Month Between 1 to 12';
                 document.getElementById('amountspan').innerHTML='';
-                document.getElementById('unit_burn_span').innerHTML='';
                 document.getElementById('due_date_span').innerHTML='';
-                document.getElementById('reference_no_span').innerHTML='';
                 input_duration_month.focus();
-                </script>";
-                return false;
-            }
-            else if(!(preg_match($format_reference_no, $input_reference_no)))
-            {
-                echo "<script type='text/javascript'>
-                document.getElementById('reference_no_span').innerHTML='only Digits and Alphabets are Allowed';
-                document.getElementById('amountspan').innerHTML='';
-                document.getElementById('due_date_span').innerHTML='';
-                document.getElementById('duration_month_span').innerHTML='';
-                input_reference_no.focus();
                 </script>";
                 return false;
             }
             
         }
     ?>
-
 
 </body>
  

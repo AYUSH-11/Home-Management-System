@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+ 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,34 +23,62 @@
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/select.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="../../assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
      <link rel="stylesheet" href="../../assets/vendor/fonts/themify-icons/themify-icons.css">
-     <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
     
     <title>Home Management System</title>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
+    <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
+    <script src="../../files/dashboard/dashboard.js"></script>
+
+    <script src="individual.js"></script>
+
+	<!-- =========================================== -->
+	<!-- CSS for Add new Document -->
+	<!-- =========================================== -->
+
+
+    <style type="text/css">
+    	.form_add_document{
+    		position: relative;
+    		left: 25%;
+    		top: 17%;
+    		width: 90%;
+    		line-height: 30px;
+    	}
+    	.form_btn{
+    		position: relative;
+    		left: 65%;
+    	}
+    	#Doctype{        /*dropdown*/
+    		width: 150px;
+    		background-color: #87CEFA;
+    		border:4px solid transparent;
+
+    	}
+    	
+    	
+    	
+    </style>
 
 
 </head>
 
 <body>
-    <?php
-       include '../login_check1.php';
-                 
-               
-    ?>
+	<?php
+    ob_start();
+	include '../login_check1.php';
+	?>
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
         
-        <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
         <?php
         include 'navbar.php';
         ?>
-        
 
         <div class="dashboard-wrapper">
 
@@ -63,31 +91,84 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Individual</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Shop Documents</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Add New Document</li>
 
                                         </ol>
                                     </nav>
                                 </div>
-                                <div id="indrec">
-                                    
-                                </div>
-                               
-
-
-
-
-
                                 
                                 
                             </div>
                         </div>
                     </div>
+
+                    
+                    <div class="row">
+                    	<form action="add_individual.php" class="form_add_document">
+                        <!-- ============================================================== -->
+                        <!-- Add new Document form -->
+                        <!-- ============================================================== -->
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header" style="text-align: center;">Add New Document</h5>
+                                <div class="card-body">
+                                    <form action="#" id="basicform" data-parsley-validate="">
+                                        <div class="form-group">
+                                            <label for="Docname" style="float: left;">Document Name&nbsp;&nbsp;&nbsp;</label>
+                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;">
+                                        </div><br>
+
+                                         <div class="form-group">
+                                            <label for="Doctype">Document Type</label>&nbsp;&nbsp;&nbsp;                              
+                                            <select name="Doctype" id="Doctype">
+                                            	<option value="Identity">ID Proof</option>
+                                            	<option value="School">School</option>
+                                            	<option value="Collage">Collage</option>
+                                            	<option value="Sports">Sports</option>
+                                            	<option value="Health">Health</option>                                            	
+                                            	<option value="Office">Office</option>
+                                            	<option value="Other">Other</option>
+                                            </select>
+                                            
+                                        </div>
+                                        
+                                        
+
+                                        <div class="form-group row">
+                                            <label for="soft_copy" class="col-12 col-sm-3 col-form-label text-sm-right">Upload Document</label>&nbsp;&nbsp;&nbsp;
+                                            <label class="custom-control custom-radio custom-control-inline">
+                                            <input type="file" id="soft_copy" class="form-control" ></input>
+                                            </label>
+                                        </div>
+                                     <!-- 
+                                        <div class="form-group">
+                                            <label for="inputPassword">Password</label>
+                                            <input id="inputPassword" type="password" placeholder="Password" required="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputRepeatPassword">Repeat Password</label>
+                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password" required="" placeholder="Password" class="form-control">
+                                        </div> -->
+                                        <div class="form_btn">                                          
+                                            <div class="col-sm-6 pl-0">
+                                                    <button type="submit" class="btn btn-space btn-primary">Save</button>&nbsp;
+                                                    <button class="btn btn-space btn-secondary">Cancel</button>
+                                                
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
                         
 
                 </div>
@@ -95,12 +176,17 @@
             </div>
 
         
-
-
-
-
-
+        
+        
+        </div>            
+           
     </div>
+
+
+
+
+
+    
     <!-- ============================================================== -->
     <!-- end main wrapper  -->
     <!-- ============================================================== -->
@@ -123,17 +209,10 @@
     <!-- chart c3 js -->
     <script src="../../assets/vendor/charts/c3charts/c3.min.js"></script>
     <script src="../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    
-
-
-    <!--<script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>-->
-    <script src="graph.js"></script>
-    
-
-
+    <script src="../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="../../assets/libs/js/dashboard-ecommerce.js"></script>
 
-
+    <script src="forms.js"></script>
 
    
  
@@ -155,52 +234,9 @@
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
     <?php
-                include '../header.php';
-                
-                ob_start();
-                echo "<script>
-                function createsession(clicked) { 
-                    createCookie('userid', clicked, '10'); 
-                    } 
-
-                    function createCookie(cname, cvalue, exdays) {
-                        var d = new Date();
-                        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-                        var expires = 'expires='+ d.toUTCString();
-                        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-                    }
-                    </script>";
-                $homeid=$_SESSION['homeid'];
-                $userid=$_SESSION['userid'];
-                $sql="select *from user_information where home_id='$homeid'";
-                $result=mysqli_query($conn,$sql);
-                if(mysqli_num_rows($result)>0)
-                {
-                    while ($row=mysqli_fetch_array($result)) {
-                        $img="../../".$row['image'];
-                        $id=$row['user_id'];
-                        $name=$row['first_name'];
-                        
-                         $str1="<script type=\"text/javascript\">
-        
-                            $(document).ready(function(){
-                            $(\"#indrec\").append(\"\
-                            <a href='individualdocument.php' id='$id' onClick='createsession(this.id)'  title='$name'><img src='$img'  style='width: 25%;height: 250px;'  /></a>\");
-
-                            });
-                        </script>
-                        ";
-
-                    echo "".$str1;
-                        
-                        
-
-                    }
-                }
-
-
-
-    ?>
+    	include '../header.php';  
+            ob_start();
+	?>
 
 </body>
  
