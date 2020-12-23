@@ -49,7 +49,7 @@
         <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <a class="d-xl-none d-lg-none" href="../../dashboard.php">Dashboard</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -66,22 +66,22 @@
                                 <div id="submenu-2" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                        <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/electricity.html">Electricity</a>
+                                            <a class="nav-link" href="../bill-management/electricity.php">Electricity</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/gas.html">Gas</a>
+                                            <a class="nav-link" href="../bill-management/gas.php">Gas</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/telephone.html">Telephone</a>
+                                            <a class="nav-link" href="../bill-management/telephone.php">Telephone</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/mobilerecharge.html">Mobile Recharge</a>
+                                            <a class="nav-link" href="../bill-management/mobilerecharge.php">Mobile Recharge</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/television.html">Television</a>
+                                            <a class="nav-link" href="../bill-management/television.php">Television</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/water.html">Water</a>
+                                            <a class="nav-link" href="../bill-management/water.php">Water</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -146,7 +146,7 @@
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="../../dashboard.php" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item active"><a href="#" class="breadcrumb-link">Saving</a></li>
                                            
 
