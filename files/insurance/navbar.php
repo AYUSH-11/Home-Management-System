@@ -24,22 +24,22 @@
                                 <div id="submenu-2" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/electricity.html">Electricity</a>
+                                            <a class="nav-link" href="../bill-management/electricity.php">Electricity</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="../bill-management/gas.html">Gas</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/telephone.html">Telephone</a>
+                                            <a class="nav-link" href="../bill-management/telephone.php">Telephone</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/mobilerecharge.html">Mobile Recharge</a>
+                                            <a class="nav-link" href="../bill-management/mobilerecharge.php">Mobile Recharge</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/television.html">Television</a>
+                                            <a class="nav-link" href="../bill-management/television.php">Television</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../bill-management/water.html">Water</a>
+                                            <a class="nav-link" href="../bill-management/water.php">Water</a>
                                         </li>
                                     </ul>
                                 </div>
