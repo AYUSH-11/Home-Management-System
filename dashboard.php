@@ -36,16 +36,16 @@
 
     <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="dashboard.php">A&Y Group</a>
+                <a class="navbar-brand" href="dashboard.php"><img src="img/logo4.jpg" style="width: 30%;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
-                            <div id="custom-search" class="top-search-bar">
+                            <!-- <div id="custom-search" class="top-search-bar">
                                 <input class="form-control" type="text" placeholder="Search..">
-                            </div>
+                            </div> -->
                         </li>
                         <li class="nav-item dropdown notification">
                             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
@@ -54,43 +54,41 @@
                                     <div class="notification-title"> Notification</div>
                                     <div class="notification-list">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Ayush Vachhani</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
+                                            <?php 
+                                            $sql="select first_name from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
+                                            $result=mysqli_query($conn,$sql);
+                                            $row=mysqli_fetch_array($result);
+                                            $name=$row['first_name'];
+                                            $sql="select * from task_remainder where home_id='".$_SESSION['homeid']."' and to_name='$name'";
+                                            $result=mysqli_query($conn,$sql);
+                                            if(mysqli_num_rows($result)>0)
+                                            {
+                                                while($row=mysqli_fetch_array($result))
+                                                {
+                                                $person_id=$row['user_id'];
+                                                $sql1="select first_name,last_name,image from user_information where home_id='".$_SESSION['homeid']."' and user_id='$person_id'";
+                                                $result1=mysqli_query($conn,$sql1);
+                                                $row1=mysqli_fetch_array($result1);
+                                                $person_name=$row1['first_name']." ".$row1['last_name'];
+                                                $image=$row1['image'];
+                                                $title=$row['title'];
+                                                echo "<a href='#' class='list-group-item list-group-item-action active'>
+                                                <div class='notification-info'>
+                                                    <div class='notification-list-user-img'><img src='$image' alt='' class='user-avatar-md rounded-circle'></div>
+                                                    <div class='notification-list-user-block'><span class='notification-list-user-name'>$person_name</span>
+                                                        $title
                                                 </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Yash Bhensdadiya </span>is now following you
-                                                        <div class="notification-date">2 days ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Smit Vora</span> is watching your main repository
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Heet Bhalodiya/span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                                </a>";
+                                                }
+
+                                            }
+
+                                            ?>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                    <div class="list-footer"> <a href="files/task-remainder/taskremainder.php">View all notifications</a></div>
                                 </li>
                             </ul>
                         </li>
@@ -132,7 +130,7 @@
                                     <span class="ml-2">Available</span>
                                 </div>
                                 <a class="dropdown-item" href="files/profile/profile.php"><i class="fas fa-user mr-2"></i>Profile</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="files/profile/changepassword.php"><i class="m-r-9 mdi mdi-key-variant"></i> Change Password</a>
                                 <a class="dropdown-item" href="logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
@@ -171,19 +169,19 @@
                                             <a class="nav-link" href="files/bill-management/electricity.php">Electricity</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/bill-management/gas.html">Gas</a>
+                                            <a class="nav-link" href="files/bill-management/gas.php">Gas</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/bill-management/telephone.html">Telephone</a>
+                                            <a class="nav-link" href="files/bill-management/telephone.php">Telephone</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/bill-management/mobilerecharge.html">Mobile Recharge</a>
+                                            <a class="nav-link" href="files/bill-management/mobilerecharge.php">Mobile Recharge</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="files/bill-management/television.html">Television</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="files/bill-management/water.html">Water</a>
+                                            <a class="nav-link" href="files/bill-management/water.php">Water</a>
                                         </li>
                                         
                                     </ul>
@@ -253,23 +251,17 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
-                                <div class="page-breadcrumb">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-
-                                        </ol>
-                                    </nav>
-                                </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
                     
-                    <div id="record">
+                    <div id="record" style="margin-top: -3.5%">
                       
-                        <form action="files/dashboard/add_userform.php">
-                            <input type='image' src="img/add_user.png" alt='Submit' id="btnAdd"  style='float:left;padding:10px;' ></input>
+                        <form action="files/dashboard/add_userform.php" >
+
+                            <input type='image' src="img/add_user.png" alt='Submit' id="btnAdd"  style='float:left;width: 30%; padding: 4%;margin-left:1.5%;margin-right:1.5%;' ></input>
                         </form>
                     </div> 
 
@@ -401,13 +393,13 @@
                     $id=$row['user_id'];
                     $str1="<script type='text/javascript'>
                                  $(document).ready(function(){
-                            $('#record').append(\"<div class='flip-card' style=' float:left ;width:32%;                   padding:10px;height:325px'>\
-                            <div class='flip-card-inner'>\
-                            <div class='flip-card-front'>\
-                                <img src='$img1' alt='Avatar' style='width:100%;height:260px;'>\
+                            $('#record').append(\"<div class='flip-card' style=' float:left ;width:30%;                   padding:20px;margin-left:1.5%;margin-right:1.5%;height:325px;'>\
+                            <div class='flip-card-inner' style='border-radius:20%;' >\
+                            <div class='flip-card-front' style='border-radius:20%;background:#efeff7;border: 5px solid gray;'><h2>$name</h2>\
+                                <img src='$img1' alt='Avatar' style='width:80%;height:80%;border-radius:20%;'>\
                             <div>\
-                            </div><h1>$name</h1></div>\
-                            <div class='flip-card-back'>\
+                            </div></div>\
+                            <div class='flip-card-back' style='border-radius:20%;'>\
                             <br><br><br>\
                             <a href='files/dashboard/viewinformation.php' id='$id' onClick='createsession(this.id)' class='btn btn-warning' style='font-size:20px;' >view</a>\
                             <br><br>\

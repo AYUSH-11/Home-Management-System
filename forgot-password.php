@@ -78,12 +78,25 @@
                             $pass[] = $alphabet[$n];
                         }
                         $new_password=implode($pass);
-                        $msg='New Password= '.$new_password;
-                        //mail($row['email'],'New Password',$msg);
-                        $sql="update authentication set password='$new_password' where home_id='$user_home_id' and user_id='$user_user_id';";
+                    
+                        $to_email=$row['email'];
+                        $subject="New Password";
+                        $body='New Password= '.$new_password;
+                        $body=$body."\nHome id= ".$user_home_id."\nUser id = ".$user_user_id;
+                        $headers="From :sender\'s email";
+                        if(mail($to_email,$subject,$body))
+                        {
+                            $sql="update authentication set password='$new_password' where home_id='$user_home_id' and user_id='$user_user_id';";
                         $result = mysqli_query($conn, $sql);
-						header("location: login.php");
-    					exit;
+                        header("location: login.php");
+                        exit;
+                        }
+                        else
+                        {
+                            echo "Email sending fail";
+                        }
+                        
+						
 				}
 				
 			else
