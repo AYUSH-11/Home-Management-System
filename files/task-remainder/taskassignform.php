@@ -28,8 +28,9 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
-    <script src="taskremainder.js"></script>
-    <script type="text/javascript" src="headerimage.js"></script>
+    
+
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
     
 
 
@@ -37,6 +38,7 @@
 
 <body>
     <?php
+    ob_start();
        include '../login_check1.php';                     
     ?>
     <!-- ============================================================== -->
@@ -53,7 +55,7 @@
         <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
-        <!-- <div class="nav-left-sidebar sidebar-dark">
+        <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list" >
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -137,7 +139,7 @@
                 </nav>
             </div>
         </div>
- -->
+ 
         <div class="dashboard-wrapper">
 
             <div class="dashboard-ecommerce">
@@ -149,7 +151,6 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -179,13 +180,50 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">To (Name)</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required=""  placeholder="Enter Name of user" class="form-control" name="to_name" id="to_name">
+                                                <!-- <input type="text" required=""  placeholder="Enter Name of user" class="form-control" name="to_name" id="to_name"> -->
+                                                <select name="to_name" id="to_name" style="width: 100%;margin-top: 2mm;">
+                                                     <?php
+                                                     $homeid=$_SESSION['homeid'];
+                                                    $sql="select first_name from user_information where home_id='$homeid'";
+                                                    $result=mysqli_query($conn,$sql);
+                                                    if(mysqli_num_rows($result) > 0){
+                                                    
+                                                    while($row=mysqli_fetch_array($result))
+                                                        {
+                                                        $data=$row['first_name'];
+                                                        echo "<option value=$data>$data</option>";
+
+                                                        }
+                                                    }
+                                                    ?>  
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">To (Email)</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="email" required=""  placeholder="yash123@gmail.com" class="form-control" name="to_email" id="to_email">
+                                                <select name="to_email" id="to_email" style="width: 100%;margin-top: 2mm;">
+                                                     <?php
+                                                     $homeid=$_SESSION['homeid'];
+                                                    $sql="select email from user_information where home_id='$homeid'";
+                                                    $result=mysqli_query($conn,$sql);
+                                                    if(mysqli_num_rows($result) > 0){
+                                                    
+                                                    while($row=mysqli_fetch_array($result))
+                                                        {
+                                                        $data=$row['email'];
+                                                        echo "<option value=$data>$data</option>";
+
+                                                        }
+                                                    }
+                                                    ?>  
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">Due Date</label>
+                                            <div class="col-12 col-sm-8 col-lg-6">
+                                                <input type="Date"    class="form-control" name="due_date" id="due_date">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -285,12 +323,56 @@
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
     <?php 
+    ob_start();
     include '../header.php';
+    
     //include '../../db_connect.php';
+    if($_GET['edit']=="true")
+    {
+        $homeid=$_SESSION['homeid'];
+        $id=$_GET['taskid'];
+
+        $sql="select * from task_remainder where task_id='$id'";
+
+
+        $result=mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result) > 0)
+            {
+                    $row1 = mysqli_fetch_array($result);
+                    
+                    $userid = $row1['user_id'];
+                    $to_name=$row1['to_name'];
+                    $to_email=$row1['to_email'];
+
+                    $due_date=$row1['due_date'];
+                    $task_title=$row1['title'];
+                    $task_data=$row1['task'];
+                    
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('to_name').value='$to_name';
+                            document.getElementById('to_email').value='$to_email';
+                            document.getElementById('due_date').value='$due_date';
+                            document.getElementById('task_title').value='$task_title';
+                            document.getElementById('task_data').value='$task_data';         
+                            });
+                        </script>";
+
+
+
+
+
+
+            }
+    }
+
 
     if(isset($_POST['btnsubmit']))
     {
-        if(form_validation() !== false)
+
+        $sql = "select * from user_information where home_id='".$_SESSION['homeid']."' AND first_name='".$_POST['to_name']."' AND email='".$_POST['to_email']."' ";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) > 0)
         {
             $isfile=0;
             $homeid= $_SESSION['homeid'];
@@ -299,6 +381,7 @@
             $to_email = $_POST['to_email'];
             $task_title = $_POST['task_title'];
             $task_data = htmlspecialchars($_POST['task_data']);
+            $task_due_Date=$_POST['due_date'];
 
             $name = $_FILES["filetoupload"]["name"];
 
@@ -314,84 +397,46 @@
                 {   
                     $isfile=1;
                     //home_id user_id to_name to_email    title   task
-                    $sql="insert into task_remainder values('$homeid','$userid','$to_name','$to_email','$task_title','$task_data','$target')";
-                            
-                            /*$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
-                            mysqli_query($conn,$sql);*/
+                    if($_GET['edit']=="true")
+                    {
+                        $id=$_GET['taskid'];
+                        $sql="update task_remainder set to_name='$to_name',to_email='$to_email',title='$task_title',task='$task_data',file='$target',due_date='$task_due_Date' where task_id='$id'";
+                    }
+                    else
+                    {
+                    $sql="insert into task_remainder(home_id,user_id,to_name,to_email,title,task,file,due_date) values('$homeid','$userid','$to_name','$to_email','$task_title','$task_data','$target','$task_due_Date')";
+                     }       
                     move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
                              
                 }
 
                 if($isfile == 0)
                 {
-                    $sql="insert into task_remainder values('$homeid','$userid','$to_name','$to_email','$task_title','$task_data','')";
+                    if($_GET['edit']=="true")
+                    {
+                        $id=$_GET['taskid'];
+                        $sql="update task_remainder set to_name='$to_name',to_email='$to_email',title='$task_title',task='$task_data',file='',due_date='$task_due_Date' where task_id='$id'";
+                    }
+                    else
+                    {
+                    $sql="insert into task_remainder(home_id,user_id,to_name,to_email,title,task,file,due_date) values('$homeid','$userid','$to_name','$to_email','$task_title','$task_data','','$task_due_Date')";
+                    }
                 }
 
-            $result=mysqli_query($conn,$sql);
-            if(!$conn)
-            {
-                die("Connection failed".mysqli_connect_error());
-            }
-            else{
+                mysqli_query($conn, $sql);
                 echo "<script type='text/javascript'>
-                    alert('Save Successfully!!');
-                    </script>";
+                    alert('Task Added Successfully');
+                    document.location.href='taskremainder.php';
 
+                    </script>";
             }
-        }
-        else
-        {
-            echo "<script type='text/javascript'>
+            else
+            {
+                echo "<script type='text/javascript'>
                     alert('Invalid User name or email!!');
                     </script>";
-        }
+            }
         
-    }
-
-
-    function form_validation(){
-        $temp=0;
-
-        // $servername = "localhost";
-        // $username = "root";
-        // $password = "";
-        // $db="iwt_project";
-        // $conn= mysqli_connect($servername,$username,$password,$db);
-
-        //$input_name = strtolower($_POST['to_name']);
-        //$input_email = strtolower($_POST['to_email']);
-           
-        $sql = "select * from user_information where home_id='".$_SESSION['homeid']."' AND first_name='".$_POST['to_name']."' AND email='".$_POST['to_email']."' ";
-        $result = mysqli_connect($conn,$sql);
-
-        if(mysqli_num_rows($result) > 0)
-        {
-            return true;
-            // while($row = mysqli_fetch_assoc($result))
-            // {
-            //     $fetch_name = strtolower($row['first_name']);
-            //     $fetch_email = strtolower($row['email']);
-
-            //     if(($fetch_name == $input_name) && ($fetch_email == $input_email))
-            //     {
-            //         $temp=1;
-            //     }
-            // }
-            // if($temp == 1)
-            // {
-            //     return true;
-            // }
-            // else
-            // {
-            //     return false;
-            // }
-            
-        }
-        else{
-            return false;
-        }
-        
-            
     }
 
     ?>

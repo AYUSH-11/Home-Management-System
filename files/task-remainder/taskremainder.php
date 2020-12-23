@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+    
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,8 +28,8 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
-    <script src="taskremainder.js"></script>
-
+    <!-- <script src="taskremainder.js"></script> -->
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
 
 
 </head>
@@ -156,7 +156,7 @@
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="../dashboard.php" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="../../dashboard.php" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item active"><a href="#" class="breadcrumb-link">Task Remainder</a></li>
                                             
 
@@ -196,7 +196,7 @@
 
                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12"  >
                             <div class="product-sidebar-widget" >
-                                <a href="taskassignform.php" class="btn btn-primary" id="assigntask" ><i class="ti-plus"></i> Assign Task</a>
+                                <a href="taskassignform.php?edit=false" class="btn btn-primary" id="assigntask" ><i class="ti-plus"></i> Assign Task</a>
                             </div>
                             <div class="product-sidebar" >
                                 <div class="product-sidebar-widget">
@@ -204,7 +204,10 @@
                                 </div>
                                 <div class="product-sidebar-widget" id="filter">
                                     <h4 class="product-sidebar-widget-title">Assign to</h4>
-                                        
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="All" name="All" checked>
+                                        <label class="custom-control-label" for="All">All</label>
+                                    </div> 
                                     <!--<div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="cat-2">
                                         <label class="custom-control-label" for="cat-2">Technical</label>
@@ -225,6 +228,7 @@
                                 
                                 <div class="product-sidebar-widget" >
                                     <a href="#" class="btn btn-primary" id="resbtn" >Reset Filter</a>
+
                                 </div>
                             </div>
                         </div>
@@ -292,6 +296,175 @@
     
     <?php
         include '../header.php';
+        
+        echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                                  $('#resbtn').click(function(){
+                                    location.reload();
+                                });
+                            });
+                            </script>";
+        $homeid=$_SESSION['homeid'];
+        $userid=$_SESSION['userid'];
+        $sql="select * from user_information where home_id='$homeid';";
+        $result=mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result)>0)
+        {
+            while($row=mysqli_fetch_array($result))
+            {
+                $name=$row['first_name'];
+                echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+
+                                $('#filter').append(\"<div class='custom-control custom-checkbox' >\
+                                        <input type='checkbox' class='custom-control-input' id=$name name=$name>\
+                                        <label class='custom-control-label' for=$name>$name</label>\
+                                    </div>\");   
+                            });
+                            </script>";
+            }
+        }
+
+        $sql="select * from task_remainder where home_id='$homeid';";
+        $result=mysqli_query($conn,$sql);
+        $image=['../../assets/vendor/timeline/img/cd-icon-location.svg'];
+        $background=['cd-timeline__img cd-timeline__img--picture js-cd-img','cd-timeline__img cd-timeline__img--location js-cd-img','cd-timeline__img cd-timeline__img--movie js-cd-img'];
+        $i=0;
+        if(mysqli_num_rows($result)>0)
+        {
+            while($row=mysqli_fetch_array($result))
+            {
+                if($i>2)
+                {
+                    $i=0;
+                }
+                $background_color=$background[$i];
+                $i+=1;
+                $sql1="select first_name from user_information where home_id= '".$row['home_id']."' and user_id='".$row['user_id']."';";
+                $result1=mysqli_query($conn,$sql1);
+                $row1=mysqli_fetch_array($result1);
+                $title=$row['title'];
+                $from=$row1['first_name'];
+                $to=$row['to_name'];
+                $task=$row['task'];
+                $id=$to."-Id";
+                $img="../../".$row['file'];
+                
+                if($img=="../../")
+                {
+                    $img="#";
+                    
+                }
+                if($_SESSION['userid']==$row['user_id'])
+                {
+                $delete="deletetask.php?"."taskid=".$row['task_id']."&image=".$img;
+                $update="taskassignform.php?edit=true"."&taskid=".$row['task_id']."&image=".$img;
+                }
+                else
+                {
+                   $delete="#";
+                   $update="#"; 
+                }
+
+                echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            $('#task').append(\"<div class='cd-timeline__block js-cd-block' id=$id name=$id>\
+                                <div class='$background_color'>\
+                                    <img src='../../assets/vendor/timeline/img/cd-icon-location.svg' alt='Picture'>\
+                                </div>\
+                                <div class='cd-timeline__content js-cd-content'>\
+                                    <h3>$title</h3>\
+                                    <h4 style='float: left;'>From :$from</h4>\
+                                    <h4 style='float: right;'>To :$to</h4><br><br>\
+                                    <p>$task</p><br><a href='$img' class='btn btn-primary' >Image</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='$update' class='btn btn-warning' >Update</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='$delete' class='btn btn-danger ' >Delete</a>\
+                                    <span class='cd-timeline__date'></span>\
+                                </div>\
+                            </div>\");   
+                            });
+                            </script>";
+            }
+
+        }
+        echo "<script type='text/javascript'>
+                            
+                                 $(function () {
+                                    
+                                    $('input:checkbox').click(function () {
+                                        
+                                       
+                                        var selected = [];
+                                        var not_selected=[];
+                                       
+                                        $('input:checkbox').each(function () {
+                                            
+                                            if ($(this).is(':checked')){
+                                                var color = $(this).attr('name').replace('', '');
+                                                selected.push(color);
+                                            }
+                                            else
+                                            {
+                                                    var color = $(this).attr('name').replace('', '');
+                                                    not_selected.push(color);
+                                            }
+
+                                        });
+                                        var temp=0;
+                                        for (var i = 0; i < selected.length; i++) {
+                                            if(selected[i]=='All')
+                                            {
+                                                temp=1;
+                                                break;
+                                            }
+                                        }
+                                        if(temp)
+                                        {
+
+                                            for (var i = 0; i < selected.length; i++) {
+
+                                                if(selected[i]!='All')
+                                                {
+                                                   var id1='[id='+selected[i]+'-Id'+']';
+                                                    $(id1).show();
+                                                }
+                                            }
+                                            for (var i = 0; i < not_selected.length; i++) {
+                                                if(not_selected[i]!='All')
+                                                {
+                                                    var id1='[id='+not_selected[i]+'-Id'+']';
+                                                    $(id1).show();
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            for (var i = 0; i < selected.length; i++) {
+
+                                                if(selected[i]!='All')
+                                                {
+                                                    var id1='[id='+selected[i]+'-Id'+']';
+                                                    $(id1).show();
+                                                }
+                                            }
+                                            for (var i = 0; i < not_selected.length; i++) {
+                                                if(not_selected[i]!='All')
+                                                {
+                                                    var id1='[id='+not_selected[i]+'-Id'+']';
+                                                     $(id1).hide();
+                                                }
+                                            }
+                                        }
+
+
+
+                                    });
+
+                                    });
+                       
+                                
+                            </script>";
+
+
 
     ?>
 
