@@ -8,16 +8,14 @@
 
 	<div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="../../dashboard.php">A&Y Group</a>
+                <a class="navbar-brand" href="../../dashboard.php"><img src="../../img/logo4.jpg" style="width: 30%;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
-                            <div id="custom-search" class="top-search-bar">
-                                <input class="form-control" type="text" placeholder="Search..">
-                            </div>
+                            
                         </li>
                         <li class="nav-item dropdown notification">
                             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
@@ -26,43 +24,50 @@
                                     <div class="notification-title"> Notification</div>
                                     <div class="notification-list">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
+                                            <!-- <a href="#" class="list-group-item list-group-item-action active">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Ayush Vachhani</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
+                                    
                                                 </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Yash Bhensdadiya </span>is now following you
-                                                        <div class="notification-date">2 days ago</div>
-                                                    </div>
+                                            </a> -->
+                                            <?php 
+                                            $sql="select first_name from user_information where home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."'";
+                                            $result=mysqli_query($conn,$sql);
+                                            $row=mysqli_fetch_array($result);
+                                            $name=$row['first_name'];
+                                            $sql="select * from task_remainder where home_id='".$_SESSION['homeid']."' and to_name='$name'";
+                                            $result=mysqli_query($conn,$sql);
+                                            if(mysqli_num_rows($result)>0)
+                                            {
+                                                while($row=mysqli_fetch_array($result))
+                                                {
+                                                $person_id=$row['user_id'];
+                                                $sql1="select first_name,last_name,image from user_information where home_id='".$_SESSION['homeid']."' and user_id='$person_id'";
+                                                $result1=mysqli_query($conn,$sql1);
+                                                $row1=mysqli_fetch_array($result1);
+                                                $person_name=$row1['first_name']." ".$row1['last_name'];
+                                                $image="../../".$row1['image'];
+                                                $title=$row['title'];
+                                                echo "<a href='#' class='list-group-item list-group-item-action active'>
+                                                <div class='notification-info'>
+                                                    <div class='notification-list-user-img'><img src='$image' alt='' class='user-avatar-md rounded-circle'></div>
+                                                    <div class='notification-list-user-block'><span class='notification-list-user-name'>$person_name</span>
+                                                        $title
                                                 </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Smit Vora</span> is watching your main repository
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Heet Bhalodiya/span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                                </a>";
+                                                }
+
+                                            }
+
+                                            ?>
+
+
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                    <div class="list-footer"> <a href="../task-remainder/taskremainder.php">View all notifications</a></div>
                                 </li>
                             </ul>
                         </li>
@@ -104,7 +109,7 @@
                                     <span class="ml-2">Available</span>
                                 </div>
                                 <a class="dropdown-item" href="../profile/profile.php"><i class="fas fa-user mr-2"></i>Profile</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="../profile/changepassword.php"><i class="m-r-9 mdi mdi-key-variant"></i> Change Password</a>
                                 <a class="dropdown-item" href="../../logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
