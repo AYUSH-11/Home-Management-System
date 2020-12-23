@@ -141,7 +141,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Mobile No</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input  type="text" name="mobile" required="" placeholder="Enter Mobile no" class="form-control" id="mobile">
+                                                <input  type="text" name="mobile" required=""  keypress="return onlyNumberKey(event)" placeholder="Enter Mobile no" class="form-control" id="mobile" maxlength="10">
                                             </div>
                                         </div>
 

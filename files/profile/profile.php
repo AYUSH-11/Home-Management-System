@@ -540,15 +540,16 @@
                     </script>";
                 if(isset($_POST['update']))
                 {
+                    $homeid=$_SESSION['homeid'];
+                    $userid=$_SESSION['userid'];
                     $name = $_FILES['filetoupload']['name'];
-                    $target_dir="../../image/";
-                    $target="image/".$name;
+                    $target_dir="../../image/$homeid$userid";
+                    $target="image/$homeid$userid".$name;
                     $target_file = $target_dir.basename($_FILES["filetoupload"]["name"]);
                     $imagefileType=strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
                     $extension_arr=array('jpg','jpeg','png','gif');
-                    $homeid=$_SESSION['homeid'];
-                    $userid=$_SESSION['userid'];
+                    
                     if(in_array($imagefileType,$extension_arr))
                         {
 
