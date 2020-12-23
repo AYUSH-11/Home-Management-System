@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-   
+    
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -91,11 +91,11 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                               
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="../../dashboard.php" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home Documents</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Add New Document</li>
@@ -123,7 +123,7 @@
                                     
                                         <div class="form-group">
                                             <label for="Docname" style="float: left;">Document Name&nbsp;&nbsp;&nbsp;</label>
-                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;">
+                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;" maxlength="30">
                                         </div><br>
 
                                          <div class="form-group">
@@ -134,7 +134,7 @@
                                             	<option value="Vehicle">Vehicle</option>
                                             	
                                             	<option value="Health">Health</option>                       	
-                                            	<option value="Others">Others</option>
+                                            	<option value="Other">Other</option>
 
                                             </select>
                                             
@@ -277,29 +277,31 @@
                     $userid="";
                     if(in_array($imagefileType,$extension_arr))
                         {	
-                        	$sql="select * from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname'";
+                        	$sql="select * from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname' and category='homedocument'";
                         	$result=mysqli_query($conn,$sql);
                         	$temp=1;
-                        	if(mysqli_num_rows($result))
+                        	if(mysqli_num_rows($result)>0)
                         	{
                         		$temp=0;
                         	}
                         	if($temp==1)
                         	{
-                        		$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type) values('$homeid','$userid','$documentname','$target','$documenttype')";
+                        		$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,category) values('$homeid','$userid','$documentname','$target','$documenttype','homedocument')";
+                                
                         		mysqli_query($conn,$sql);
                         		move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
+                                header("location: homedocument.php");
+                                exit;
                         	}
                         	else
                         	{
-
-                        	}
-
-
-                        	header("location: homedocument.php");
-                    		exit;
-
-                            
+                                
+                                echo " <script type='text/javascript'>
+                                        
+                                            alert('Exist');
+                                        
+                                        </script>";           
+                        	}   
                         }
 
 
@@ -308,7 +310,7 @@
 	?>
 
 </body>
- 
+
 </html>
 
 

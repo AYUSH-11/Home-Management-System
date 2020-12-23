@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+    
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -73,12 +73,12 @@
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
-        
         <!-- left sidebar -->
         <!-- ============================================================== -->
         <?php
         include 'navbar.php';
         ?>
+        
 
         <div class="dashboard-wrapper">
 
@@ -91,11 +91,11 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="../../dashboard.php" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Shop Documents</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Add New Document</li>
@@ -111,64 +111,79 @@
 
                     
                     <div class="row">
-                    	<form action="add_individual.php" class="form_add_document">
+                    	<form method="POST" class="form_add_document" enctype="multipart/form-data">
                         <!-- ============================================================== -->
                         <!-- Add new Document form -->
                         <!-- ============================================================== -->
+
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header" style="text-align: center;">Add New Document</h5>
                                 <div class="card-body">
-                                    <form action="#" id="basicform" data-parsley-validate="">
+                                    
                                         <div class="form-group">
                                             <label for="Docname" style="float: left;">Document Name&nbsp;&nbsp;&nbsp;</label>
-                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;">
+                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;" maxlength="30">
                                         </div><br>
 
                                          <div class="form-group">
                                             <label for="Doctype">Document Type</label>&nbsp;&nbsp;&nbsp;                              
                                             <select name="Doctype" id="Doctype">
-                                            	<option value="Identity">ID Proof</option>
-                                            	<option value="School">School</option>
-                                            	<option value="Collage">Collage</option>
-                                            	<option value="Sports">Sports</option>
-                                            	<option value="Health">Health</option>                                            	
-                                            	<option value="Office">Office</option>
-                                            	<option value="Other">Other</option>
+                                            	<option value="Home_appliances">Home appliances</option>
+                                            	<option value="Vehicle">Vehicle</option>
+                                            	<option value="Kitchen">Kitchen</option>
+                                            	
+                                            	<option value="Sport">Sport</option>
+                                            	<option value="Fashion">Fashion</option>
+                                            	<option value="Electronic_Gadget">Electronic Gadget</option>                  	
+                                            	<option value="Others">Others</option>
+
                                             </select>
                                             
                                         </div>
+                                        <!--<div class="form-group">
+                                        		<label for="switch16">Keep Password Protected</label>&nbsp;&nbsp;&nbsp;              
+                                        		<div class="switch-button switch-button-success">
+                                                        <input type="checkbox" name="switch16" id="switch16" ><span>
+                                                    <label for="switch16"></label></span>                      
+                                            	</div>
+                                        </div>
                                         
-                                        
+                                        <div class="form-group">
+                                        	<div id="div_password1" style="display: none;">
+                                        		<label for="password" style="float: left;">Password&nbsp;&nbsp;&nbsp;</label>
+                                            	<input id="password" name="password" type="password" placeholder="Type Password"  class="form-control" style="width: 350px;">
+                                        	</div>
+                                        </div>
+
+                                        <div class="form-group" >
+                                        	<div id="div_password2" style="display: none;">
+                                        		<label for="re_password" style="float: left;">ReType Password&nbsp;&nbsp;&nbsp;</label>
+                                            	<input id="re_password" type="password" placeholder="Retype Password"  class="form-control" style="width: 350px;">
+                                        	</div>	                                           
+                                        </div>-->
 
                                         <div class="form-group row">
                                             <label for="soft_copy" class="col-12 col-sm-3 col-form-label text-sm-right">Upload Document</label>&nbsp;&nbsp;&nbsp;
-                                            <label class="custom-control custom-radio custom-control-inline">
-                                            <input type="file" id="soft_copy" class="form-control" ></input>
-                                            </label>
+                                           
+                                            <input type="file" id="filetoupload" name="filetoupload" required="" class="form-control" >
+                                        		
+                                            
                                         </div>
-                                     <!-- 
-                                        <div class="form-group">
-                                            <label for="inputPassword">Password</label>
-                                            <input id="inputPassword" type="password" placeholder="Password" required="" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputRepeatPassword">Repeat Password</label>
-                                            <input id="inputRepeatPassword" data-parsley-equalto="#inputPassword" type="password" required="" placeholder="Password" class="form-control">
-                                        </div> -->
+                                     
                                         <div class="form_btn">                                          
                                             <div class="col-sm-6 pl-0">
-                                                    <button type="submit" class="btn btn-space btn-primary">Save</button>&nbsp;
-                                                    <button class="btn btn-space btn-secondary">Cancel</button>
+                                                    <button type="submit" class="btn btn-space btn-primary" name="submitbtn">Save</button>&nbsp;
+                                                    <a href="homedocument.php" class="btn btn-space btn-secondary">Cancel</a>
                                                 
                                             </div>
                                         </div>
-                                    </form>
+                                    
                                 </div>
                             </div>
-                        </form>
+                        
                     </div>
-                    
+                    </form>
                         
 
                 </div>
@@ -234,11 +249,74 @@
     <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
     <?php
-    	include '../header.php';  
+    	include '../header.php';
+                
             ob_start();
+
+
+            if(isset($_POST['submitbtn']))
+				{
+					
+					$documentname=$_POST['Docname'];
+					$documenttype=$_POST['Doctype'];
+					
+					$homeid=$_SESSION['homeid'];
+					//$userid=$_SESSION['userid'];
+					
+
+					$name = $_FILES['filetoupload']['name'];
+                    $target_dir="../../image/documents/$homeid";
+                    $target="image/documents/$homeid".$name;
+
+                    //echo "<br>".$target_dir;
+                    //echo "<br>".$target;
+
+                    $target_file = $target_dir.basename($_FILES["filetoupload"]["name"]);
+                    $imagefileType=strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                    $extension_arr=array('jpg','jpeg','png','gif','pdf');
+                    $homeid=$_SESSION['homeid'];
+                    $userid="";
+                    if(in_array($imagefileType,$extension_arr))
+                        {	
+                        	$sql="select * from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname' and category='shopdocument'";
+                        	$result=mysqli_query($conn,$sql);
+                        	$temp=1;
+                        	if(mysqli_num_rows($result)>0)
+                        	{
+                        		$temp=0;
+                        	}
+                        	if($temp==1)
+                        	{
+                        		$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,category) values('$homeid','$userid','$documentname','$target','$documenttype','shopdocument')";
+                                
+                        		mysqli_query($conn,$sql);
+                        		move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
+                        		header("location: shopdocument.php");
+                    		exit;
+                        	}
+                        	else
+                        	{
+                        			echo " <script type='text/javascript'>
+                                        alert('Document already exist');
+                                        </script>";
+                        	}
+
+
+                        	
+
+                            
+                        }
+
+
+				}
+
 	?>
 
 </body>
  
 </html>
+
+
+
 

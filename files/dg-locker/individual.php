@@ -29,7 +29,9 @@
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    
-
+    <style type="text/css">
+        img:hover {opacity: 0.5;}
+    </style>
 
 </head>
 
@@ -185,7 +187,7 @@
         
                             $(document).ready(function(){
                             $(\"#indrec\").append(\"\
-                            <a href='individualdocument.php' id='$id' onClick='createsession(this.id)'  title='$name'><img src='$img'  style='width: 25%;height: 250px;'  /></a>\");
+                            <a href='individualdocument.php' id='$id' style= 'padding:10px;width:30%;height:25%'  onClick='createsession(this.id)'  title='$name'><img src='$img'  style='width: 25%;height:250px;border-radius:50%; border: 5px solid gray; '   /></a>\");
 
                             });
                         </script>

@@ -123,7 +123,7 @@
                                     
                                         <div class="form-group">
                                             <label for="Docname" style="float: left;">Document Name&nbsp;&nbsp;&nbsp;</label>
-                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;">
+                                            <input id="Docname" type="text" name="Docname" required="" placeholder="Enter Document name" class="form-control" style="width: 350px;" maxlength="30">
                                         </div><br>
 
                                          <div class="form-group">
@@ -131,7 +131,8 @@
                                             <select name="Doctype" id="Doctype">
                                             	<option value="Identity">ID Proof</option>
                                             	<option value="School">School</option>
-                                            	<option value="Collage">Collage</option>
+                                            	<option value="College">College</option>
+                                                <option value="Bank">Bank</option>
                                             	<option value="Sports">Sports</option>
                                             	<option value="Health">Health</option>                                            	
                                             	<option value="Office">Office</option>
@@ -157,7 +158,7 @@
                                         <div class="form-group" >
                                         	<div id="div_password2" style="display: none;">
                                         		<label for="re_password" style="float: left;">ReType Password&nbsp;&nbsp;&nbsp;</label>
-                                            	<input id="re_password" type="password" placeholder="Retype Password"  class="form-control" style="width: 350px;">
+                                            	<input id="re_password" name="re_password" type="password" placeholder="Retype Password"  class="form-control" style="width: 350px;">
                                         	</div>	                                           
                                         </div>
 
@@ -278,8 +279,18 @@
 					$homeid=$_SESSION['homeid'];
 					$userid=$_SESSION['userid'];
 					$password="";
+                    $temp=1;
 					if(isset($_POST['switch16']))
 					{	
+                        if($_POST['password']!=$_POST['re_password'])
+                        {
+                            echo " <script type='text/javascript'>
+                                        
+                                            alert('Password is not same');
+                                        
+                                        </script>";
+                            $temp=0;
+                        }
 						$password=$_POST['password'];
 					}
 
@@ -298,32 +309,40 @@
                     $extension_arr=array('jpg','jpeg','png','gif','pdf');
                     $homeid=$_SESSION['homeid'];
                     $userid=$_SESSION['userid'];
-                    if(in_array($imagefileType,$extension_arr))
+                    if(in_array($imagefileType,$extension_arr) && $temp)
                         {	
                         	$sql="select * from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname'";
                         	$result=mysqli_query($conn,$sql);
                         	$temp=1;
-                        	if(mysqli_num_rows($result))
+                        	if(mysqli_num_rows($result)>0)
                         	{
+                                
                         		$temp=0;
                         	}
                         	if($temp==1)
                         	{
-                        		$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
+                                
+                        		$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password,category) values('$homeid','$userid','$documentname','$target','$documenttype','$password','individual')";
                         		mysqli_query($conn,$sql);
                         		move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
+                                header("location: individualdocument.php");
+                                exit;
                         	}
                         	else
                         	{
-
+                                echo " <script type='text/javascript'>
+                                        
+                                            alert('Exist');
+                                        
+                                        </script>";
                         	}
 
 
-                        	header("location: individualdocument.php");
-                    		exit;
+                        	
 
                             
                         }
+
 
 
 				}

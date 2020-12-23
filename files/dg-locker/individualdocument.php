@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+   
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,6 +28,8 @@
     <title>Home Management System</title>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
     
 </head>
 
@@ -63,7 +65,7 @@
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="../../dashboard.php" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">DG Locker</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Individual</li>
 
@@ -73,11 +75,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                     <!-- ============================================================== -->
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
@@ -144,29 +141,46 @@
                                 <div class="product-sidebar-widget">
                                     <h4 class="product-sidebar-widget-title">Documents</h4>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-1" >
-                                        <label class="custom-control-label" for="cat-1">Education</label>
+                                        <input type="checkbox" class="custom-control-input" id="All" name="All" checked>
+                                        <label class="custom-control-label" for="All">All</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-2">
-                                        <label class="custom-control-label" for="cat-2">Technical</label>
+                                        <input type="checkbox" class="custom-control-input" id="Identity" name="Identity" >
+                                        <label class="custom-control-label" for="Identity">ID-Proof</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-3">
-                                        <label class="custom-control-label" for="cat-3">Sports</label>
+                                        <input type="checkbox" class="custom-control-input" id="School" name="School">
+                                        <label class="custom-control-label" for="School">School</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-4">
-                                        <label class="custom-control-label" for="cat-4">Bank</label>
+                                        <input type="checkbox" class="custom-control-input" id="College" name="College">
+                                        <label class="custom-control-label" for="College">College</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="cat-5">
-                                        <label class="custom-control-label" for="cat-5">Others</label>
+                                        <input type="checkbox" class="custom-control-input" id="Sports" name="Sports">
+                                        <label class="custom-control-label" for="Sports">Sports</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Bank" name="Bank">
+                                        <label class="custom-control-label" for="Bank">Bank</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Office" name="Office">
+                                        <label class="custom-control-label" for="Office">Office</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Health" name="Health">
+                                        <label class="custom-control-label" for="Health">Health</label>
+                                    </div>
+                                    
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="Other" name="Other">
+                                        <label class="custom-control-label" for="Other">Other</label>
                                     </div>
                                 </div>
                                 
                                 <div class="product-sidebar-widget" >
-                                    <a href="#" class="btn btn-outline-light" id="resbtn">Reset Filter</a>
+                                    <a href="#" class="btn btn-warning" id="resbtn">Reset Filter</a>
                                 </div>
                             </div>
                         </div>
@@ -192,6 +206,7 @@
         </div>
         <div class="modal-body">
           <p>You want to remove document</p>
+          <p style="color: red">*Enter password if password protected</p>
         </div>
         <div class="modal-footer">
             <form  method="post">
@@ -206,6 +221,10 @@
     </div>
   </div>
 
+
+
+
+
   <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">
     
@@ -216,8 +235,10 @@
         </div>
         <div class="modal-body">
           <p>You want to View document</p>
+          
         </div>
         <div class="modal-footer">
+
             <form  method="post">
                 Password: <input type="password" name="pass">
                 <input type="submit"  name="viewdocument" value="View" class="btn btn-primary" >
@@ -299,7 +320,8 @@
             echo "<script>
                     $(document).ready(function(){
                         $('#resbtn').click(function(){
-                            $('input[type=\"checkbox\"]:checked').prop('checked',false);
+                            
+                            location.reload();
                         });
                     });
                     
@@ -343,19 +365,20 @@
             if(isset($_POST['revdocument']))
             {
                 $documentname=$_COOKIE['useridfordoc'];
-                $sql="select password from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname'";
+                $sql="select password from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname' and category='individual'";
                 $result=mysqli_query($conn,$sql);
                 $row=mysqli_fetch_array($result);
+                $category='individual';
                 if($userid==$_SESSION['userid'] && $row['password']==NULL)
                     {
-                        header("location: deletedocument.php");
+                        header("location: deletedoc.php?useridfordoc=$documentname&category=$category");
                         exit;
                     }
                     else{
                         $pass=$_POST['pass'];
-                        if($pass==$row['password'])
+                        if($pass==$row['password'] && $userid==$_SESSION['userid'])
                         {
-                           header("location: deletedocument.php");
+                           header("location: deletedoc.php?useridfordoc=$documentname&category=$category");
                         exit; 
                         }
                         else
@@ -366,19 +389,19 @@
                     }
             }
 
+
             if(isset($_POST['viewdocument']))
             {
                 $documentname=$_COOKIE['useridfordoc'];
-                $sql="select password from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname'";
+                $sql="select password from dg_locker where home_id='$homeid' and user_id='$userid' and document_name='$documentname' and category='individual'";
                 $result=mysqli_query($conn,$sql);
                 $row=mysqli_fetch_array($result);
-                
+                $category='individual';
                     
                 $pass=$_POST['pass'];
                 if($pass==$row['password'])
-                    {
-                        //echo 'window.open("displaydocument.php")';
-                        header("location: displaydocument.php");
+                    { 
+                        header("location: displaydoc.php?useridfordoc=$documentname&category=$category");
                         exit; 
                     }
                     else
@@ -393,7 +416,7 @@
 
 
 
-            $sql="select * from dg_locker where home_id='$homeid' and user_id='$userid'";
+            $sql="select * from dg_locker where home_id='$homeid' and user_id='$userid' and category='individual'";
             $result=mysqli_query($conn,$sql);
         
 
@@ -404,12 +427,13 @@
                     $download='download';
                     $ext = pathinfo($img, PATHINFO_EXTENSION);
                     $password=$row['password'];
-                    $remove='deletedocument.php';
-                    
+                   
+                    $id1=$row['document_type'].'-Id';
+                   
                     $viewprotected="";
                     if($userid!=$_SESSION['userid'])
                     {
-                        $remove='';
+                        
                         $download='';
                         $pdf='#';
 
@@ -417,7 +441,9 @@
                     $documentname=$row['document_name'];
                     
                     $documentpath=$row['document'];
-                    $documentview='displaydocument.php';
+                    $category='individual';
+
+                    $documentview="displaydoc.php?useridfordoc=$documentname&category=$category";
 
                     if($ext=='pdf' || $ext=='PDF' || $password!=NULL)
                     {
@@ -438,10 +464,11 @@
                    
                     
                     $str="<script>
+
                             $(document).ready(function(){
-                                $(\"#inddoc\").append(\"<div class='col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12' style='float:left;'>\
+                                $(\"#inddoc\").append(\"<div class='col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12' id=$id1 name=$id1 style='float:left;' >\
                               <div class='product-thumbnail'>\
-                                  <div class='product-img-head'>\
+                                  <div class='product-img-head' style='border: 3px solid gray;'>\
                                     <div class='product-img'>\
                                                     <img src='$img' style='height:150px;'  class='img-fluid' >\
                                     </div>\
@@ -449,7 +476,7 @@
                                     <div class='ribbons-text'>New</div>\
                                     <div class='product-content'>\
                                         <div class='product-content-head'>\
-                                            <h3 class='product-title'>$documentname</h3>\
+                                            <h3 class='product-title'style='height:20px;'>$documentname</h3>\
                                         </div>\
                                         <div class='product-btn'>\
                                                 <a href='$documentview' target='_blank' $viewprotected  id='$documentname' onClick='createsession(this.id)' class='btn btn-primary' style='width:45%;' disabled>View</a>\
@@ -465,12 +492,95 @@
                                 });
 
                         </script>";
-                    echo "<br>".$str;   
+                    echo "".$str;   
                 }     
             }
+
+         echo "<script type='text/javascript'>
+                            
+                    $(function () {
+                                    
+                        $('input:checkbox').click(function () {
+                                        
+                                var selected = [];
+                                var not_selected=[];
+                                       
+                                $('input:checkbox').each(function () {
+                                            
+                                    if ($(this).is(':checked')){
+                                        
+                                        var color = $(this).attr('name').replace('', '');
+                                        selected.push(color);
+                                        }
+                                    else
+                                        {
+                                            var color = $(this).attr('name').replace('', '');
+                                            not_selected.push(color);
+                                        }
+
+                                });
+                                var temp=0;
+
+                                for (var i = 0; i < selected.length; i++) {
+                                        if(selected[i]=='All')
+                                        {
+
+                                            temp=1;
+                                            break;
+                                        }
+                                }
+                                if(temp)
+                                {
+
+                                    for (var i = 0; i < selected.length; i++) {
+
+                                        if(selected[i]!='All')
+                                        {
+
+                                           var id1='[id='+selected[i]+'-Id'+']';
+
+                                            $(id1).show();
+                                        }
+                                    }
+                                    for (var i = 0; i < not_selected.length; i++) {
+                                        if(not_selected[i]!='All')
+                                        {
+                                            var id1='[id='+not_selected[i]+'-Id'+']';
+                                            $(id1).show();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+
+                                    for (var i = 0; i < selected.length; i++) {
+
+                                        if(selected[i]!='All')
+                                        {
+                                            var id1='[id='+selected[i]+'-Id'+']';
+                                            $(id1).show();
+                                        }
+                                    }
+                                    for (var i = 0; i < not_selected.length; i++) {
+                                        if(not_selected[i]!='All')
+                                        {
+                                            var id1='[id='+not_selected[i]+'-Id'+']';
+                                            
+                                              $(id1).hide();
+                                        }
+                                    }
+                                }
+
+
+                            });
+
+                        });
+                       
+                                
+                            </script>";
+
 	?>
 
 </body>
  
 </html>
-
