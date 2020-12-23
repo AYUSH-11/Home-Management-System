@@ -29,7 +29,7 @@
     <script src="../../files/dashboard/dashboard.js"></script>
     <script type="text/javascript" src="headerimage.js"></script>
     
-
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
 </head>
 
 <body>
@@ -133,6 +133,10 @@
 
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+                    <div class="alert alert-success" id="success-alert" style="display: none;">
+                        <a href="water.php" class="close">x</a>
+                        <strong>Success! </strong> Bill Added Successfully.
+                    </div>
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
@@ -140,14 +144,24 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <p class="pageheader-text"></p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bill Management</a></li>
                                             <li class="breadcrumb-item"><a href="water.php" class="breadcrumb-link">Water</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Add New Bill</li>
+                                            <?php
+                                            if($_GET['edit']=='true')
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Edit Bill</li>";
+                                            }
+                                            else
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Add New Bill</li>";
+                                            }
+                                            ?> 
+                                            
 
                                         </ol>
                                     </nav>
@@ -159,7 +173,7 @@
                     </div>
 
 
-                    <form enctype="multipart/form-data" method="post" name="water" id="water" style="width: 1000px;margin-left: 150px;">
+                    <form enctype="multipart/form-data" method="post" name="water" id="water" style="width: 70%;margin-left: 15%;">
                     <div class="row">
                         <!-- ============================================================== -->
                         <!-- valifation types -->
@@ -205,20 +219,20 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Mode</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2" class="custom-control-input" checked value="online"><span class="custom-control-label">Online</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" checked value="online" id="online"><span class="custom-control-label">Online</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="offline"><span class="custom-control-label">Offline</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="offline" id="offline"><span class="custom-control-label">Offline</span>
                                             </label>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Status</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1"  class="custom-control-input" value="payed"><span class="custom-control-label" checked>Payed</span>
+                                                <input type="radio" name="radio-inline1"  class="custom-control-input" value="payed" id="payed"><span class="custom-control-label" checked>Payed</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1" class="custom-control-input" checked value="not payed"><span class="custom-control-label">Not Payed</span>
+                                                <input type="radio" name="radio-inline1" class="custom-control-input" checked value="not payed" id="not payed"><span class="custom-control-label">Not Payed</span>
                                             </label>
                                         </div>
 
@@ -309,6 +323,59 @@
     <?php
     include '../header.php';
     
+    $url = $_GET['edit'];
+
+        if($url == 'true')
+        {
+            $selected_issue_date = $_GET['date1'];
+            $sql1 = "select * from bill_management where(home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."' and category='water' and issue_date='".$selected_issue_date."')";
+
+            $result1 = mysqli_query($conn,$sql1);
+            if(mysqli_num_rows($result1) > 0)
+            {
+                    $row1 = mysqli_fetch_assoc($result1);
+                    
+                    // home_id user_id category    issue_date  due_date    amount  duration_month  paynment_status paynment_mode   notification_required   soft_copy   company_name    reference_no    unit_burn   source/recharge_type
+                    $homeid = $row1['home_id'];
+                    $userid = $row1['user_id'];
+                    $category=$row1['category'];
+                    $issue_date=$row1['issue_date'];
+                    $due_date=$row1['due_date'];
+                    $amount=$row1['amount'];
+                    $duration_month=$row1['duration_month'];
+                    $paynment_mode=$row1['paynment_mode'];
+                    $paynment_status=$row1['paynment_status'];
+                    $notification_required = $row1['notification_required'];
+                    $soft_copy = $row1['soft_copy'];
+                    $len = strlen($homeid.$userid);
+                    $soft_copy1=str_replace('image/bill management/water/',"", $soft_copy);
+                    $soft_copy1=substr($soft_copy1,$len);
+                    //echo "<br>".$soft_copy1;
+                    //$company_name = $row1['company_name'];
+                    //$unit_burn=$row1['unit_burn'];       
+                    $reference_no=$row1['reference_no'];
+
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('issue_date').value='$issue_date';
+                            document.getElementById('due_date').value='$due_date';
+                            document.getElementById('amount').value='$amount';
+                            document.getElementById('duration_month').value='$duration_month';
+                            document.getElementById('reference_no').value='$reference_no';
+                            radiobtn_mode = document.getElementById('$paynment_mode');
+                            radiobtn_mode.checked = true;
+                            radiobtn_status = document.getElementById('$paynment_status');
+                            radiobtn_status.checked = true;
+                            document.getElementById('filetoupload').val='$soft_copy1';
+                            });
+                                
+                        </script>";
+                
+            }
+        
+
+        }
+
    if(isset($_POST['btnsubmit']))
         {
            
@@ -325,8 +392,8 @@
             $reference_no=$_POST['reference_no'];
             $paynment_status=$_POST['radio-inline1'];
             $paynment_mode=$_POST['radio-inline2'];
-            $name_arr = array('DEN','GTPL','DISH TV','Tata Sky','Airtel','Jio Set-Top Box','D2H','other');
-            $company_name = $name_arr[$_POST['company_name']];
+            // $name_arr = array('DEN','GTPL','DISH TV','Tata Sky','Airtel','Jio Set-Top Box','D2H','other');
+            $company_name =$_POST['company_name'];
 
             $temp=0;
             if(!empty($_POST['switch16'])){
@@ -351,20 +418,39 @@
                     //$userid=$_SESSION['userid'];
                     if(in_array($imagefileType,$extension_arr))
                     {   
-                           $temp=1;
-                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','$company_name','$reference_no','','')";
+                         $temp=1;
+                        if($url == 'true')
+                        {
                             
-                            /*$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
-                            mysqli_query($conn,$sql);*/
+                            $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , notification_required='$notification_required' , soft_copy='$target' , reference_no='$reference_no' 
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='water' AND issue_date='$issue_date'";
+                                
+                            // $sql1="delete from bill_management where(home_id='".$_SESSION['homeid']."' and category='".$selected_category."' and issue_date='".$selected_issue_date."')";
+
+                            // $result1=mysqli_query($conn,$sql1);  
+                            // $file_path="../../".$;
+                            // unlink($file_path);
+                        }
+                        else
+                        {
+                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','','$reference_no','','')";
+                        }   
+                            
                             move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
                              
                     }
 
             //$extension_arr=array('jpg','jpeg','png','pdf','docx','doc');
-            if($temp==0)
+            if($url=='true' &&  $temp==0)
             {
-                $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','','$company_name','$reference_no','','')";
-            }    
+                $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , notification_required='$notification_required' , soft_copy='null' , reference_no='$reference_no' 
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='water' AND issue_date='$issue_date'";
+            }
+            if($url=='false' && $temp==0)
+            {
+                 $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','','$company_name','$reference_no','','')";
+            }   
+   
             
             
             $result=mysqli_query($conn,$sql);
@@ -374,7 +460,13 @@
             }
             else{
                 echo "<script type='text/javascript'>
-                    alert('Save Successfully!!');
+                    $(document).ready(function() {
+                            $('#success-alert').show();
+                            $('#success-alert').fadeTo(3000, 500).slideUp(500, function() {
+                              $('#success-alert').slideUp(500);
+                            document.location.href='water.php';
+                          });
+                        });
                     </script>";
 
             }

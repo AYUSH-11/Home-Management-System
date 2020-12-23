@@ -3,7 +3,7 @@
  
 <head>
     <!-- Required meta tags -->
-
+ 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
@@ -32,6 +32,8 @@
     <script src="../../files/dashboard/dashboard.js"></script>
 
     <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
+    <!-- <link rel="stylesheet" type="text/css" href="forms.css"> -->
+    
 
 </head>
 
@@ -144,7 +146,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <p class="pageheader-text"></p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -156,45 +158,36 @@
                                     </nav>
                                 </div>
 
-                                <div style="float: right;">
-                                    <div style="padding-right: 250px;">
-                                        <select name="selectyear" id="selectyear">
+                                <div style="float: right;padding-right: 25%;">
+                                    <div >
+                                        <form  method="POST">   
+                                        <select name="selectyear" id="selectyear" onchange="this.form.submit()" class="btn btn-secondary">
+                                            <option >Select Year</option>
                                             
                                         </select>
-                                        <select name="chartselection" id="chartselection">
-                                            <option>Select</option>
-                                            <option value="zoomchart">Zoom chart</option>
-                                            <option value="areachrat">Area chart</option>
+                                        <select name="chartselection" id="chartselection" class="btn btn-secondary" style="">
+                                            <option>Select Chart</option>
+                                            <option value="zoomchart">Line chart</option>
+                                            <option value="piechart">Pie Chart</option>
                                             <option value="barchart">Bar chart</option>
                                         </select>
+                                    </form>
                                     </div>
-                                    <br>
-                                   
-
-                                    <!-- <div style="padding-left: 200px;">
-                                        <button style="font-size: 20px; width: 180px;background-color: wheat"><i class="ti-plus" ></i><a href="form_electricity.php"> Add New Bill </a></button>
-                                    </div> -->
-
-                                <div class="product-sidebar-widget" style="padding-left: 200px;">
-                                    <a href="form_electricity.php" class="btn btn-primary"><i class="ti-plus"></i> Add New Bill</a>
-                                </div>
-
                                 </div>
                                 <br><br>
-            
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" >
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="float: left;">
+                                     
                                     <div class="card" >
 
                                         <div style="width: 800px; height: 400px; background-color: white">
-
-                                        <h5 class="card-header" >Chart</h5>
-                                        <div class="card-body" >
-                                            
-                                            <div id="c3chart_zoom" class="chart_coder"></div>
+                                            <h3 class="card-header" id="year_heading"  style="text-align: center; "></h3>
+                                            <div class="card-body" >
+                                                <div id="c3chart_zoom" class="chart_coder"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <a href="form_electricity.php?edit=false" class="btn btn-primary" style="float:right;"><i class="ti-plus"></i> Add New Bill</a>
                             </div>
                         </div>
                     </div>
@@ -213,18 +206,18 @@
 
                                     <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                         <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Due Date</th>
-                                                <th>Rs</th>
-                                                <th>status</th>
-                                                <th>View</th>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
-                                                <th>Download</th>
+                                            <tr style="font-size: large;">
+                                                <th style="color: maroon;">Issue Date</th>
+                                                <th style="color: maroon;">Due Date</th>
+                                                <th style="color: maroon;">Rs</th>
+                                                <th style="color: maroon;">status</th>
+                                                <th style="color: maroon;">View</th>
+                                                <th style="color: maroon;">Edit</th>
+                                                <th style="color: maroon;">Delete</th>
+                                                <th style="color: maroon;">Download</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody style="color: black;">
                                             
                                                 <?php 
                                                  $sql="select issue_date,due_date,amount,paynment_status,soft_copy from bill_management where home_id='".$_SESSION['homeid']."' and category='electricity'";
@@ -245,7 +238,6 @@
                                                         if($row['soft_copy'] != 'null')
                                                         {
 
-                                                            
                                                             $soft_copy1 = $row['soft_copy'];
                                                             //$url = 'electricity?'.$issue_date;
                                                             echo "<tr>
@@ -254,9 +246,10 @@
                                                             <td>$amount</td>
                                                             <td>$paynment_status</td>
                                                             <td><a href='../../$soft_copy1' target='_blank'>View</a></td>
-                                                            <td><a href='form_electricity.php?edit='edit''>Edit</a></td>
+
+                                                            <td><a href='form_electricity.php?edit=true&date1=$issue_date' >Edit</a></td>
                                                     
-                                                            <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteForm.php?delete=$issue_date'>Delete</a></td>
+                                                            <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteBill.php?category1=electricity&date1=$issue_date'>Delete</a></td>
 
                                                             <td><a href='../../$soft_copy1' download>Download</a></td>
                                                             </tr> ";
@@ -272,20 +265,19 @@
                                                                     }
 
                                                                 }
-                                                                 </script>";
-
-                                                            
+                                                                 </script>";                                                            
                                                         }
                                                         else{
-                                                            echo "<tr>
+                                                           echo "<tr>
                                                             <td>$issue_date</td>
                                                             <td>$due_date</td>
                                                             <td>$amount</td>
                                                             <td>$paynment_status</td>
                                                             <td><a href='' onclick='onView2()'>View</a></td>
-                                                            <td><a href='form_electricity.php'>Edit</a></td>
+                                                            
+                                                            <td><a href='form_electricity.php?edit=true&date1=$issue_date'>Edit</a></td>
 
-                                                           <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteForm.php?delete=$issue_date'>Delete</a></td>
+                                                           <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteBill.php?category1=electricity&date1=$issue_date'>Delete</a></td>
 
                                                             <td><a href='' onclick='onView2()'>Download</a></td>
                                                             </tr> ";
@@ -308,15 +300,9 @@
 
                                                                 }
                                                                  </script>";
-
                                                         }
                                                     } 
-
-                                                   
-
                                                 }
-                                                   
-
                                                  ?>
                                         </tbody>
                                         
@@ -394,7 +380,102 @@
     <?php
 
     include '../header.php';
-    $sql="select amount from bill_management where home_id='".$_SESSION['homeid']."' and category='electricity'";
+
+
+    
+    $sql="select issue_date from bill_management where home_id='".$_SESSION['homeid']."' and category='electricity'";
+    $result = mysqli_query($conn, $sql);
+    $year_array = array();
+    $prev_year = "";
+    if(mysqli_num_rows($result) > 0){
+                
+        while($row=mysqli_fetch_assoc($result))
+            {
+                $new_year=$row['issue_date'];
+                $new_year=explode("-",$new_year);
+
+                if(strcmp($prev_year,$new_year[0])!=0)
+                {
+                    $prev_year=$new_year[0];
+                    array_push($year_array,$prev_year);
+                }
+
+            }
+    }
+    for($i=0;$i<count($year_array);$i++)
+    {
+        $year=$year_array[$i];
+        echo "<script type='text/javascript'>
+                    $(document).ready(function(){
+                        var x = document.getElementById('selectyear');
+                        var option = document.createElement('option');
+                        option.text = $year;
+                        option.value=$year;
+                        x.add(option);
+                    });
+                </script>";
+    }
+    $amount_arr=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+    $selected_year=date("Y-m-d");
+    $selected_year=explode("-", $selected_year);
+    $selected_year=$selected_year[0];
+    $start_date=$selected_year."-01-01";
+        $end_date=$selected_year."-12-31";
+        $sql="SELECT * FROM bill_management where issue_date between '$start_date' and '$end_date' and category='electricity';";
+
+        $result=mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result)>0)
+        {
+            while($row=mysqli_fetch_array($result))
+            {
+                $month=explode("-", $row['issue_date']);
+
+                $amount_arr[(int)$month[1]]=(int)$row['amount'];
+
+            }
+        }
+        
+        echo "<script type='text/javascript'>
+                    $(document).ready(function(){
+                        document.getElementById('year_heading').innerHTML=$selected_year;
+                    });
+                </script>";
+        include 'graph.php';
+    if(isset($_POST['selectyear'])){
+        $amount_arr=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+        $selected_year=$_POST['selectyear'];
+        $start_date=$selected_year."-01-01";
+        $end_date=$selected_year."-12-31";
+        $sql="SELECT * FROM bill_management where issue_date between '$start_date' and '$end_date' and category='electricity';";
+
+        $result=mysqli_query($conn,$sql);
+        
+        if(mysqli_num_rows($result)>0)
+        {
+            while($row=mysqli_fetch_array($result))
+            {
+                $month=explode("-", $row['issue_date']);
+
+                $amount_arr[(int)$month[1]]=(int)$row['amount'];
+
+            }
+        }
+        echo "<script type='text/javascript'>
+                    $(document).ready(function(){
+                        document.getElementById('year_heading').innerHTML=$selected_year;
+                    });
+                </script>";
+        include 'graph.php';
+
+
+
+            
+    }
+    
+
+    
+
+    /*$sql="select amount from bill_management where home_id='".$_SESSION['homeid']."' and category='electricity'";
 
                 $result = mysqli_query($conn, $sql);
                 if(mysqli_num_rows($result) > 0){
@@ -404,230 +485,14 @@
                         array_push($amount_arr, $row['amount']);
 
                     }
-                }
+                }*/
 
         //echo "<script type='text/javascript'>var arrayFromPhp = '.$amount_arr.';</script>";
                 //echo "<script type='text/javascript'>alert('.$amount_arr.');</script>";
 
                 
-                
     ?>
     
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-
-(function(window, document, $, undefined) {
-    "use strict";
-    $(function() {
-        var arr= array(arrayFromPhp);
-        // for(var i=0;i<arrayFromPhp.length;i++)
-        // {
-        //     alert(arrayFromPhp[i]);
-        // }
-        //var arr= [500,400,350,450,520,500,400,350,342,368,500,500];  
-        if ($('#c3chart_zoom').length) {
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-                data: {
-                    columns: [
-                        ['sample',0,arr[0],arr[1],arr[2]]
-                    ],
-                    colors: {
-                        sample: '#5969ff'
-
-
-                    }
-                },
-                zoom: {
-                    enabled: true
-                },
-                axis: {
-                    y: {
-                        show: true,
-
-
-                    },
-                    x: {
-                        show: true,
-                    }
-                }
-
-            });
-        }
-
-
-        var chartselection="zoomchart";
-
-    $('#chartselection').on('change', function(event) {
-        var opt = this.options[ this.selectedIndex ];
-        chartselection= $(opt).text();
-        
-     
-     if(chartselection=="Zoom chart"){
-        $(function() { 
-            
-            if ($('#c3chart_zoom').length) {
-            
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-
-                data: {
-
-                    columns: [
-                        ['sample',0,arr[0],arr[1],arr[2]]
-                    ],
-                    colors: {
-                        sample: '#5969ff'
-                    }
-
-
-                },
-                zoom: {
-                    enabled: true
-                },
-                axis: {
-
-                    y: {
-                        show: true,
-                    },
-                    x: {
-
-                        show: true,
-                       
-                    }
-                },
-
-            });
-            }
-
-        });
-
-    }
-
-    if(chartselection=="Area chart"){
-
-        if ($('#c3chart_zoom').length) {
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-                data: {
-                    columns: [
-                        ['data1',0, arr[0],arr[1],arr[2]]
-                        
-                    ],
-                    types: {
-                        data1: 'area',
-                        data2: 'area-spline'
-                    },
-                    colors: {
-                        data1: '#5969ff',
-                        data2: '#ff407b',
-
-                    }
-
-                },
-                axis: {
-
-                    y: {
-                        show: true
-
-
-
-
-                    },
-                    x: {
-                        show: true
-                    }
-                }
-
-            });
-        }
-
-    }
-
-    if(chartselection=="Bar chart"){
-        if ($('#c3chart_zoom').length) {
-            var chart = c3.generate({
-                bindto: "#c3chart_zoom",
-
-                data: {
-                    columns: [
-                        ['data1',0, arr[0],arr[1],arr[2]]
-                    ],
-                    type: 'bar',
-                    groups: [
-                        ['data1']
-                    ],
-                    order: 'desc', // stack order by sum of values descendantly. this is default.
-                    //      order: 'asc'  // stack order by sum of values ascendantly.
-                    //      order: null   // stack order by data definition.
-
-                    colors: {
-                        data1: '#5969ff',
-                        data2: '#ff407b',
-                        data3: '#64ced3'
-
-                    }
-                },
-                axis: {
-                    y: {
-                        show: true,
-
-
-                    },
-                    x: {
-                        show: true,
-                    }
-                },
-                grid: {
-                    y: {
-                        lines: [{ value: 1 }]
-                    },
-
-                }
-            });
-            
-        }
-
-
-    }
-
-})
-
-});
-
-})(window, document, window.jQuery);
-
-
-window.onload = function takeyear(){
-
-
-var yeararray=[1999,2000,2001];
-for(var i=0;i<yeararray.length;i++)
-{
-                var x = document.getElementById("selectyear");
-                var option = document.createElement("option");
-                option.text = yeararray[i].toString();
-                x.add(option);
-}
-
-
-
-
-}
-$(document).ready(function(){
-
-    /*user information in header*/
-  var head_name="Ayush Vachhani";
-  var head_image="../../crop.jpg";
-  document.getElementById('head_name').innerHTML=head_name;
-  document.getElementById('head_image').src=head_image;
-});
-
-
-
-
-
-
-</script>
 
 </body>
  

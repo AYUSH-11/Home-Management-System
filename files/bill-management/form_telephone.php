@@ -31,6 +31,7 @@
     <script src="../../files/dashboard/dashboard.js"></script>
     <script type="text/javascript" src="headerimage.js"></script>
     
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
 
 
 </head>
@@ -136,6 +137,10 @@
 
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+                    <div class="alert alert-success" id="success-alert" style="display: none;">
+                        <a href="telephone.php" class="close">x</a>
+                        <strong>Success! </strong> Bill Added Successfully.
+                    </div>
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
@@ -143,14 +148,23 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <p class="pageheader-text"></p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bill Management</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Telephone</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Add New Bill</li>
+                                            <?php
+                                            if($_GET['edit']=='true')
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Edit Bill</li>";
+                                            }
+                                            else
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Add New Bill</li>";
+                                            }
+                                            ?>
 
                                         </ol>
                                     </nav>
@@ -161,7 +175,7 @@
                         </div>
                     </div>
                     
-                    <form enctype="multipart/form-data" method="post" name="telephone" id="telephone" style="width: 1000px;margin-left: 150px;" >
+                    <form enctype="multipart/form-data" method="post" name="telephone" id="telephone" style="width: 70%;margin-left: 15%;" >
                     <div class="row">
                         <!-- ============================================================== -->
                         <!-- valifation types -->
@@ -192,12 +206,12 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Company Name</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <select id="telephone_company" required="" name="company_name">
-                                                    <option value="0">BSNL</option>
-                                                    <option value="1">Reliance</option>
-                                                    <option value="2">Vodafone</option>
-                                                    <option value="3">Airtel</option>
-                                                    <option value="4">Other</option>
+                                                <select id="telephone_company" required="" name="company_name" class="btn btn-secondary" style="background-color: grey;border-color: grey;">
+                                                    <option value="BSNL">BSNL</option>
+                                                    <option value="Reliance">Reliance</option>
+                                                    <option value="Vodafone">Vodafone</option>
+                                                    <option value="Airtel">Airtel</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -325,6 +339,60 @@
     <?php
     include '../header.php';
 
+   $url = $_GET['edit'];
+
+        if($url == 'true')
+        {
+            $selected_issue_date = $_GET['date1'];
+            $sql1 = "select * from bill_management where(home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."' and category='telephone' and issue_date='".$selected_issue_date."')";
+
+            $result1 = mysqli_query($conn,$sql1);
+            if(mysqli_num_rows($result1) > 0)
+            {
+                    $row1 = mysqli_fetch_assoc($result1);
+                    
+                    // home_id user_id category    issue_date  due_date    amount  duration_month  paynment_status paynment_mode   notification_required   soft_copy   company_name    reference_no    unit_burn   source/recharge_type
+                    $homeid = $row1['home_id'];
+                    $userid = $row1['user_id'];
+                    $category=$row1['category'];
+                    $issue_date=$row1['issue_date'];
+                    $due_date=$row1['due_date'];
+                    $amount=$row1['amount'];
+                    $company_name = $row1['company_name'];
+                    $duration_month=$row1['duration_month'];
+                    $paynment_mode=$row1['paynment_mode'];
+                    $paynment_status=$row1['paynment_status'];
+                    $notification_required = $row1['notification_required'];
+                    $soft_copy = $row1['soft_copy'];
+                    $len = strlen($homeid.$userid);
+                    $soft_copy1=str_replace('image/bill management/telephone/',"", $soft_copy);
+                    $soft_copy1=substr($soft_copy1,$len);
+                    //echo "<br>".$soft_copy1;
+                    
+                    //$unit_burn=$row1['unit_burn'];       
+                    //$reference_no=$row1['reference_no'];
+
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('recharge_date').value='$issue_date';
+                            document.getElementById('due_date').value='$due_date';
+                            document.getElementById('amount').value='$amount';
+                            document.getElementById('duration_month').value='$duration_month';
+                            document.getElementById('company_name').value='$company_name';
+                            radiobtn_mode = document.getElementById('$paynment_mode');
+                            radiobtn_mode.checked = true;
+                            radiobtn_status = document.getElementById('$paynment_status');
+                            radiobtn_status.checked = true;
+                            document.getElementById('filetoupload').val='$soft_copy1';
+                            });
+                                
+                        </script>";
+                
+            }
+        
+
+        }
+
     if(isset($_POST['btnsubmit']))
         {
            
@@ -341,15 +409,15 @@
 
             $paynment_status=$_POST['radio-inline1'];
             $paynment_mode=$_POST['radio-inline2'];
-            $name_arr = array('BSNL','Reliance','Vodafone','Airtel','Other');
-            $company_name = $name_arr[$_POST['company_name']];
+            //$name_arr = array('BSNL','Reliance','Vodafone','Airtel','Other');
+            $company_name = $_POST['company_name'];
 
             $temp=0;
             if(!empty($_POST['switch16'])){
-                $notification_required="yes";
+                $notification_required="ON";
             }
             else{
-                $notification_required="no";
+                $notification_required="OFF";
             }        
             
             $name = $_FILES["filetoupload"]["name"];
@@ -367,20 +435,40 @@
                     //$userid=$_SESSION['userid'];
                     if(in_array($imagefileType,$extension_arr))
                     {   
-                           $temp=1;
-                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','$company_name','','','')";
+                         $temp=1;
+                        if($url == 'true')
+                        {
                             
-                            /*$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
-                            mysqli_query($conn,$sql);*/
+                            $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , notification_required='$notification_required' , soft_copy='$target' ,  company_name=$company_name 
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='telephone' AND issue_date='$issue_date'";
+                                
+                            // $sql1="delete from bill_management where(home_id='".$_SESSION['homeid']."' and category='".$selected_category."' and issue_date='".$selected_issue_date."')";
+
+                            // $result1=mysqli_query($conn,$sql1);  
+                            // $file_path="../../".$;
+                            // unlink($file_path);
+                        }
+                        else
+                        {
+                          
+                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','$company_name','','','')";
+                        }  
+                           
                             move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
                              
                     }
 
             //$extension_arr=array('jpg','jpeg','png','pdf','docx','doc');
-            if($temp==0)
+            if($url=='true' &&  $temp==0)
             {
-                $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','','$company_name','','','')";
-            }    
+                $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , notification_required='$notification_required' , soft_copy='$target' ,  company_name=$company_name 
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='telephone' AND issue_date='$issue_date'";
+            }
+            if($url=='false' && $temp==0)
+            {
+                 $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','','$company_name','','','')";
+            }   
+              
             
             
             $result=mysqli_query($conn,$sql);
@@ -390,7 +478,13 @@
             }
             else{
                 echo "<script type='text/javascript'>
-                    alert('Save Successfully!!');
+                    $(document).ready(function() {
+                            $('#success-alert').show();
+                            $('#success-alert').fadeTo(3000, 500).slideUp(500, function() {
+                              $('#success-alert').slideUp(500);
+                            document.location.href='telephone.php';
+                          });
+                        });
                     </script>";
 
             }

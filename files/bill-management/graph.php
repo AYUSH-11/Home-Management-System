@@ -1,27 +1,20 @@
     <?php 
-        echo "<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'>
-
-        (function(window, document, $, undefined) {
+    echo "<script type='text/javascript'>(function(window, document, $, undefined) {
     'use strict';
     $(function() {
-        var arr= array(arrayFromPhp);
-        // for(var i=0;i<arrayFromPhp.length;i++)
-        // {
-        //     alert(arrayFromPhp[i]);
-        // }
-        //var arr= [500,400,350,450,520,500,400,350,342,368,500,500];  
+        var arr= [$amount_arr[1],$amount_arr[2],$amount_arr[3],$amount_arr[4],$amount_arr[5],$amount_arr[6],$amount_arr[7],$amount_arr[8],$amount_arr[9],$amount_arr[10],$amount_arr[11],$amount_arr[12]];  
         if ($('#c3chart_zoom').length) {
             var chart = c3.generate({
                 bindto: '#c3chart_zoom',
                 data: {
                     columns: [
-                        ['sample',0,arr[0],arr[1],arr[2]]
+                        ['month',0,arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8],arr[9],arr[10],arr[11]]
                     ],
                     colors: {
                         sample: '#5969ff'
-
-
                     }
+                    
+
                 },
                 zoom: {
                     enabled: true
@@ -29,7 +22,7 @@
                 axis: {
                     y: {
                         show: true,
-
+                        title:'money',
 
                     },
                     x: {
@@ -59,7 +52,7 @@
                 data: {
 
                     columns: [
-                        ['sample',0,arr[0],arr[1],arr[2]]
+                        ['month',0,arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8],arr[9],arr[10],arr[11]]
                     ],
                     colors: {
                         sample: '#5969ff'
@@ -89,41 +82,42 @@
 
     }
 
-    if(chartselection=='Area chart'){
+    if(chartselection=='Pie Chart'){
 
         if ($('#c3chart_zoom').length) {
             var chart = c3.generate({
                 bindto: '#c3chart_zoom',
                 data: {
                     columns: [
-                        ['data1',0, arr[0],arr[1],arr[2]]
-                        
+                        ['Jan', arr[0]],
+                        ['Feb', arr[1]],
+                        ['Mar', arr[2]],
+                        ['Apr', arr[3]],
+                        ['May', arr[4]],
+                        ['Jun', arr[5]],
+                        ['Jul', arr[6]],
+                        ['Aug', arr[7]],
+                        ['Sep', arr[8]],
+                        ['Oct', arr[9]],
+                        ['Nov', arr[10]],
+                        ['Dec', arr[11]]
                     ],
-                    types: {
-                        data1: 'area',
-                        data2: 'area-spline'
-                    },
+                    type: 'pie',
+
                     colors: {
-                        data1: '#5969ff',
-                        data2: '#ff407b',
+                         data1: '#5969ff',
+                        data2: '#ff407b'
+
 
                     }
-
                 },
-                axis: {
-
-                    y: {
-                        show: true
-
-
-
-
-                    },
-                    x: {
-                        show: true
+                pie: {
+                    label: {
+                        format: function(value, ratio, id) {
+                            return d3.format('$')(value);
+                        }
                     }
                 }
-
             });
         }
 
@@ -136,7 +130,7 @@
 
                 data: {
                     columns: [
-                        ['data1',0, arr[0],arr[1],arr[2]]
+                        ['month',0, arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7],arr[8],arr[9],arr[10],arr[11]]
                     ],
                     type: 'bar',
                     groups: [
@@ -172,55 +166,12 @@
             });
             
         }
-
-
     }
-
-
-
-
-
     })
-
-
-
-        
-
 
     });
 
-})(window, document, window.jQuery);
-
-
-window.onload = function takeyear(){
-
-
-var yeararray=[1999,2000,2001];
-for(var i=0;i<yeararray.length;i++)
-{
-                var x = document.getElementById('selectyear');
-                var option = document.createElement('option');
-                option.text = yeararray[i].toString();
-                x.add(option);
-}
-
-
-
-
-}
-$(document).ready(function(){
-
-    /*user information in header*/
-  var head_name='Ayush Vachhani';
-  var head_image='../../crop.jpg';
-  document.getElementById('head_name').innerHTML=head_name;
-  document.getElementById('head_image').src=head_image;
-});
-
-</script>
-
-
-";
+})(window, document, window.jQuery);</script>";
 
 
 

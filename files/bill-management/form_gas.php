@@ -31,7 +31,7 @@
     <script src="../../files/dashboard/dashboard.js"></script>
     <script type="text/javascript" src="headerimage.js"></script>
     
-
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
 
 </head>
 
@@ -39,14 +39,16 @@
     <?php
        include '../login_check1.php';                     
     ?>
+    
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
+        
         <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
-        <div class="nav-left-sidebar sidebar-dark">
+        <!--<div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list" >
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -129,12 +131,17 @@
                     </div>
                 </nav>
             </div>
-        </div>
+        </div>-->
 
         <div class="dashboard-wrapper">
 
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+
+                    <div class="alert alert-success" id="success-alert" style="display: none;">
+                        <a href="gas.php" class="close">x</a>
+                        <strong>Success! </strong> Bill Added Successfully.
+                    </div>
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
@@ -142,14 +149,23 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <p class="pageheader-text"></p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bill Management</a></li>
                                             <li class="breadcrumb-item"><a href="gas.php" class="breadcrumb-link">Gas</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Add New Bill</li>
+                                            <?php
+                                            if($_GET['edit']=='true')
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Edit Bill</li>";
+                                            }
+                                            else
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Add New Bill</li>";
+                                            }
+                                            ?>
 
                                         </ol>
                                     </nav>
@@ -162,7 +178,7 @@
 
 
 
-                    <form  name="gas" id="gas" style="width: 1000px;margin-left: 150px;" method="post" enctype="multipart/form-data">
+                    <form  name="gas" id="gas" style="width: 70%;margin-left: 15%;" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <!-- ============================================================== -->
                         <!-- valifation types -->
@@ -193,11 +209,13 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Company Name</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <select id="company_name" required="" name="company_name">
-                                                    <option value="0">Indian Oil</option>
-                                                    <option value="1">Bharat Gas</option>
-                                                    <option value="2">Reliance</option>
-                                                    <option value="3">Essar</option>
+                                                <select id="company_name" required="" name="company_name" class="btn btn-secondary" style="background-color: grey;border-color: grey;">
+                                                    <option value="Indian Oil">Indian Oil</option>
+                                                    <option value="Bharat Gas">Bharat Gas</option>
+                                                    <option value="Reliance">Reliance</option>
+                                                    <option value="Hindustan Gas">Hindustan Gas</option>
+                                                    <option value="Essar">Essar</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -219,30 +237,30 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Source Type</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline3"  class="custom-control-input" value="pipeline"><span class="custom-control-label" >Pipeline</span>
+                                                <input type="radio" name="radio-inline3"  class="custom-control-input" id="pipeline" value="pipeline"><span class="custom-control-label" >Pipeline</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline3" class="custom-control-input" checked value="cylinder"><span class="custom-control-label">Cylinder</span>
+                                                <input type="radio" name="radio-inline3" class="custom-control-input" id="cylinder" checked="true" value="cylinder"><span class="custom-control-label">Cylinder</span>
                                             </label>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Mode</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="online" checked><span class="custom-control-label">Online</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" id="online" value="online" checked="true"><span class="custom-control-label">Online</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="offline"><span class="custom-control-label">Offline</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="offline" id="offline"><span class="custom-control-label">Offline</span>
                                             </label>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Status</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1"  class="custom-control-input" value="payed"><span class="custom-control-label">Payed</span>
+                                                <input type="radio" name="radio-inline1"  class="custom-control-input" id="payed" value="payed"><span class="custom-control-label">Payed</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1" class="custom-control-input" value="not payed" checked><span class="custom-control-label">Not Payed</span>
+                                                <input type="radio" name="radio-inline1" class="custom-control-input" id="not payed" value="not payed" checked='true'><span class="custom-control-label">Not Payed</span>
                                             </label>
                                         </div>
                                         
@@ -335,13 +353,69 @@
     
     <?php
     include '../header.php';
-    
+    $url = $_GET['edit'];
+
+        if($url == 'true')
+        {
+            $selected_issue_date = $_GET['date1'];
+            $sql1 = "select * from bill_management where(home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."' and category='gas' and issue_date='".$selected_issue_date."')";
+
+            $result1 = mysqli_query($conn,$sql1);
+            if(mysqli_num_rows($result1) > 0)
+            {
+                    $row1 = mysqli_fetch_assoc($result1);
+                    
+                    // home_id user_id category    issue_date  due_date    amount  duration_month  paynment_status paynment_mode   notification_required   soft_copy   company_name    reference_no    unit_burn   source/recharge_type
+                    $homeid = $row1['home_id'];
+                    $userid = $row1['user_id'];
+                    $category=$row1['category'];
+                    $issue_date=$row1['issue_date'];
+                    $due_date=$row1['due_date'];
+                    $amount=$row1['amount'];
+                    $duration_month=$row1['duration_month'];
+                    $source_type=$row1['source_recharge_type'];
+                    $paynment_mode=$row1['paynment_mode'];
+                    $paynment_status=$row1['paynment_status'];
+                    $notification_required = $row1['notification_required'];
+                    $soft_copy = $row1['soft_copy'];
+                    $len = strlen($homeid.$userid);
+                    $soft_copy1=str_replace('image/bill management/gas/',"", $soft_copy);
+                    $soft_copy1=substr($soft_copy1,$len);
+                    //echo "<br>".$soft_copy1;
+                    $company_name = $row1['company_name'];
+                    //$unit_burn=$row1['unit_burn'];       
+                    $reference_no=$row1['reference_no'];
+
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('issue_date').value='$issue_date';
+                            document.getElementById('due_date').value='$due_date';
+                            document.getElementById('amount').value='$amount';
+                            document.getElementById('duration_month').value='$duration_month';
+                            document.getElementById('company_name').value='$company_name';
+                            document.getElementById('reference_no').value='$reference_no';
+                            radiobtn_mode = document.getElementById('$paynment_mode');
+                            radiobtn_mode.checked = true;
+                            radiobtn_source = document.getElementById('$source_type');
+                            radiobtn_source.checked = true;
+                            radiobtn_status = document.getElementById('$paynment_status');
+                            radiobtn_status.checked = true;
+                            document.getElementById('filetoupload').val='$soft_copy1';
+                            });
+                                
+                        </script>";
+                
+            }
         
+
+        }
+
+        // ==================================
+
+
     
     if(isset($_POST['btnsubmit']))
         {
-            
-            // home_id user_id category    issue_date  due_date    amount  duration_month  paynment_status paynment_mode   notification_required   soft_copy   company_name    reference_no    unit_burn   source/recharge_type
          if(form_validation() !== false){
             
             $homeid = $_SESSION['homeid'];
@@ -355,15 +429,15 @@
             $paynment_mode=$_POST['radio-inline2'];
             $source_type=$_POST['radio-inline3'];   
             $reference_no=$_POST['reference_no'];
-            $name_arr = array('Indian Oil','Bharat Gas','Reliance','Essar');
-            $company_name = $name_arr[$_POST['company_name']];
-
+            //$name_arr = array('Indian Oil','Bharat Gas','Reliance','Essar');
+            //$company_name = $name_arr[$_POST['company_name']];
+            $company_name = $_POST['company_name'];
             $temp=0;
             if(!empty($_POST['switch16'])){
-                $notification_required="yes";
+                $notification_required="ON";
             }
             else{
-                $notification_required="no";
+                $notification_required="OFF";
             }              
             
             
@@ -382,20 +456,37 @@
                     //$userid=$_SESSION['userid'];
                     if(in_array($imagefileType,$extension_arr))
                     {   
-                           $temp=1;
-                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','$company_name','$reference_no','','$source_type')";
+                        $temp=1;
+                        if($url == 'true')
+                        {
                             
-                            /*$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
-                            mysqli_query($conn,$sql);*/
-                            move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
+                            $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , notification_required='$notification_required' , soft_copy='$target' , reference_no='$reference_no' , company_name='$company_name',source_recharge_type='$source_type'
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='gas' AND issue_date='$issue_date'";
+                                
+                            // $sql1="delete from bill_management where(home_id='".$_SESSION['homeid']."' and category='".$selected_category."' and issue_date='".$selected_issue_date."')";
+
+                            // $result1=mysqli_query($conn,$sql1);  
+                            // $file_path="../../".$;
+                            // unlink($file_path);
+                        }
+                        else
+                        {   
+                            $sql="INSERT INTO bill_management VALUES('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','$target','$company_name','$reference_no','','$source_type')";
+                        }
+                move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
                              
                     }
 
             //$extension_arr=array('jpg','jpeg','png','pdf','docx','doc');
-            if($temp==0)
+            if($url=='true' &&  $temp==0)
             {
-                $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','','company_name','$reference_no','','$source_type')";
-            }    
+                $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , notification_required='$notification_required' , soft_copy='null' , reference_no='$reference_no' , company_name='$company_name',source_recharge_type='$source_type'
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='gas' AND issue_date='$issue_date'";
+            }
+            if($url=='false' && $temp==0)
+            {
+                 $sql="INSERT INTO bill_management VALUES('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','$notification_required','null','$company_name','$reference_no','','$source_type')";
+            }   
             
             
             $result=mysqli_query($conn,$sql);
@@ -407,8 +498,24 @@
                     </script>";
             }
             else{
+                // echo "<div class='alert alert-success' role='alert'>
+                //             This is a success alert—check it out!
+                //         </div>";
+                // echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                //         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                //         <a href='#' class='close' data-dismiss='alert' aria-label='Close'>
+                //             <span aria-hidden='true'>×</span>
+                //         </a>
+                //                             </div>";
                 echo "<script type='text/javascript'>
-                    alert('Save Successfully!!');
+                    $(document).ready(function() {
+                            $('#success-alert').show();
+                            $('#success-alert').fadeTo(3000, 500).slideUp(500, function() {
+                              $('#success-alert').slideUp(500);
+                            document.location.href='gas.php';
+                          });
+                        });
+                     
                     </script>";
 
             }

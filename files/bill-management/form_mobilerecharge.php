@@ -31,7 +31,7 @@
     <script src="../../files/dashboard/dashboard.js"></script>
     <script type="text/javascript" src="headerimage.js"></script>
     
-
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
 
 </head>
 
@@ -136,6 +136,10 @@
 
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
+                    <div class="alert alert-success" id="success-alert" style="display: none;">
+                        <a href="mobilerecharge.php" class="close">x</a>
+                        <strong>Success! </strong> Bill Added Successfully.
+                    </div>
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
@@ -150,7 +154,16 @@
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bill Management</a></li>
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Mobile Recharge</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Add New Bill</li>
+                                            <?php
+                                            if($_GET['edit']=='true')
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Edit Bill</li>";
+                                            }
+                                            else
+                                            {
+                                                echo "<li class='breadcrumb-item active' aria-current='page'>Add New Bill</li>";
+                                            }
+                                            ?>
 
                                         </ol>
                                     </nav>
@@ -161,7 +174,7 @@
                         </div>
                     </div>
 
-                    <form  name="mobilerecharge" id="mobilerecharge" style="width: 1000px;margin-left: 150px;" enctype="multipart/form-data" method="post">
+                    <form  name="mobilerecharge" id="mobilerecharge" style="width: 70%;margin-left: 15%;" enctype="multipart/form-data" method="post">
                     <div class="row">
                         <!-- ============================================================== -->
                         <!-- valifation types -->
@@ -192,12 +205,13 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">SIM Card Company</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <select id="sim_company" name="sim_company">
-                                                    <option value="0">Jio</option>
-                                                    <option value="1">Vodafone</option>
-                                                    <option value="2">BSNL</option>
-                                                    <option value="3">Airtel</option>
-                                                    <option value="4">Idea</option>
+                                                <select id="sim_company" name="sim_company" class="btn btn-secondary" style="background-color: grey;border-color: grey;">
+                                                    <option value="Jio">Jio</option>
+                                                    <option value="Vodafone">Vodafone</option>
+                                                    <option value="BSNL">BSNL</option>
+                                                    <option value="Airtel">Airtel</option>
+                                                    <option value="Idea">Idea</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -212,30 +226,30 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Recharge Type</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline3"  class="custom-control-input" value="prepaid"><span class="custom-control-label">Prepaid</span>
+                                                <input type="radio" name="radio-inline3"  class="custom-control-input" value="prepaid" id="prepaid"><span class="custom-control-label" >Prepaid</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline3" class="custom-control-input" value="postpaid" checked><span class="custom-control-label">Postpaid</span>
+                                                <input type="radio" name="radio-inline3" class="custom-control-input" value="postpaid" id="postpaid" checked><span class="custom-control-label">Postpaid</span>
                                             </label>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Mode</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="online" checked><span class="custom-control-label">Online</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="online" id="online" checked><span class="custom-control-label">Online</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline2" class="custom-control-input" value="offline"><span class="custom-control-label">Offline</span>
+                                                <input type="radio" name="radio-inline2" class="custom-control-input" id="offline" value="offline"><span class="custom-control-label">Offline</span>
                                             </label>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Paynment Status</label>&nbsp;&nbsp;&nbsp;
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1"  class="custom-control-input" value="payed"><span class="custom-control-label" checked>Payed</span>
+                                                <input type="radio" name="radio-inline1"  class="custom-control-input" id="payed" value="payed"><span class="custom-control-label" checked>Payed</span>
                                             </label>
                                             <label class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" name="radio-inline1" class="custom-control-input" value="not payed" checked><span class="custom-control-label">Not Payed</span>
+                                                <input type="radio" name="radio-inline1" class="custom-control-input" id="not payed" value="not payed" checked><span class="custom-control-label">Not Payed</span>
                                             </label>
                                         </div>
                                         
@@ -321,6 +335,63 @@
 
     include '../header.php';
 
+    $url = $_GET['edit'];
+
+        if($url == 'true')
+        {
+            $selected_issue_date = $_GET['date1'];
+            $sql1 = "select * from bill_management where(home_id='".$_SESSION['homeid']."' and user_id='".$_SESSION['userid']."' and category='mobilerecharge' and issue_date='".$selected_issue_date."')";
+
+            $result1 = mysqli_query($conn,$sql1);
+            if(mysqli_num_rows($result1) > 0)
+            {
+                    $row1 = mysqli_fetch_assoc($result1);
+                    
+                    // home_id user_id category    issue_date  due_date    amount  duration_month  paynment_status paynment_mode   notification_required   soft_copy   company_name    reference_no    unit_burn   source/recharge_type
+                    $homeid = $row1['home_id'];
+                    $userid = $row1['user_id'];
+                    $category=$row1['category'];
+                    $issue_date=$row1['issue_date'];
+                    $due_date=$row1['due_date'];
+                    $amount=$row1['amount'];
+                    $company_name = $row1['company_name'];
+                    $duration_month=$row1['duration_month'];
+                    $paynment_mode=$row1['paynment_mode'];
+                    $paynment_status=$row1['paynment_status'];
+                    $recharge_type=$row1['source_recharge_type'];
+                    //$notification_required = $row1['notification_required'];
+                    $soft_copy = $row1['soft_copy'];
+                    $len = strlen($homeid.$userid);
+                    $soft_copy1=str_replace('image/bill management/electricity/',"", $soft_copy);
+                    $soft_copy1=substr($soft_copy1,$len);
+                    //echo "<br>".$soft_copy1;
+                    
+                    //$unit_burn=$row1['unit_burn'];       
+                    //$reference_no=$row1['reference_no'];
+
+                    echo "<script type='text/javascript'>
+                            $(document).ready(function(){
+                            document.getElementById('recharge_date').value='$issue_date';
+                            document.getElementById('due_date').value='$due_date';
+                            document.getElementById('amount').value='$amount';
+                            document.getElementById('duration_month').value='$duration_month';
+                            document.getElementById('sim_company').value='$company_name';
+                            radiobtn_mode = document.getElementById('$paynment_mode');
+                            radiobtn_mode.checked = true;
+                            radiobtn_status = document.getElementById('$paynment_status');
+                            radiobtn_status.checked = true;
+                            radiobtn_recharge = document.getElementById('$recharge_type');
+                            radiobtn_recharge.checked = true;
+                            document.getElementById('filetoupload').val='$soft_copy1';
+                            });
+                                
+                        </script>";
+                
+            }
+        
+
+        }
+
     if(isset($_POST['btnsubmit']))
         {
            
@@ -337,8 +408,8 @@
             $paynment_status=$_POST['radio-inline1'];
             $paynment_mode=$_POST['radio-inline2'];
             $recharge_type=$_POST['radio-inline3'];   
-            $name_arr = array('Jio','Vodafone','BSNL','Airtel','Idea');
-            $company_name = $name_arr[$_POST['sim_company']];
+            //$name_arr = array('Jio','Vodafone','BSNL','Airtel','Idea');
+            $company_name = $_POST['sim_company'];
 
             $temp=0;
             // if(!empty($_POST['switch16'])){
@@ -363,20 +434,37 @@
                     //$userid=$_SESSION['userid'];
                     if(in_array($imagefileType,$extension_arr))
                     {   
-                           $temp=1;
-                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','','$target','','','','$recharge_type')";
+                        $temp=1;
+                        if($url == 'true')
+                        {
                             
-                            /*$sql="insert into dg_locker(home_id,user_id,document_name,document,document_type,password) values('$homeid','$userid','$documentname','$target','$documenttype','$password')";
-                            mysqli_query($conn,$sql);*/
-                            move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
-                             
+                            $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , soft_copy='$target'  , company_name='$company_name',source_recharge_type='$recharge_type' , 
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='mobilerecharge' AND issue_date='$issue_date'";
+                                
+                            // $sql1="delete from bill_management where(home_id='".$_SESSION['homeid']."' and category='".$selected_category."' and issue_date='".$selected_issue_date."')";
+
+                            // $result1=mysqli_query($conn,$sql1);  
+                            // $file_path="../../".$;
+                            // unlink($file_path);
+                        }
+                        else
+                        {
+                           $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','','$target','','','','$recharge_type')";
+                        }
+                        move_uploaded_file($_FILES['filetoupload']['tmp_name'],$target_dir.$name);
                     }
 
             //$extension_arr=array('jpg','jpeg','png','pdf','docx','doc');
-            if($temp==0)
+            if($url=='true' &&  $temp==0)
             {
-                $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','','','','','','$recharge_type')";
-            }    
+                $sql = "UPDATE bill_management SET due_date='$due_date' , amount='$amount' , duration_month='$duration_month' , paynment_status='$paynment_status' , paynment_mode='$paynment_mode' , soft_copy='null'  , company_name='$company_name',source_recharge_type='$recharge_type' , 
+                                WHERE home_id='$homeid' AND user_id='$userid' AND category='mobilerecharge' AND issue_date='$issue_date'";
+            }
+            if($url=='false' && $temp==0)
+            {
+                 $sql="insert into bill_management values('$homeid','$userid','$category','$issue_date','$due_date','$amount','$duration_month','$paynment_status','$paynment_mode','','','$company_name','','','$recharge_type')";
+            }   
+  
             
             
             $result=mysqli_query($conn,$sql);
@@ -386,7 +474,13 @@
             }
             else{
                 echo "<script type='text/javascript'>
-                    alert('Save Successfully!!');
+                     $(document).ready(function() {
+                            $('#success-alert').show();
+                            $('#success-alert').fadeTo(3000, 500).slideUp(500, function() {
+                              $('#success-alert').slideUp(500);
+                            document.location.href='mobilerecharge.php';
+                          });
+                        });
                     </script>";
 
             }

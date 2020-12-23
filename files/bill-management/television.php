@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+  
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../../files/dashboard/dashboard.css">
     <script src="../../files/dashboard/dashboard.js"></script>
 
-
+    <link rel="icon" type="image/icon" href="../../img/home_icon4.png" sizes="50x50">
 
 </head>
 
@@ -155,41 +155,35 @@
                                         </ol>
                                     </nav>
                                 </div>
-                                <div style="float: right;">
-                                    <div style="padding-right: 250px;">
-                                        <select name="selectyear" id="selectyear">
+                                <div style="float: right;padding-right: 25%;">
+                                    <div >
+                                        <form  method="POST">   
+                                        <select name="selectyear" id="selectyear" onchange="this.form.submit()" class="btn btn-secondary" style="">
+                                            <option >Select Year</option>
                                             
                                         </select>
-                                        <select name="chartselection" id="chartselection">
-                                            <option>Select</option>
-                                            <option value="zoomchart">Zoom chart</option>
-                                            <option value="areachrat">Area chart</option>
+                                        <select name="chartselection" id="chartselection" class="btn btn-secondary" style="">
+                                            <option>Select Chart</option>
+                                            <option value="zoomchart">Line chart</option>
+                                            <option value="piechart">Pie Chart</option>
                                             <option value="barchart">Bar chart</option>
-                                        </select>
+                                        </select>        
+                                    </form>
                                     </div>
-                                    <br>
-                                   
-                                    <!-- <div style="padding-left: 200px;">
-                                        <button style="font-size: 20px; width: 180px;background-color: wheat"><i class="ti-plus"></i><a href="form_television.php"> ADD New Bill</a></button>
-                                    </div> -->
-                                    <div class="product-sidebar-widget" style="padding-left: 200px;">
-                                    <a href="form_television.php" class="btn btn-primary"><i class="ti-plus"></i> Add New Bill</a>
-                                </div>
                                 </div>
                                 <br><br>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" >
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="float: left;">
                                     <div class="card" >
 
                                         <div style="width: 800px; height: 400px; background-color: white">
-
-                                        <h5 class="card-header" >Zoom Chart</h5>
-                                        <div class="card-body" >
-                                            
-                                            <div id="c3chart_zoom"></div>
+                                            <h3 class="card-header" id="year_heading"  style="text-align: center; "></h3>
+                                            <div class="card-body" >
+                                                <div id="c3chart_zoom"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <a href="form_television.php?edit=false" class="btn btn-primary" style="float: right;"><i class="ti-plus"></i> Add New Bill</a>
                             </div>
                         </div>
                     </div>
@@ -207,79 +201,105 @@
                                 <div class="table-responsive">
                                     <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                         <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Due Date</th>
-                                                <th>Rs</th>
-                                                <th>status</th>
-                                                <th>View</th>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
-                                                <th>Download</th>
+                                            <tr style="font-size: large;">
+                                                <th style="color: maroon;">Issue Date</th>
+                                                <th style="color: maroon;">Due Date</th>
+                                                <th style="color: maroon;">Rs</th>
+                                                <th style="color: maroon;">status</th>
+                                                <th style="color: maroon;">View</th>
+                                                <th style="color: maroon;">Edit</th>
+                                                <th style="color: maroon;">Delete</th>
+                                                <th style="color: maroon;">Download</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>2020/08/21</td>
-                                                <td>2020/08/25</td>
-                                                <td>300</td>
-                                                <td>Paid</td>
-                                                <td><a href="">View</a></td>
-                                                <td><a href="">Edit</a></td>
-                                                <td><a href="">Delete</a></td>
-                                                <td><a href="">Download</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020/07/21</td>
-                                                <td>2020/07/25</td>
-                                                <td>600</td>
-                                                <td>Paid</td>
-                                                <td><a href="">View</a></td>
-                                                <td><a href="">Edit</a></td>
-                                                <td><a href="">Delete</a></td>
-                                                <td><a href="">Download</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020/06/21</td>
-                                                <td>2020/06/25</td>
-                                                <td>800</td>
-                                                <td>Paid</td>
-                                                <td><a href="">View</a></td>
-                                                <td><a href="">Edit</a></td>
-                                                <td><a href="">Delete</a></td>
-                                                <td><a href="">Download</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020/05/21</td>
-                                                <td>2020/05/25</td>
-                                                <td>500</td>
-                                                <td>Paid</td>
-                                                <td><a href="">View</a></td>
-                                                <td><a href="">Edit</a></td>
-                                                <td><a href="">Delete</a></td>
-                                                <td><a href="">Download</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020/04/21</td>
-                                                <td>2020/04/25</td>
-                                                <td>400</td>
-                                                <td>Paid</td>
-                                                <td><a href="">View</a></td>
-                                                <td><a href="">Edit</a></td>
-                                                <td><a href="">Delete</a></td>
-                                                <td><a href="">Download</a></td>
-                                            </tr>
+                                        <tbody style="color: black;">
+                                            <?php 
+                                                 $sql="select issue_date,due_date,amount,paynment_status,soft_copy from bill_management where home_id='".$_SESSION['homeid']."' and category='television'";
+
+                                                $result = mysqli_query($conn, $sql);
+
+                                                if(mysqli_num_rows($result) > 0)
+                                                {
+
+                                                    while($row=mysqli_fetch_assoc($result))
+                                                    {
+                                                        $issue_date = $row['issue_date'];
+                                                        $due_date = $row['due_date'];
+                                                        $amount = $row['amount'];
+                                                        $paynment_status = $row['paynment_status'];
+                                                        
+
+                                                        if($row['soft_copy'] != 'null')
+                                                        {
+
+                                                            $soft_copy1 = $row['soft_copy'];
+                                                            //$url = 'electricity?'.$issue_date;
+                                                            echo "<tr>
+                                                            <td>$issue_date</td>
+                                                            <td>$due_date</td>
+                                                            <td>$amount</td>
+                                                            <td>$paynment_status</td>
+                                                            <td><a href='../../$soft_copy1' target='_blank'>View</a></td>
+
+                                                            <td><a href='form_television.php?edit=true&date1=$issue_date' >Edit</a></td>
+                                                    
+                                                            <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteBill.php?category1=television&date1=$issue_date'>Delete</a></td>
+
+                                                            <td><a href='../../$soft_copy1' download>Download</a></td>
+                                                            </tr> ";
+
+
+                                                            echo "<script type='text/javascript'>
+                                                                function conformationDelete(anchor)
+                                                                { 
+                                                                    var conf= confirm('Are You sure want to Delete this Bill??');
+                                                                    if(conf)
+                                                                    {
+                                                                        window.location=anchor.attr('href');
+                                                                    }
+
+                                                                }
+                                                                 </script>";                                                            
+                                                        }
+                                                        else{
+                                                           echo "<tr>
+                                                            <td>$issue_date</td>
+                                                            <td>$due_date</td>
+                                                            <td>$amount</td>
+                                                            <td>$paynment_status</td>
+                                                            <td><a href='' onclick='onView2()'>View</a></td>
+                                                            
+                                                            <td><a href='form_television.php?edit=true&date1=$issue_date'>Edit</a></td>
+
+                                                           <td><a onclick='javascript: conformationDelete($(this));return false;' href='deleteBill.php?category1=television&date1=$issue_date'>Delete</a></td>
+
+                                                            <td><a href='' onclick='onView2()'>Download</a></td>
+                                                            </tr> ";
+
+                                                           echo "<script type='text/javascript'>
+                                                                function onView2()
+                                                                { 
+                                                                    alert('Soft Copy not Uploaded!!');
+                                                                }
+                                                                 </script>"; 
+                                                            
+                                                            echo "<script type='text/javascript'>
+                                                                function conformationDelete(anchor)
+                                                                { 
+                                                                    var conf= confirm('Are You sure want to Delete this Bill??');
+                                                                    if(conf)
+                                                                    {
+                                                                        window.location=anchor.attr('href');
+                                                                    }
+
+                                                                }
+                                                                 </script>";
+                                                        }
+                                                    } 
+                                                }
+                                                 ?>
                                         </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </tfoot>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -346,7 +366,120 @@
     <?php
 
     include '../header.php';
+
+
+    
+    $sql="select issue_date from bill_management where home_id='".$_SESSION['homeid']."' and category='television'";
+    $result = mysqli_query($conn, $sql);
+    $year_array = array();
+    $prev_year = "";
+    if(mysqli_num_rows($result) > 0){
+                
+        while($row=mysqli_fetch_assoc($result))
+            {
+                $new_year=$row['issue_date'];
+                $new_year=explode("-",$new_year);
+
+                if(strcmp($prev_year,$new_year[0])!=0)
+                {
+                    $prev_year=$new_year[0];
+                    array_push($year_array,$new_year[0]);
+                }
+
+            }
+    }
+    for($i=0;$i<count($year_array);$i++)
+    {
+        $year=$year_array[$i];
+        echo "<script type='text/javascript'>
+                    $(document).ready(function(){
+                        var x = document.getElementById('selectyear');
+                        var option = document.createElement('option');
+                        option.text = $year;
+                        option.value=$year;
+                        x.add(option);
+    
+                    });
+                </script>";
+    }
+    $amount_arr=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+    $selected_year=date("Y-m-d");
+    $selected_year=explode("-", $selected_year);
+    $selected_year=$selected_year[0];
+    $start_date=$selected_year."-01-01";
+        $end_date=$selected_year."-12-31";
+        $sql="SELECT * FROM bill_management where issue_date between '$start_date' and '$end_date' and category='television' ;";
+
+        $result=mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result)>0)
+        {
+            while($row=mysqli_fetch_array($result))
+            {
+                $month=explode("-", $row['issue_date']);
+
+                $amount_arr[(int)$month[1]]=(int)$row['amount'];
+
+            }
+        }
+        
+        echo "<script type='text/javascript'>
+                    $(document).ready(function(){
+                        document.getElementById('year_heading').innerHTML=$selected_year;
+                    });
+                </script>";
+        include 'graph.php';
+    if(isset($_POST['selectyear'])){
+        $amount_arr=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+        $selected_year=$_POST['selectyear'];
+        $start_date=$selected_year."-01-01";
+        $end_date=$selected_year."-12-31";
+        $sql="SELECT * FROM bill_management where issue_date between '$start_date' and '$end_date' and category='television';";
+
+        $result=mysqli_query($conn,$sql);
+        
+        if(mysqli_num_rows($result)>0)
+        {
+            while($row=mysqli_fetch_array($result))
+            {
+                $month=explode("-", $row['issue_date']);
+
+                $amount_arr[(int)$month[1]]=(int)$row['amount'];
+
+            }
+        }
+        echo "<script type='text/javascript'>
+                    $(document).ready(function(){
+                        document.getElementById('year_heading').innerHTML=$selected_year;
+                    });
+                </script>";
+        include 'graph.php';
+
+
+
+            
+    }
+    
+
+    
+
+    /*$sql="select amount from bill_management where home_id='".$_SESSION['homeid']."' and category='electricity'";
+
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    $amount_arr = array();
+                    while($row=mysqli_fetch_assoc($result))
+                    {
+                        array_push($amount_arr, $row['amount']);
+
+                    }
+                }*/
+
+        //echo "<script type='text/javascript'>var arrayFromPhp = '.$amount_arr.';</script>";
+                //echo "<script type='text/javascript'>alert('.$amount_arr.');</script>";
+
+                
     ?>
+    
 
 </body>
  
