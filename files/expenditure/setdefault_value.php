@@ -1,14 +1,15 @@
-<?php
+<?php  
         $homeid=$_SESSION['homeid'];
-        $sql="select * from  expenditure where home_id='$homeid'";
+        
+        $sql="select * from  expenditure where home_id='$homeid' and year='$selectedyear'";
 
         $result=mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result) == 0 ){
+        /*if(mysqli_num_rows($result) == 0 ){
             $sql="INSERT INTO expenditure(income_b,income_a, home_expenses_b, home_expenses_a, child_education_b, child_education_a, saving_b, saving_a, daily_living_b, daily_living_a, entertainment_b, entertainment_a, transportation_b, transportation_a, misce_expenses_b, misce_expenses_a, healthcare_b, healthcare_a, budget_b, budget_a, home_id) VALUES ('0#0#0#0#0#0','0#0#0#0#0#0','0#0#0#0#0#0#0#0#0#0','0#0#0#0#0#0#0#0#0#0','0#0#0#0#0#0#0','0#0#0#0#0#0#0','0#0#0#0#0#0','0#0#0#0#0#0','0#0#0#0#0#0#0#0#0','0#0#0#0#0#0#0#0#0','0#0#0#0#0#0#0','0#0#0#0#0#0#0','0#0#0#0','0#0#0#0','0#0#0#0#0#0','0#0#0#0#0#0','0#0','0#0','0#0','0#0','$homeid')";
             $result=mysqli_query($conn,$sql);
             $sql="select * from  expenditure where home_id='$homeid'";
             $result=mysqli_query($conn,$sql);
-        }
+        }*/
 
 
         $row=mysqli_fetch_array($result);
@@ -413,9 +414,14 @@
             $doc_id_1="summary_r".strval($i+1)."_d1";
             $doc_id_2="summary_r".strval($i+1)."_d2";
             $doc_id_3="summary_r".strval($i+1)."_d3";
+            if($i==0)
+            {
+            $diff=$budget_a[$i]-$budget_b[$i];
+            }
+            else
+            {
             $diff=$budget_b[$i]-$budget_a[$i];
-            $budget_bud+=$budget_b[$i];
-            $budget_actual+=$budget_a[$i];
+            }
             echo "<script type='text/javascript'>
                             $(document).ready(function(){
                             document.getElementById('$doc_id_1').value='$budget_b[$i]';
@@ -425,10 +431,12 @@
                             });
                             </script>"; 
         }
+        $budget_bud=$budget_b[0]-$budget_b[1];
+        $budget_actual=$budget_a[0]-$budget_a[1];
         $doc_id_1="summary_r".strval($i+1)."_d1";
         $doc_id_2="summary_r".strval($i+1)."_d2";
         $doc_id_3="summary_r".strval($i+1)."_d3";
-        $diff=$budget_bud-$budget_actual;
+        $diff=$budget_actual-$budget_bud;
         echo "<script type='text/javascript'>
                             $(document).ready(function(){
                             document.getElementById('$doc_id_1').value='$budget_bud';
