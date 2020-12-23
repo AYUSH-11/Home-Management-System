@@ -149,7 +149,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">Dashboard</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -204,7 +204,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Mobile No</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required=""  placeholder="Enter Mobile No of user" name="mobile" class="form-control">
+                                                <input type="text" required=""  placeholder="Enter Mobile No of user" onkeypress="return onlyNumberKey(event)" name="mobile" class="form-control" maxlength="10">
                                             </div>
                                             <span id="mobilespan" style="color: red;"></span>
                                         </div>
@@ -314,7 +314,16 @@
     <?php
     	ob_start();
 		  include '../header.php';	
-
+          echo "<script> 
+                    function onlyNumberKey(evt) { 
+                          
+                        // Only ASCII charactar in that range allowed 
+                        var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+                        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+                            return false; 
+                        return true; 
+                    } 
+                </script> ";
 		  if(isset($_POST['submitbtn']))
 		  {
 		  	
